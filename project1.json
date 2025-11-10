@@ -1,0 +1,13 @@
+{
+  "version": "v1.0.0",
+  "status": "Live Release",
+  "lastUpdate": "2025-02-01",
+  "changelog": [
+    { "date": "2025-02-01", "text": "zweite Veröffentlichung der Website (v1.0.)" },
+    { "date": "2025-02-01", "text": "Erste Veröffentlichung der Website (v0.0.5)" },
+    { "date": "2025-01-28", "text": "Dynamischer Projektbereich integriert" },
+    { "date": "2025-01-20", "text": "Corporate Design finalisiert" },
+    { "date": "2025-01-10", "text": "Struktur & Inhalte erstellt" },
+    { "date": "2025-01-02", "text": "Projekt gestartet" }
+  ]
+}

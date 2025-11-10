@@ -1,0 +1,27 @@
+[
+  {
+    "title": "Website Selber bauen",
+    "url": "projekt1.html",
+    "image": "assets/img/projekt1.jpg",
+    "excerpt": "Umfangreiche Bau der Website mit Unterstützung von Chat-Mama."
+  },
+   {
+    "title": "Kimai Zeiterfassung & Tutorial",
+    "url": "projekt2.html",
+    "image": "assets/img/kimai-thumb.jpg",
+    "excerpt": "Kimai Zeiterfassungs-Server installiert und YouTube-Anleitung produziert."
+  },
+  {
+  "title": "GitHub Integration & Deployment",
+  "url": "projekt3.html",
+  "image": "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png",
+  "excerpt": "Einrichtung eines modernen GitHub-Workflows inkl. CI/CD und automatischem Deployment."
+},
+  {
+    "title": "Coming Soon",
+    "url": "projekt4.html",
+    "image": "assets/img/projekt2.jpg",
+    "excerpt": "Bald mehr zu sehen."
+  }
+
+]

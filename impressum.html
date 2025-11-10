@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Impressum | M.I.E Modern IT Experts GmbH</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-primary:#005BBB;
+      --color-accent:#00B8D9;
+      --color-dark:#0A1F44;
+      --color-bg-light:#F7F9FC;
+      --color-text:#333;
+      --color-text-light:#E0E8F0;
+    }
+    body {font-family:'Inter',sans-serif;margin:0;background:var(--color-bg-light);color:var(--color-text);}
+    .nav {display:flex;justify-content:space-between;align-items:center;padding:20px 40px;background:#fff;box-shadow:0 6px 18px rgba(10,31,68,0.06);}
+    .nav .brand{font-family:'Poppins',sans-serif;font-weight:700;color:var(--color-dark);}
+    .nav .menu a{margin-left:20px;color:var(--color-text);text-decoration:none;font-weight:500;}
+    .container {max-width:900px;margin:60px auto;padding:0 20px;}
+    h1,h2 {font-family:'Poppins',sans-serif;color:var(--color-dark);}
+    .footer{background:var(--color-dark);color:var(--color-text-light);padding:28px 24px;margin-top:80px;text-align:center;}
+    .footer a{color:var(--color-text-light);text-decoration:none;font-size:0.9rem;}
+  </style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="brand">M.I.E Modern IT Experts GmbH</div>
+  <nav class="menu">
+    <a href="index.html">Startseite</a>
+    <a href="leistungen.html">Leistungen</a>
+    <a href="projekte.html">Projekte</a>
+    <a href="impressum.html">Impressum</a>
+    <a href="datenschutz.html">Datenschutz</a>
+  </nav>
+</header>
+
+<main class="container">
+  <h1>Impressum</h1>
+  <p><strong>M.I.E Modern IT Experts GmbH</strong><br>
+  Turmstraße 25<br>
+  99955 Bad Tennstedt<br><br>
+  Telefon: <a href="tel:+491629402895">01629402895</a><br>
+  E-Mail: <a href="mailto:rene.krueger@modern-it-experts.de">rene.krueger@modern-it-experts.de</a></p>
+
+  <h2>Vertreten durch</h2>
+  <p>Geschäftsführer: René Krüger</p>
+
+  <h2>Registereintrag</h2>
+  <p>Eintragung im Handelsregister.<br>
+  Registergericht: Amtsgericht Jena<br>
+  Registernummer: HRB 522709</p>
+
+  <h2>Umsatzsteuer-ID</h2>
+  <p>Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz: DE451511516</p>
+
+  <h2>Haftungsausschluss</h2>
+  <p>Die Inhalte dieser Webseite wurden mit größtmöglicher Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte übernehmen wir jedoch keine Gewähr. Trotz sorgfältiger inhaltlicher Kontrolle übernehmen wir keine Haftung für externe Links. Für den Inhalt der verlinkten Seiten sind ausschließlich deren Betreiber verantwortlich.</p>
+
+  <h2>Urheberrecht</h2>
+  <p>Alle Inhalte, Texte und Grafiken dieser Website unterliegen dem Urheberrecht. Eine Vervielfältigung oder Verbreitung ist ohne ausdrückliche Genehmigung nicht gestattet.</p>
+</main>
+
+<footer id="site-footer"></footer>
+<script>
+fetch('footer.html').then(r => r.text()).then(html => document.getElementById('site-footer').innerHTML = html);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Projekt 3 – GitHub Integration & Deployment</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    :root {--color-primary:#005BBB;--color-accent:#00B8D9;--color-dark:#0A1F44;--color-bg-light:#F7F9FC;--color-text:#333;--radius:12px;}
+    body{font-family:'Inter',sans-serif;margin:0;background:var(--color-bg-light);color:var(--color-text)}
+    .nav{display:flex;justify-content:space-between;align-items:center;padding:20px 40px;background:#fff;box-shadow:0 6px 18px rgba(10,31,68,0.06)}
+    .brand{font-family:'Poppins',sans-serif;font-weight:700;color:var(--color-dark)}
+    .menu a{margin-left:20px;color:var(--color-text);text-decoration:none;font-weight:500}
+    .container{max-width:900px;margin:60px auto;padding:0 20px;line-height:1.65}
+    h1,h2{font-family:'Poppins',sans-serif;color:var(--color-dark)}
+    .hero-img{width:100%;border-radius:12px;margin-bottom:30px;aspect-ratio:16/9;object-fit:cover;box-shadow:0 8px 20px rgba(10,31,68,0.08)}
+    .meta{margin-bottom:20px;color:#666;font-size:.95rem}
+    .meta span{margin-right:15px}
+    .highlight-box{background:#fff;padding:24px;border-radius:12px;box-shadow:0 8px 20px rgba(10,31,68,0.05);margin:30px 0}
+    .back-link{display:inline-block;margin-top:35px;font-weight:600;color:var(--color-primary);text-decoration:none}
+    .footer{background:#0A1F44;color:#E0E8F0;padding:28px;text-align:center;margin-top:60px}
+    .footer a{color:#E0E8F0;text-decoration:none;font-size:.9rem}
+    .youtube-embed{width:100%;aspect-ratio:16/9;border-radius:12px;box-shadow:0 8px 20px rgba(10,31,68,0.08);margin-bottom:30px;border:0}
+  </style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="brand">M.I.E Modern IT Experts GmbH</div>
+  <nav class="menu">
+    <a href="index.html">Startseite</a>
+    <a href="leistungen.html">Leistungen</a>
+    <a href="projekte.html">Projekte</a>
+    <a href="impressum.html">Impressum</a>
+    <a href="datenschutz.html">Datenschutz</a>
+  </nav>
+</header>
+
+<div class="container">
+  <div class="meta">Startseite › Projekte › GitHub Integration & Deployment</div>
+  <h1>GitHub Integration & Deployment</h1>
+  <div class="meta" style="font-size:.9rem;color:#445;display:flex;flex-wrap:wrap;gap:10px;margin:10px 0 20px;">
+    <span>🐙 Git & Versionierung</span>
+    <span>🔧 Branching & Pull‑Requests</span>
+    <span>🚀 Deployment‑Vorbereitung</span>
+    <span>📂 Repository‑Strukturierung</span>
+  </div>
+<p style="font-size:.9rem;color:#445;margin-top:4px;">Letzte Aktualisierung: <strong>04.11.2025</strong></p>
+  <div class="section">
+    <h2>📦 Repository</h2>
+    <p>Öffentlich zugängliches GitHub‑Projekt zur Demonstration moderner Web‑Entwicklung:</p>
+
+    <a class="btn" href="https://github.com/BootenfuehrtzumGuten/-Erstellung-der-Unternehmens-Website" target="_blank">Repository öffnen</a>
+  </div>
+
+  <div class="section">
+    <h2>⚙️ GitHub Workflows</h2>
+    <p>Umgesetzt wurden unter anderem:</p>
+    <ul>
+      <li>✅ Git‑Versionierung & Branch‑Management</li>
+      <li>✅ Automatisierter Build‑ und Deploy‑Prozess</li>
+      <li>✅ Pull‑Request‑Review Struktur</li>
+      <li>✅ Automatische Releases (optional GitHub Actions)</li>
+    </ul>
+  </div>
+<br>
+<a href="projekte.html" class="back-link">← Zurück zur Projektübersicht</a>
+</div>
+
+<footer id="site-footer"></footer>
+<script>
+fetch('footer.html')
+  .then(r=>r.text())
+  .then(html=>{ document.getElementById('site-footer').innerHTML = html; });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Projekte | M.I.E Modern IT Experts GmbH</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {--color-primary:#005BBB;--color-accent:#00B8D9;--color-dark:#0A1F44;--color-bg-light:#F7F9FC;--color-text:#333;--radius:12px;}
+    body{font-family:Inter,sans-serif;margin:0;background:var(--color-bg-light);color:var(--color-text)}
+    .nav{display:flex;justify-content:space-between;align-items:center;padding:20px 40px;background:#fff;box-shadow:0 6px 18px rgba(10,31,68,0.06)}
+    .nav .brand{font-family:Poppins,sans-serif;font-weight:700;color:var(--color-dark)}
+    .nav .menu a{margin-left:20px;color:var(--color-text);text-decoration:none;font-weight:500}
+    .container{max-width:1200px;margin:60px auto;padding:0 20px}
+    h1{font-family:Poppins,sans-serif;color:var(--color-dark);margin-bottom:40px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:26px}
+    .card{background:#fff;border-radius:var(--radius);box-shadow:0 8px 20px rgba(10,31,68,0.05);padding:0;overflow:hidden;transition:.3s}
+    .card:hover{transform:translateY(-6px);box-shadow:0 14px 36px rgba(10,31,68,0.08)}
+    .card img{width:100%;aspect-ratio:16/9;object-fit:cover}
+    .card-inner{padding:20px}
+    .card h2{font-size:1.2rem;font-family:Poppins,sans-serif;margin:0 0 8px;color:var(--color-dark)}
+    .card p{margin:0 0 12px}
+    .card a{font-weight:600;color:var(--color-primary);text-decoration:none}
+    .pagination{display:flex;justify-content:center;gap:10px;margin-top:40px}
+    .pagination button{padding:10px 16px;border:none;border-radius:8px;background:#fff;box-shadow:0 4px 12px rgba(10,31,68,0.05);cursor:pointer;font-weight:600}
+    .pagination button.active{background:var(--color-primary);color:#fff}
+    .footer{background:var(--color-dark);color:#E0E8F0;padding:28px;text-align:center;margin-top:60px}
+  </style>
+</head>
+<body>
+<header class="nav">
+  <div class="brand">M.I.E Modern IT Experts GmbH</div>
+  <nav class="menu">
+    <a href="index.html">Startseite</a>
+    <a href="leistungen.html">Leistungen</a>
+    <a href="projekte.html">Projekte</a>
+    <a href="impressum.html">Impressum</a>
+    <a href="datenschutz.html">Datenschutz</a>
+  </nav>
+</header>
+
+<main class="container">
+  <h1>Unsere Projekte</h1>
+  <div id="projects" class="grid"></div>
+  <div class="pagination" id="pagination"></div>
+</main>
+
+<footer id="site-footer"></footer>
+<script>
+fetch('footer.html').then(r => r.text()).then(html => document.getElementById('site-footer').innerHTML = html);
+</script>
+<script>
+const perPage = 6;
+let currentPage = 1;
+let projects = [];
+
+function renderProjects(){
+  const start = (currentPage-1)*perPage;
+  const slice = projects.slice(start,start+perPage);
+  document.getElementById('projects').innerHTML = slice.map(p=>`
+    <div class="card">
+      <img src="${p.image||'https://via.placeholder.com/800x450'}">
+      <div class="card-inner">
+        <h2>${p.title}</h2>
+        <p>${p.excerpt||''}</p>
+        <a href="${p.url}">Weiterlesen →</a>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderPagination(){
+  const pages = Math.ceil(projects.length/perPage);
+  const container = document.getElementById('pagination');
+  container.innerHTML = '';
+  for(let i=1;i<=pages;i++){
+    const btn = document.createElement('button');
+    btn.textContent=i;
+    if(i===currentPage) btn.classList.add('active');
+    btn.onclick = ()=>{currentPage=i;renderProjects();renderPagination()};
+    container.appendChild(btn);
+  }
+}
+
+fetch('projects.json').then(r=>r.json()).then(data=>{projects=data;renderProjects();renderPagination()});
+</script>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>M.I.E Modern IT Experts GmbH — Start</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <meta name="description" content="Wir machen Ihre IT zukunftssicher. Cloud, IT-Security und Managed Services von Modern IT Experts.">
+  <style>
+    :root{
+      --color-primary:#005BBB;
+      --color-accent:#00B8D9;
+      --color-dark:#0A1F44;
+      --color-bg-light:#F7F9FC;
+      --color-text:#333333;
+      --color-text-light:#E0E8F0;
+      --radius:12px;
+    }
+    *{box-sizing:border-box}
+    body{font-family:'Inter',sans-serif;margin:0;background:var(--color-bg-light);color:var(--color-text)}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    .nav{display:flex;justify-content:space-between;align-items:center;padding:20px 40px;background:#fff;box-shadow:0 6px 18px rgba(10,31,68,0.06);position:sticky;top:0;z-index:60}
+    .nav .brand{font-family:'Poppins',sans-serif;font-weight:700;color:var(--color-dark)}
+    .nav .menu{display:flex;gap:20px}
+    .nav .menu a{font-weight:500;color:var(--color-text)}
+
+    .hero{background:linear-gradient(135deg,var(--color-dark),var(--color-primary));color:#fff;padding:110px 20px 140px;position:relative;overflow:hidden}
+    .hero::before{content:'';position:absolute;inset:0;background-image:url('https://www.transparenttextures.com/patterns/cubes.png');opacity:0.07;animation:moveBg 30s linear infinite}
+    @keyframes moveBg{from{background-position:0 0}to{background-position:1200px 0}}
+    .container{max-width:1200px;margin:0 auto;padding:0 24px}
+    .hero-inner{display:flex;gap:40px;align-items:center}
+    .hero-text{flex:1;max-width:720px}
+    .hero h1{font-family:'Poppins',sans-serif;font-size:2.8rem;margin:0 0 18px;line-height:1.05}
+    .hero p{margin:0 0 28px;color:var(--color-text-light);font-size:1.15rem}
+    .hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+    .btn{display:inline-block;padding:12px 26px;border-radius:10px;font-weight:600;text-decoration:none}
+    .btn-primary{background:var(--color-accent);color:#fff}
+    .btn-secondary{background:transparent;color:#fff;border:2px solid rgba(255,255,255,0.18)}
+
+    .features{background:var(--color-bg-light);padding:60px 0}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px;max-width:1200px;margin:0 auto;padding:0 24px}
+    .card{background:#fff;border-radius:16px;padding:28px;text-align:center;box-shadow:0 8px 20px rgba(10,31,68,0.05);transition:.3s}
+    .card:hover{transform:translateY(-6px);box-shadow:0 14px 36px rgba(10,31,68,0.08)}
+    .card svg{width:40px;height:40px;margin-bottom:16px;fill:var(--color-accent)}
+    .card h3{font-family:'Poppins',sans-serif;color:var(--color-dark)}
+    .card a{color:var(--color-primary);font-weight:600;text-decoration:none}
+    .card a:hover{text-decoration:underline}
+
+    .modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);align-items:center;justify-content:center;z-index:100}
+    .modal.active{display:flex}
+    .modal-content{background:#fff;padding:32px;border-radius:var(--radius);max-width:480px;text-align:center;box-shadow:0 8px 20px rgba(0,0,0,0.15)}
+
+    .footer{background:var(--color-dark);color:var(--color-text-light);padding:28px 24px;margin-top:40px}
+    .footer .inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+    .footer a{color:var(--color-text-light);text-decoration:none;font-size:0.9rem}
+    .footer a:hover{text-decoration:underline}
+
+    @media(max-width:900px){.hero-inner{flex-direction:column;text-align:center}.hero h1{font-size:2rem}}
+  </style>
+</head>
+<body>
+
+  <header class="nav">
+  <div class="brand">M.I.E Modern IT Experts GmbH</div>
+  <nav class="menu">
+    <a href="index.html">Startseite</a>
+    <a href="leistungen.html">Leistungen</a>
+    <a href="projekte.html">Projekte</a>
+    <a href="impressum.html">Impressum</a>
+    <a href="datenschutz.html">Datenschutz</a>
+  </nav>
+</header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-inner">
+          <div class="hero-text" data-aos="fade-up">
+            <h1>Wir machen Ihre IT zukunftssicher.</h1>
+            <p>Von Cloud-Lösungen über IT-Security bis zu Managed Services – wir begleiten Sie ganzheitlich in der digitalen Welt.</p>
+            <div class="hero-ctas">
+              <a class="btn btn-primary" href="/kontakt">Kostenloses Erstgespräch vereinbaren</a>
+              <a class="btn btn-secondary" href="/leistungen">Unsere Leistungen ansehen</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="leistungen" class="features">
+      <div class="grid">
+        <div class="card" data-aos="fade-up" data-aos-delay="50">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 1 3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+          <h3>IT-Security</h3>
+          <p>Proaktive Sicherheitskonzepte schützen Ihre Systeme und Daten – zuverlässig & skalierbar.</p>
+          <a href="/leistungen/security">Mehr erfahren →</a>
+        </div>
+        <div class="card" data-aos="fade-up" data-aos-delay="120">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a8 8 0 0 1 8 8h-2a6 6 0 0 0-12 0H4a8 8 0 0 1 8-8zm0 16a8 8 0 0 1-8-8h2a6 6 0 0 0 12 0h2a8 8 0 0 1-8 8z"/></svg>
+          <h3>Cloud-Lösungen</h3>
+          <p>Moderne Cloud-Infrastruktur, individuell angepasst – flexibel, sicher und effizient.</p>
+          <a href="/leistungen/cloud">Mehr erfahren →</a>
+        </div>
+        <div class="card" data-aos="fade-up" data-aos-delay="190">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 6h16v2H4V6zm0 5h10v2H4v-2zm0 5h16v2H4v-2z"/></svg>
+          <h3>Managed Services</h3>
+          <p>Wir übernehmen den Betrieb Ihrer IT – damit Sie sich auf Ihr Kerngeschäft konzentrieren können.</p>
+          <a href="/leistungen/managed">Mehr erfahren →</a>
+        </div>
+        <div class="card" data-aos="fade-up" data-aos-delay="260">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm1 14.59V16h-2v.59L8.7 19l-.7-.7L10.59 15H8v-2h2.59L8 9.7l.7-.7L11 10.59V10h2v.59l2.3-1.29.7.7L13.41 13H16v2h-2.59l2.29 2.29-.7.7z"/></svg>
+          <h3>Schulung & Training</h3>
+          <p>Praxisnahe IT-Schulungen zu Sicherheit, Cloud-Tools und Best Practices. Wir machen Ihr Team fit für den digitalen Arbeitsalltag.</p>
+          <a href="#" id="openModal">Mehr erfahren →</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="modal" id="flyerModal">
+      <div class="modal-content">
+        <h3>Schulung & Training – Details</h3>
+        <p>Unsere Schulungen sind individuell anpassbar. Laden Sie jetzt unseren Flyer herunter und entdecken Sie alle Themenbereiche.</p>
+        <a class="btn btn-primary" href="/downloads/schulungsflyer.pdf" download>Flyer herunterladen (PDF)</a><br><br>
+        <a href="#" id="closeModal">Fenster schließen</a>
+      </div>
+    </div>
+  </main>
+
+<footer id="site-footer"></footer>
+  <script>
+  fetch('footer.html').then(r => r.text()).then(html => document.getElementById('site-footer').innerHTML = html);
+  </script>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded',function(){AOS.init({duration:700,once:true});});
+    const modal=document.getElementById('flyerModal');
+    document.getElementById('openModal').addEventListener('click',e=>{e.preventDefault();modal.classList.add('active');});
+    document.getElementById('closeModal').addEventListener('click',e=>{e.preventDefault();modal.classList.remove('active');});
+  </script>
+</body>
+</html>
