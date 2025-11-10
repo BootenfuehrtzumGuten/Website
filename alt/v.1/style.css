@@ -1,0 +1,46 @@
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --color-primary: #005BBB;
+  --color-accent: #00B8D9;
+  --color-dark: #0A1F44;
+  --color-bg-light: #F7F9FC;
+  --color-text: #333333;
+  --color-text-light: #E0E8F0;
+  --color-warning: #FF7A00;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--color-text);
+  background-color: var(--color-bg-light);
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  font-family: 'Poppins', sans-serif;
+  color: var(--color-dark);
+  margin-bottom: 0.5em;
+}
+
+a, .btn-primary {
+  background-color: var(--color-primary);
+  color: #fff;
+  transition: background 0.3s;
+}
+
+a:hover, .btn-primary:hover {
+  background-color: var(--color-accent);
+}
+
+.btn-secondary {
+  border: 2px solid var(--color-primary);
+  color: var(--color-primary);
+}
+.btn-secondary:hover {
+  background-color: var(--color-primary);
+  color: #fff;
+}
+</style>
