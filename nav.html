@@ -1,0 +1,76 @@
+<div class="nav">
+  <div class="brand">M.I.E Modern IT Experts GmbH</div>
+  <nav class="menu">
+    <a href="index.html">Startseite</a>
+    <a href="leistungen.html">Leistungen</a>
+
+    <div class="dropdown">
+      <a href="projekte.html" class="dropbtn">Projekte ▾</a>
+      <div class="dropdown-content">
+        <a href="projekte.html">Projektübersicht</a>
+        <a href="projekt1.html">Projekt 1 – Unternehmens-Website</a>
+        <a href="projekt2.html">Projekt 2 – Kimai Zeiterfassung</a>
+        <a href="#">Zukünftige Projekte …</a>
+      </div>
+    </div>
+
+    <a href="impressum.html">Impressum</a>
+    <a href="datenschutz.html">Datenschutz</a>
+  </nav>
+</div>
+
+<style>
+.nav {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 40px;
+  background:#fff;
+  box-shadow:0 6px 18px rgba(10,31,68,0.06);
+}
+.nav .brand {
+  font-family:'Poppins',sans-serif;
+  font-weight:700;
+  color:#0A1F44;
+}
+.nav .menu {
+  display:flex;
+  align-items:center;
+  gap:20px;
+}
+.nav .menu a {
+  color:#333;
+  text-decoration:none;
+  font-weight:500;
+}
+
+/* Dropdown Menü */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+.dropbtn {
+  cursor:pointer;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  min-width: 240px;
+  box-shadow: 0 8px 20px rgba(10,31,68,0.1);
+  border-radius: 8px;
+  z-index: 99;
+}
+.dropdown-content a {
+  color: #333;
+  padding: 10px 16px;
+  text-decoration: none;
+  display: block;
+}
+.dropdown-content a:hover {
+  background-color: #F7F9FC;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+</style>

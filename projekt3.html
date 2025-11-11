@@ -26,17 +26,12 @@
 </head>
 <body>
 
-<header class="nav">
-  <div class="brand">M.I.E Modern IT Experts GmbH</div>
-  <nav class="menu">
-    <a href="index.html">Startseite</a>
-    <a href="leistungen.html">Leistungen</a>
-    <a href="projekte.html">Projekte</a>
-    <a href="impressum.html">Impressum</a>
-    <a href="datenschutz.html">Datenschutz</a>
-  </nav>
-</header>
-
+<header id="site-nav"></header>
+<script>
+fetch('nav.html')
+  .then(r => r.text())
+  .then(html => document.getElementById('site-nav').innerHTML = html);
+</script>
 <div class="container">
   <div class="meta">Startseite › Projekte › GitHub Integration & Deployment</div>
   <h1>GitHub Integration & Deployment</h1>
