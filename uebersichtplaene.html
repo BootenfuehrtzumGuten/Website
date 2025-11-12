@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang='de'>
+<head>
+<meta charset='UTF-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+<title>Projektübersicht</title>
+<style>
+    body { font-family: Arial, sans-serif; margin: 20px; background-color: #f9f9f9; color: #333; }
+    h1 { color: #007BFF; margin-bottom: 20px; }
+    .project-list { display: flex; flex-direction: column; gap: 20px; }
+    .project-card {
+        background: #fff; padding: 15px; border-radius: 8px;
+        box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    }
+    .project-card h2 { margin: 0 0 10px; color: #007BFF; }
+    ul { margin: 0; padding-left: 20px; }
+</style>
+</head>
+<body>
+<h1>Projektübersicht</h1>
+<div id='project-list' class='project-list'></div>
+<script>
+async function loadProjects() {
+    const response = await fetch('load.php');
+    return await response.json();
+}
+function renderProjects(projects) {
+    const container = document.getElementById('project-list');
+    container.innerHTML = '';
+    projects.forEach((project, index) => {
+        const card = document.createElement('div');
+        card.className = 'project-card';
+        card.innerHTML = `<h2>${index + 1}. ${project.name}</h2>
+            <ul>${project.tasks.map(task => `<li>${task}</li>`).join('')}</ul>`;
+        container.appendChild(card);
+    });
+}
+(async () => {
+    const projects = await loadProjects();
+    renderProjects(projects);
+})();
+</script>
+</body>
+</html>

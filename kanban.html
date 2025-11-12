@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang='de'>
+<head>
+<meta charset='UTF-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+<title>Kanban Board</title>
+<link rel='manifest' href='manifest.json'>
+<style>
+    body { font-family: Arial, sans-serif; margin: 20px; background-color: #f4f4f4; }
+    h1 { text-align: center; margin-bottom: 20px; color: #007BFF; }
+    .kanban-board { display: flex; gap: 20px; }
+    .column { flex: 1; background: #fff; padding: 15px; border-radius: 8px; box-shadow: 0 0 5px rgba(0,0,0,0.1); }
+    .column h2 { text-align: center; color: #007BFF; }
+    ul { list-style-type: none; padding: 0; min-height: 200px; }
+    li { background: #eaeaea; margin: 5px 0; padding: 8px; border-radius: 4px; cursor: grab; }
+</style>
+</head>
+<body>
+<h1>Kanban Board</h1>
+<div class='kanban-board'>
+    <div class='column' id='todo'><h2>To Do</h2><ul></ul></div>
+    <div class='column' id='progress'><h2>In Progress</h2><ul></ul></div>
+    <div class='column' id='done'><h2>Done</h2><ul></ul></div>
+</div>
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('service-worker.js');
+}
+async function loadProjects() {
+    const response = await fetch('load.php');
+    return await response.json();
+}
+async function saveProjects(data) {
+    await fetch('save.php', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
+}
+let projects = [];
+function renderKanban() {
+    document.querySelector('#todo ul').innerHTML = '';
+    document.querySelector('#progress ul').innerHTML = '';
+    document.querySelector('#done ul').innerHTML = '';
+    projects.forEach((p, i) => {
+        const li = document.createElement('li');
+        li.textContent = p.name;
+        li.draggable = true;
+        li.dataset.index = i;
+        li.addEventListener('dragstart', dragStart);
+        document.querySelector(`#${p.status || 'todo'} ul`).appendChild(li);
+    });
+}
+function dragStart(e) { e.dataTransfer.setData('text/plain', e.target.dataset.index); }
+['todo','progress','done'].forEach(col => {
+    const ul = document.querySelector(`#${col} ul`);
+    ul.addEventListener('dragover', e => e.preventDefault());
+    ul.addEventListener('drop', e => {
+        const index = e.dataTransfer.getData('text/plain');
+        projects[index].status = col;
+        saveProjects(projects);
+        renderKanban();
+    });
+});
+(async () => { projects = await loadProjects(); renderKanban(); })();
+</script>
+</body>
+</html>

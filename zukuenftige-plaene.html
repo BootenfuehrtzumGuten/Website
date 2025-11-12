@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang='de'>
+<head>
+<meta charset='UTF-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+<title>Zukünftige Pläne</title>
+<link rel='manifest' href='manifest.json'>
+<style>
+    body { font-family: Arial, sans-serif; margin: 20px; background-color: #f9f9f9; color: #333; }
+    h1 { color: #007BFF; }
+    #project-list { display: flex; flex-wrap: wrap; gap: 20px; }
+    .project-card { background: #fff; padding: 15px; width: 300px; border-radius: 8px; box-shadow: 0 0 8px rgba(0,0,0,0.1); display: flex; flex-direction: column; }
+    .project-card h3 { margin: 0 0 10px; font-size: 18px; color: #007BFF; }
+    .tags { margin-bottom: 10px; }
+    .tag { display: inline-block; background: #007BFF; color: #fff; padding: 4px 8px; border-radius: 4px; font-size: 12px; margin: 3px; cursor: pointer; }
+    .btn { padding: 8px 12px; background-color: #007BFF; color: #fff; border: none; border-radius: 4px; cursor: pointer; margin-top: 8px; }
+    .btn:hover { background-color: #0056b3; }
+    .task-input, .tag-input, .github-input { width: 100%; padding: 6px; margin-top: 8px; border-radius: 4px; border: 1px solid #ccc; }
+</style>
+</head>
+<body>
+<h1>Zukünftige Pläne</h1>
+<div id='project-list'></div>
+<button class='btn' id='add-project'>Neues Projekt hinzufügen</button>
+<button class='btn' id='export-json'>Exportieren</button>
+<input type='file' id='import-json' style='margin-top:10px;'>
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('service-worker.js').then(() => console.log('Service Worker registriert'));
+}
+async function loadProjects() {
+    const response = await fetch('load.php');
+    return await response.json();
+}
+async function saveProjects(data) {
+    await fetch('save.php', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
+}
+let projects = [];
+function renderProjects() {
+    const container = document.getElementById('project-list');
+    container.innerHTML = '';
+    projects.forEach((project, index) => {
+        const card = document.createElement('div');
+        card.className = 'project-card';
+        const tagsHTML = project.tags.map((tag, tIndex) => `<span class='tag' onclick='removeTag(${index}, ${tIndex})'>${tag} ✖</span>`).join('');
+        card.innerHTML = `<h3>${index + 1}. ${project.name}</h3>
+            <div class='tags'>${tagsHTML}</div>
+            <input type='text' class='tag-input' placeholder='Neuen Tag hinzufügen' id='tag-input-${index}'>
+            <button class='btn' onclick='addTag(${index})'>Tag hinzufügen</button>
+            <ul>${project.tasks.map(task => `<li>${task}</li>`).join('')}</ul>
+            <input type='text' class='task-input' placeholder='Neuer Arbeitspunkt' id='task-input-${index}'>
+            <button class='btn' onclick='addTask(${index})'>Arbeitspunkt hinzufügen</button>
+            <input type='text' class='github-input' placeholder='GitHub-Link' value='${project.github || ''}' id='github-input-${index}'>
+            <button class='btn' onclick='updateGithub(${index})'>GitHub-Link speichern</button>`;
+        container.appendChild(card);
+    });
+}
+function addTask(index) {
+    const input = document.getElementById(`task-input-${index}`);
+    const task = input.value.trim();
+    if (task) { projects[index].tasks.push(task); input.value = ''; saveProjects(projects); renderProjects(); }
+}
+function addTag(index) {
+    const input = document.getElementById(`tag-input-${index}`);
+    const tag = input.value.trim();
+    if (tag) { projects[index].tags.push(tag); input.value = ''; saveProjects(projects); renderProjects(); }
+}
+function removeTag(projectIndex, tagIndex) {
+    projects[projectIndex].tags.splice(tagIndex, 1); saveProjects(projects); renderProjects();
+}
+function updateGithub(index) {
+    const input = document.getElementById(`github-input-${index}`);
+    projects[index].github = input.value.trim();
+    saveProjects(projects);
+}
+document.getElementById('add-project').addEventListener('click', () => {
+    const name = prompt('Projektname eingeben:');
+    if (name) { projects.push({ name: name, tasks: [], tags: [], github: '', status: 'todo' }); saveProjects(projects); renderProjects(); }
+});
+document.getElementById('export-json').addEventListener('click', () => {
+    const blob = new Blob([JSON.stringify(projects, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = 'plaene_backup.json'; a.click();
+    URL.revokeObjectURL(url);
+});
+document.getElementById('import-json').addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = () => {
+            projects = JSON.parse(reader.result);
+            saveProjects(projects);
+            renderProjects();
+        };
+        reader.readAsText(file);
+    }
+});
+(async () => { projects = await loadProjects(); renderProjects(); })();
+</script>
+</body>
+</html>
