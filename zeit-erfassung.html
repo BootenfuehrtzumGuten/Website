@@ -1,46 +1,172 @@
 <!doctype html>
 <html lang="de">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Zeiterfassung | M.I.E Modern IT Experts GmbH</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-<style>
-:root { --color-primary:#005BBB; --color-dark:#0A1F44; --color-bg:#F7F9FC; }
-body { font-family:Inter, sans-serif; background:var(--color-bg); margin:0; color:#333; }
-.container { max-width:1000px; margin:40px auto; padding:0 20px; }
-h1 {color:var(--color-dark);}
-input, select, textarea {
-  width:100%; padding:10px; margin:8px 0;
-  border:1px solid #ccc; border-radius:8px; font-size:1rem;
-}
-button {
-  padding:10px 16px; border:none; border-radius:8px;
-  background:var(--color-primary); color:#fff; cursor:pointer; font-weight:600;
-}
-button:hover { background:#0080ff; }
-.tabs { display:flex; gap:10px; margin-bottom:20px; flex-wrap:wrap; }
-.tab {
-  padding:10px 18px; border-radius:8px; border:1px solid #ccc; background:#fff;
-  cursor:pointer; font-weight:600;
-}
-.tab.active { background:#005BBB; color:#fff; border-color:#005BBB; }
-.tab-content { display:none; background:#fff; padding:20px; border-radius:12px;
-  box-shadow:0 4px 12px rgba(0,0,0,0.08); }
-.tab-content.active { display:block; }
-.entry { background:#fff; padding:14px; margin-top:12px; border-radius:10px;
-  box-shadow:0 4px 12px rgba(0,0,0,0.08); }
-table { width:100%; border-collapse:collapse; margin-top:15px; }
-th, td { padding:6px 4px; font-size:0.9rem; }
-th { border-bottom:1px solid #ccc; text-align:left; }
-td.num { text-align:right; }
-.flex-row { display:flex; gap:16px; flex-wrap:wrap; }
-.flex-row > div { flex:1 1 240px; }
-small.hint { color:#777; font-size:0.8rem; }
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Zeiterfassung | M.I.E Modern IT Experts GmbH</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-primary:#005BBB;
+      --color-accent:#00B8D9;
+      --color-dark:#0A1F44;
+      --color-bg:#F7F9FC;
+      --color-text:#333;
+    }
+    *{box-sizing:border-box;}
+    body{
+      font-family:'Inter',sans-serif;
+      margin:0;
+      background:var(--color-bg);
+      color:var(--color-text);
+    }
+    .container{
+      max-width:1000px;
+      margin:40px auto 60px;
+      padding:0 20px;
+    }
+    h1{
+      font-size:2rem;
+      margin-bottom:10px;
+      color:var(--color-dark);
+    }
+    .tabs{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin:20px 0;
+    }
+    .tab{
+      padding:10px 18px;
+      border-radius:8px;
+      border:1px solid #ccd6e0;
+      background:#fff;
+      cursor:pointer;
+      font-weight:600;
+      font-size:0.95rem;
+    }
+    .tab.active{
+      background:var(--color-primary);
+      color:#fff;
+      border-color:var(--color-primary);
+    }
+    .tab-content{
+      display:none;
+      background:#fff;
+      padding:20px;
+      border-radius:12px;
+      box-shadow:0 8px 20px rgba(10,31,68,0.06);
+    }
+    .tab-content.active{display:block;}
+    input,select,textarea{
+      width:100%;
+      padding:10px;
+      margin:6px 0 12px;
+      border-radius:8px;
+      border:1px solid #dde3ec;
+      font-size:0.95rem;
+    }
+    textarea{min-height:80px;resize:vertical;}
+    button{
+      padding:10px 16px;
+      border:none;
+      border-radius:8px;
+      background:var(--color-primary);
+      color:#fff;
+      font-weight:600;
+      cursor:pointer;
+      font-size:0.9rem;
+    }
+    button:hover{background:#0070e0;}
+    .entry{
+      background:#fff;
+      padding:14px;
+      margin-top:12px;
+      border-radius:10px;
+      box-shadow:0 4px 12px rgba(0,0,0,0.08);
+      font-size:0.9rem;
+    }
+    .entry small{color:#7b8898;}
+    .btn-small{
+      padding:6px 10px;
+      font-size:0.75rem;
+      border-radius:999px;
+      background:#eef2fb;
+      color:var(--color-dark);
+      border:none;
+      cursor:pointer;
+    }
+    .btn-small.danger{
+      background:#ffe5e5;
+      color:#b30000;
+    }
+    .btn-small.danger:hover{background:#ffd0d0;}
+    .btn-small:hover{background:#dde4f7;}
+    .flex-row{
+      display:flex;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+    .flex-row>div{flex:1 1 220px;}
+    table{width:100%;border-collapse:collapse;margin-top:10px;font-size:0.9rem;}
+    th,td{padding:6px 4px;}
+    th{border-bottom:1px solid #dde3ec;text-align:left;}
+    td.num{text-align:right;}
+    #calendar{
+      display:grid;
+      grid-template-columns:repeat(7,1fr);
+      gap:6px;
+      margin-top:20px;
+    }
+    .calendar-day{
+      background:#fff;
+      padding:10px;
+      min-height:80px;
+      border-radius:10px;
+      text-align:center;
+      cursor:pointer;
+      box-shadow:0 3px 6px rgba(0,0,0,0.05);
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      font-size:0.85rem;
+    }
+    .calendar-day:hover{background:#eef6ff;}
+    .calendar-day.disabled{
+      background:#f0f0f0;
+      color:#aaa;
+      cursor:default;
+      box-shadow:none;
+    }
+    .day-number{
+      font-weight:700;
+      font-size:1.1rem;
+    }
+    .day-hours{
+      font-size:0.8rem;
+      margin-top:4px;
+      color:#005BBB;
+      font-weight:600;
+    }
+    .month-header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-top:10px;
+    }
+    .month-header button{
+      padding:4px 10px;
+      border-radius:999px;
+      font-size:0.8rem;
+      background:#eef2fb;
+      color:var(--color-dark);
+    }
+    .month-header button:hover{background:#dde4f7;}
+    @media(max-width:768px){
+      .container{margin-top:20px;}
+    }
+  </style>
 </head>
-
 <body>
 
 <header id="site-nav"></header>
@@ -48,153 +174,164 @@ small.hint { color:#777; font-size:0.8rem; }
 fetch('nav.html').then(r=>r.text()).then(html=>document.getElementById('site-nav').innerHTML=html);
 </script>
 
-<div class="container">
+<main class="container">
+  <h1>⏱️ Zeiterfassung</h1>
 
-<h1>⏱️ Zeiterfassung & Auswertung</h1>
-
-<div class="tabs">
-  <button class="tab active" onclick="openTab('eingabe', event)">📝 Eingabe</button>
-  <button class="tab" onclick="openTab('tabelle', event)">📋 Tabelle</button>
-  <button class="tab" onclick="openTab('auswertung', event)">📊 Auswertung</button>
-  <button class="tab" onclick="openTab('export', event)">📤 Export / Rechnungen</button>
-</div>
-
-<!-- TAB: Eingabe -->
-<div id="eingabe" class="tab-content active">
-  <h2>Zeiterfassung eingeben</h2>
-
-  <label>Kunde:</label>
-  <input id="kunde" list="kundenListe" placeholder="Kunde eingeben oder auswählen">
-  <datalist id="kundenListe"></datalist>
-
-  <label>Art der Tätigkeit:</label>
-  <select id="art">
-    <option>Administration</option>
-    <option>Support</option>
-    <option>Absprache</option>
-    <option>Call</option>
-  </select>
-
-  <label>Datum:</label>
-  <input type="date" id="datum">
-
-  <label>Beschreibung:</label>
-  <textarea id="desc" rows="3" placeholder="Kurzbeschreibung der Tätigkeit"></textarea>
-
-  <h3>⏱️ Zeit erfassen</h3>
-  <button id="timerBtn" onclick="toggleTimer()">▶ Timer starten</button>
-  <small class="hint">Timer nutzt aktuelle Uhrzeit und speichert Dauer automatisch.</small>
-
-  <p style="margin-top:10px;">ODER manuell eingeben:</p>
-  <input type="number" id="manualTime" placeholder="Minuten z. B. 30">
-  <button onclick="saveManual()">🖊️ Manuell speichern</button>
-</div>
-
-<!-- TAB: Tabelle -->
-<div id="tabelle" class="tab-content">
-  <h2>📋 Übersicht aller Einträge</h2>
-
-  <div class="flex-row">
-    <div>
-      <label>Filter Kunde:</label>
-      <select id="filter-kunde">
-        <option value="">(alle)</option>
-      </select>
-    </div>
-    <div>
-      <label>Von (Datum):</label>
-      <input type="date" id="filter-von">
-    </div>
-    <div>
-      <label>Bis (Datum):</label>
-      <input type="date" id="filter-bis">
-    </div>
-    <div style="align-self:flex-end;">
-      <button onclick="renderEntries()">Filter anwenden</button>
-    </div>
+  <div class="tabs">
+    <button class="tab active" onclick="openTab('eingabe', event)">📝 Eingabe</button>
+    <button class="tab" onclick="openTab('tabelle', event)">📋 Tabelle</button>
+    <button class="tab" onclick="openTab('auswertung', event)">📊 Auswertung</button>
+    <button class="tab" onclick="openTab('kalender', event)">📅 Kalender</button>
+    <button class="tab" onclick="openTab('export', event)">📤 Export</button>
   </div>
 
-  <div id="entries"></div>
-</div>
+  <!-- TAB Eingabe -->
+  <section id="eingabe" class="tab-content active">
+    <h2>Zeiterfassung eingeben</h2>
 
-<!-- TAB: Auswertung -->
-<div id="auswertung" class="tab-content">
-  <h2>📊 Auswertung</h2>
+    <label>Kunde:</label>
+    <input id="kunde" list="kundenListe" placeholder="Kunde eingeben oder auswählen">
+    <datalist id="kundenListe"></datalist>
 
-  <div class="flex-row">
-    <div>
-      <label>Kunde (optional):</label>
-      <select id="stats-kunde">
-        <option value="">(alle)</option>
-      </select>
-    </div>
-    <div>
-      <label>Von:</label>
-      <input type="date" id="stats-von">
-    </div>
-    <div>
-      <label>Bis:</label>
-      <input type="date" id="stats-bis">
-    </div>
-    <div style="align-self:flex-end;">
-      <button onclick="renderStats()">Neu berechnen</button>
-    </div>
-  </div>
+    <label>Art der Tätigkeit:</label>
+    <select id="art">
+      <option>Administration</option>
+      <option>Support</option>
+      <option>Absprache</option>
+      <option>Call</option>
+    </select>
 
-  <div id="stats"></div>
-</div>
+    <label>Datum:</label>
+    <input type="date" id="datum">
 
-<!-- TAB: Export / Rechnungen -->
-<div id="export" class="tab-content">
-  <h2>📤 Export & Leistungsnachweise</h2>
+    <label>Beschreibung:</label>
+    <textarea id="desc" placeholder="Kurzbeschreibung der Tätigkeit (Zeilenumbrüche möglich)"></textarea>
 
-  <h3>Statusbericht (PDF) – 1 Tag / Kunde</h3>
-  <div class="flex-row">
-    <div>
-      <label>Kunde:</label>
-      <select id="pdf-kunde"></select>
-    </div>
-    <div>
-      <label>Datum:</label>
-      <input type="date" id="pdf-datum">
-    </div>
-    <div style="align-self:flex-end;">
-      <button onclick="generateStatusPDF()">📄 Statusbericht als PDF</button>
-    </div>
-  </div>
+    <h3>⏱ Timer</h3>
+    <button id="timerBtn" onclick="toggleTimer()">▶ Timer starten</button>
 
-  <hr style="margin:20px 0;">
+    <p style="margin-top:10px;">ODER manuell eingeben:</p>
+    <input type="number" id="manualTime" placeholder="Minuten, z. B. 30">
+    <button onclick="saveManual()">🖊️ Manuell speichern</button>
+  </section>
 
-  <h3>Leistungsnachweis / Rechnung (PDF) – Zeitraum / Kunde</h3>
-  <div class="flex-row">
-    <div>
-      <label>Kunde:</label>
-      <select id="inv-kunde"></select>
-    </div>
-    <div>
-      <label>Von:</label>
-      <input type="date" id="inv-von">
-    </div>
-    <div>
-      <label>Bis:</label>
-      <input type="date" id="inv-bis">
-    </div>
-    <div>
-      <label>Stundensatz (EUR):</label>
-      <input type="number" id="inv-rate" placeholder="z. B. 95" step="0.01">
-    </div>
-    <div style="align-self:flex-end;">
-      <button onclick="generateInvoicePDF()">📑 Leistungsnachweis / Rechnung PDF</button>
-    </div>
-  </div>
+  <!-- TAB Tabelle -->
+  <section id="tabelle" class="tab-content">
+    <h2>📋 Übersicht</h2>
 
-  <hr style="margin:20px 0;">
+    <div class="flex-row">
+      <div>
+        <label>Filter Kunde:</label>
+        <select id="filter-kunde">
+          <option value="">(alle)</option>
+        </select>
+      </div>
+      <div>
+        <label>Von:</label>
+        <input type="date" id="filter-von">
+      </div>
+      <div>
+        <label>Bis:</label>
+        <input type="date" id="filter-bis">
+      </div>
+      <div style="align-self:flex-end;">
+        <button onclick="renderEntries()">Filter anwenden</button>
+      </div>
+    </div>
 
-  <h3>CSV Export (komplett, gefiltert im Browser)</h3>
-  <button onclick="exportCSV()">📥 CSV Export</button>
-</div>
+    <div id="entries"></div>
+  </section>
 
-</div>
+  <!-- TAB Auswertung -->
+  <section id="auswertung" class="tab-content">
+    <h2>📊 Auswertung</h2>
+
+    <div class="flex-row">
+      <div>
+        <label>Kunde (optional):</label>
+        <select id="stats-kunde">
+          <option value="">(alle)</option>
+        </select>
+      </div>
+      <div>
+        <label>Von:</label>
+        <input type="date" id="stats-von">
+      </div>
+      <div>
+        <label>Bis:</label>
+        <input type="date" id="stats-bis">
+      </div>
+      <div style="align-self:flex-end;">
+        <button onclick="renderStats()">Neu berechnen</button>
+      </div>
+    </div>
+
+    <div id="stats"></div>
+  </section>
+
+  <!-- TAB Kalender -->
+  <section id="kalender" class="tab-content">
+    <h2>📅 Kalender</h2>
+    <div class="month-header">
+      <button onclick="changeMonth(-1)">‹ Vorheriger Monat</button>
+      <div id="month-label"></div>
+      <button onclick="changeMonth(1)">Nächster Monat ›</button>
+    </div>
+    <div id="calendar"></div>
+    <div id="day-details" style="margin-top:20px;"></div>
+  </section>
+
+  <!-- TAB Export -->
+  <section id="export" class="tab-content">
+    <h2>📤 Export & Berichte</h2>
+
+    <h3>Statusbericht (PDF) – 1 Tag / Kunde</h3>
+    <div class="flex-row">
+      <div>
+        <label>Kunde:</label>
+        <select id="pdf-kunde"></select>
+      </div>
+      <div>
+        <label>Datum:</label>
+        <input type="date" id="pdf-datum">
+      </div>
+      <div style="align-self:flex-end;">
+        <button onclick="generateStatusPDF()">📄 Statusbericht als PDF</button>
+      </div>
+    </div>
+
+    <hr style="margin:20px 0;">
+
+    <h3>Leistungsnachweis / Rechnung (PDF) – Zeitraum / Kunde</h3>
+    <div class="flex-row">
+      <div>
+        <label>Kunde:</label>
+        <select id="inv-kunde"></select>
+      </div>
+      <div>
+        <label>Von:</label>
+        <input type="date" id="inv-von">
+      </div>
+      <div>
+        <label>Bis:</label>
+        <input type="date" id="inv-bis">
+      </div>
+      <div>
+        <label>Stundensatz (EUR):</label>
+        <input type="number" id="inv-rate" placeholder="z. B. 95" step="0.01">
+      </div>
+      <div style="align-self:flex-end;">
+        <button onclick="generateInvoicePDF()">📑 Leistungsnachweis / Rechnung</button>
+      </div>
+    </div>
+
+    <hr style="margin:20px 0;">
+
+    <h3>CSV Export (nach aktuellem Tabellenfilter)</h3>
+    <button onclick="exportCSV()">📥 CSV Export</button>
+  </section>
+
+</main>
 
 <footer id="site-footer"></footer>
 <script>
@@ -202,16 +339,17 @@ fetch('footer.html').then(r=>r.text()).then(html=>document.getElementById('site-
 </script>
 
 <script>
-let timerRunning=false, startTime=null, editIndex=null, entries=[];
+let timerRunning = false;
+let startTime = null;
+let editIndex = null;
+let entries = [];
+let currentMonthOffset = 0; // 0 = aktueller Monat
 
 function formatDateEU(dateStr){
   if(!dateStr) return "";
-  const d = new Date(dateStr);
-  if (isNaN(d)) return dateStr;
-  const day = String(d.getDate()).padStart(2,'0');
-  const month = String(d.getMonth()+1).padStart(2,'0');
-  const year = d.getFullYear();
-  return `${day}.${month}.${year}`;
+  const parts = dateStr.split("-");
+  if (parts.length !== 3) return dateStr;
+  return parts[2]+"."+parts[1]+"."+parts[0];
 }
 
 function openTab(name, ev){
@@ -219,50 +357,69 @@ function openTab(name, ev){
   if(ev) ev.target.classList.add('active');
   document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));
   document.getElementById(name).classList.add('active');
-  if(name==='tabelle') renderEntries();
-  if(name==='auswertung') renderStats();
+  if(name === 'tabelle') renderEntries();
+  if(name === 'auswertung') renderStats();
+  if(name === 'kalender') buildCalendar();
 }
 
 function loadCustomers(){
   fetch('kunden.json')
     .then(r=>r.json())
     .then(list=>{
-      const dl=document.getElementById('kundenListe');
-      const filterK=document.getElementById('filter-kunde');
-      const statsK=document.getElementById('stats-kunde');
-      const pdfK=document.getElementById('pdf-kunde');
-      const invK=document.getElementById('inv-kunde');
-      dl.innerHTML='';
-      [filterK, statsK, pdfK, invK].forEach(sel => sel.innerHTML = sel.id==='filter-kunde' || sel.id==='stats-kunde' ? '<option value="">(alle)</option>' : '');
+      const dl = document.getElementById('kundenListe');
+      const filterK = document.getElementById('filter-kunde');
+      const statsK = document.getElementById('stats-kunde');
+      const pdfK = document.getElementById('pdf-kunde');
+      const invK = document.getElementById('inv-kunde');
+
+      dl.innerHTML = '';
+      [filterK, statsK, pdfK, invK].forEach(sel=>{
+        if(sel === filterK || sel === statsK){
+          sel.innerHTML = '<option value="">(alle)</option>';
+        } else {
+          sel.innerHTML = '';
+        }
+      });
+
       list.forEach(k=>{
-        dl.innerHTML+=`<option value="${k}"></option>`;
+        dl.innerHTML += `<option value="${k}"></option>`;
         [filterK, statsK, pdfK, invK].forEach(sel=>{
-          const opt=document.createElement('option');
-          opt.value=k; opt.textContent=k;
+          const opt = document.createElement('option');
+          opt.value = k;
+          opt.textContent = k;
           sel.appendChild(opt);
         });
       });
-    });
+    })
+    .catch(err=>console.error('Kunden konnten nicht geladen werden', err));
 }
 
 function loadEntriesFromServer(){
   fetch('api_load_entries.php')
     .then(r=>r.json())
     .then(data=>{
-      entries = Array.isArray(data)?data:[];
+      entries = Array.isArray(data) ? data : [];
       renderEntries();
       renderStats();
+      buildCalendar();
+    })
+    .catch(err=>{
+      console.error('Fehler beim Laden der Einträge', err);
+      entries = [];
     });
 }
 
 function saveEntriesToServer(){
-  return fetch('api_save_entries.php',{
+  return fetch('api_save_entries.php', {
     method:'POST',
     headers:{'Content-Type':'application/json'},
     body:JSON.stringify(entries)
-  })
-  .then(r=>r.json())
-  .then(data=>{ entries=data; });
+  }).then(r=>r.json()).then(data=>{
+    entries = Array.isArray(data) ? data : entries;
+  }).catch(err=>{
+    console.error('Fehler beim Speichern', err);
+    alert('Fehler beim Speichern der Daten auf dem Server.');
+  });
 }
 
 function getTimeString24h(){
@@ -273,42 +430,48 @@ function getTimeString24h(){
 }
 
 function toggleTimer(){
+  const btn = document.getElementById('timerBtn');
   if(!timerRunning){
-    startTime=Date.now();
-    timerRunning=true;
-    document.getElementById('timerBtn').innerText="⏹ Timer stoppen";
+    startTime = Date.now();
+    timerRunning = true;
+    btn.innerText = "⏹ Timer stoppen";
   } else {
-    const dur=((Date.now()-startTime)/60000).toFixed(1);
+    const dur = ((Date.now() - startTime) / 60000).toFixed(1);
     saveEntry(dur);
-    timerRunning=false;
-    document.getElementById('timerBtn').innerText="▶ Timer starten";
+    timerRunning = false;
+    btn.innerText = "▶ Timer starten";
   }
 }
 
 function saveManual(){
-  const m=document.getElementById("manualTime").value;
-  if(!m) return alert("Bitte Minuten eingeben!");
+  const m = document.getElementById('manualTime').value;
+  if(!m) return alert('Bitte Minuten eingeben!');
   saveEntry(m);
-  document.getElementById("manualTime").value='';
+  document.getElementById('manualTime').value = '';
 }
 
 function saveEntry(duration){
-  const kunde=document.getElementById("kunde").value.trim(),
-        art=document.getElementById("art").value,
-        desc=document.getElementById("desc").value.trim(),
-        datum=document.getElementById("datum").value;
+  const kunde = document.getElementById('kunde').value.trim();
+  const art = document.getElementById('art').value;
+  const desc = document.getElementById('desc').value.trim();
+  const datum = document.getElementById('datum').value;
 
-  if(!kunde) return alert("Bitte Kunde eingeben!");
-  if(!datum) return alert("Bitte Datum wählen!");
+  if(!kunde) return alert('Bitte Kunde eingeben!');
+  if(!datum) return alert('Bitte Datum wählen!');
 
-  const entry={
-    kunde, art, desc, duration: parseFloat(duration),
-    datum, zeit:getTimeString24h()
+  const entry = {
+    kunde,
+    art,
+    desc,
+    duration: parseFloat(duration),
+    datum,
+    zeit: getTimeString24h()
   };
 
-  if(editIndex!==null){
-    entries[editIndex]=entry;
-    editIndex=null;
+  if(editIndex !== null){
+    entries[editIndex] = entry;
+    editIndex = null;
+    document.getElementById('timerBtn').innerText = "▶ Timer starten";
   } else {
     entries.push(entry);
   }
@@ -316,59 +479,66 @@ function saveEntry(duration){
   saveEntriesToServer().then(()=>{
     renderEntries();
     renderStats();
+    buildCalendar();
   });
 }
 
 function entryPassesFilter(e){
-  const fk=document.getElementById('filter-kunde').value;
-  const von=document.getElementById('filter-von').value;
-  const bis=document.getElementById('filter-bis').value;
-  if(fk && e.kunde!==fk) return false;
+  const fk = document.getElementById('filter-kunde').value;
+  const von = document.getElementById('filter-von').value;
+  const bis = document.getElementById('filter-bis').value;
+  if(fk && e.kunde !== fk) return false;
   if(von && e.datum < von) return false;
   if(bis && e.datum > bis) return false;
   return true;
 }
 
 function renderEntries(){
-  const box=document.getElementById("entries");
+  const box = document.getElementById('entries');
   const filtered = entries.filter(entryPassesFilter);
-  if(!filtered.length){ box.innerHTML="<p>Noch keine passenden Einträge.</p>"; return; }
-
-  box.innerHTML=filtered.map((e,i)=>`
+  if(!filtered.length){
+    box.innerHTML = "<p>Keine Einträge für den gewählten Filter.</p>";
+    return;
+  }
+  box.innerHTML = filtered.map((e, i)=>`
     <div class="entry">
       <b>${e.kunde}</b> – ${e.art} – ${e.duration} Min<br>
       <small>${formatDateEU(e.datum)} um ${e.zeit} Uhr</small>
-      <p>${e.desc}</p>
-      <button onclick="editEntry(${i})" style="background:#FFA500;">✏️ Bearbeiten</button>
-      <button onclick="deleteEntry(${i})" style="background:#D9534F;">❌ Löschen</button>
+      <p>${(e.desc || '').replace(/\n/g,'<br>')}</p>
+      <div style="margin-top:6px;display:flex;gap:6px;flex-wrap:wrap;">
+        <button class="btn-small" onclick="editEntry(${i})">✏️ Bearbeiten</button>
+        <button class="btn-small danger" onclick="deleteEntry(${i})">❌ Löschen</button>
+      </div>
     </div>
   `).join('');
 }
 
-function deleteEntry(i){
-  if(!confirm("Diesen Eintrag wirklich löschen?")) return;
-  entries.splice(i,1);
+function deleteEntry(index){
+  if(!confirm('Diesen Eintrag wirklich löschen?')) return;
+  entries.splice(index, 1);
   saveEntriesToServer().then(()=>{
     renderEntries();
     renderStats();
+    buildCalendar();
   });
 }
 
-function editEntry(i){
-  const e=entries[i];
-  document.getElementById('kunde').value=e.kunde;
-  document.getElementById('art').value=e.art;
-  document.getElementById('datum').value=e.datum;
-  document.getElementById('desc').value=e.desc;
-  editIndex=i;
+function editEntry(index){
+  const e = entries[index];
+  document.getElementById('kunde').value = e.kunde;
+  document.getElementById('art').value = e.art;
+  document.getElementById('datum').value = e.datum;
+  document.getElementById('desc').value = e.desc;
+  editIndex = index;
   openTab('eingabe');
+  document.getElementById('timerBtn').innerText = "💾 Änderungen speichern";
 }
 
 function statsFilter(e){
-  const sk=document.getElementById('stats-kunde').value;
-  const von=document.getElementById('stats-von').value;
-  const bis=document.getElementById('stats-bis').value;
-  if(sk && e.kunde!==sk) return false;
+  const sk = document.getElementById('stats-kunde').value;
+  const von = document.getElementById('stats-von').value;
+  const bis = document.getElementById('stats-bis').value;
+  if(sk && e.kunde !== sk) return false;
   if(von && e.datum < von) return false;
   if(bis && e.datum > bis) return false;
   return true;
@@ -383,33 +553,33 @@ function getISOWeek(d){
 }
 
 function renderStats(){
-  const sdiv=document.getElementById("stats");
+  const sdiv = document.getElementById('stats');
   const filtered = entries.filter(statsFilter);
   if(!filtered.length){
-    sdiv.innerHTML="<p>Keine Einträge im gewählten Zeitraum.</p>";
+    sdiv.innerHTML = "<p>Keine Einträge im gewählten Zeitraum.</p>";
     return;
   }
 
-  let total=0;
-  const byCustomer={}, byWeek={}, byMonth={};
+  let total = 0;
+  const byCustomer = {};
+  const byWeek = {};
+  const byMonth = {};
 
   filtered.forEach(e=>{
-    const dur=parseFloat(e.duration)||0;
-    total+=dur;
+    const dur = parseFloat(e.duration) || 0;
+    total += dur;
 
-    // Kunden
-    byCustomer[e.kunde]=(byCustomer[e.kunde]||0)+dur;
+    byCustomer[e.kunde] = (byCustomer[e.kunde] || 0) + dur;
 
-    // Woche
-    const d=new Date(e.datum);
+    const d = new Date(e.datum);
     if(!isNaN(d)){
-      const year=d.getFullYear();
-      const week=getISOWeek(d);
-      const key=`KW ${week}/${year}`;
-      byWeek[key]=(byWeek[key]||0)+dur;
+      const year = d.getFullYear();
+      const week = getISOWeek(d);
+      const weekKey = `KW ${week}/${year}`;
+      byWeek[weekKey] = (byWeek[weekKey] || 0) + dur;
 
-      const monthKey=`${String(d.getMonth()+1).padStart(2,'0')}.${year}`;
-      byMonth[monthKey]=(byMonth[monthKey]||0)+dur;
+      const monthKey = `${String(d.getMonth()+1).padStart(2,'0')}.${year}`;
+      byMonth[monthKey] = (byMonth[monthKey] || 0) + dur;
     }
   });
 
@@ -449,50 +619,118 @@ function renderStats(){
   `;
 }
 
+function buildCalendar(){
+  const calendarDiv = document.getElementById('calendar');
+  const label = document.getElementById('month-label');
+  const detailDiv = document.getElementById('day-details');
+  calendarDiv.innerHTML = '';
+  detailDiv.innerHTML = '';
+
+  const base = new Date();
+  base.setMonth(base.getMonth() + currentMonthOffset);
+  const year = base.getFullYear();
+  const month = base.getMonth();
+
+  const monthNames = ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
+  label.textContent = `${monthNames[month]} ${year}`;
+
+  const firstDay = new Date(year, month, 1);
+  let firstWeekday = firstDay.getDay();
+  if(firstWeekday === 0) firstWeekday = 7;
+  const daysInMonth = new Date(year, month+1, 0).getDate();
+
+  const dailyTotals = {};
+  entries.forEach(e=>{
+    dailyTotals[e.datum] = (dailyTotals[e.datum] || 0) + (parseFloat(e.duration) || 0);
+  });
+
+  for(let i=1;i<firstWeekday;i++){
+    const empty = document.createElement('div');
+    empty.className = 'calendar-day disabled';
+    calendarDiv.appendChild(empty);
+  }
+
+  for(let day=1; day<=daysInMonth; day++){
+    const dateStr = `${year}-${String(month+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
+    const box = document.createElement('div');
+    box.className = 'calendar-day';
+    const total = dailyTotals[dateStr] || 0;
+    const hoursLabel = total ? (total/60).toFixed(2) + ' Std' : '';
+
+    box.innerHTML = `
+      <div class="day-number">${day}</div>
+      <div class="day-hours">${hoursLabel}</div>
+    `;
+    box.onclick = ()=>showDayDetails(dateStr);
+    calendarDiv.appendChild(box);
+  }
+}
+
+function changeMonth(delta){
+  currentMonthOffset += delta;
+  buildCalendar();
+}
+
+function showDayDetails(dateStr){
+  const detailDiv = document.getElementById('day-details');
+  const filtered = entries.filter(e=>e.datum === dateStr);
+  if(!filtered.length){
+    detailDiv.innerHTML = `<p>Keine Einträge für ${formatDateEU(dateStr)}.</p>`;
+    return;
+  }
+  detailDiv.innerHTML = `<h3>${formatDateEU(dateStr)}</h3>` + filtered.map(e=>`
+    <div class="entry">
+      <b>${e.kunde}</b> – ${e.art} – ${e.duration} Min
+      <p>${(e.desc || '').replace(/\n/g,'<br>')}</p>
+    </div>
+  `).join('');
+}
+
 function exportCSV(){
   const filtered = entries.filter(entryPassesFilter);
-  if(!filtered.length){ alert("Keine Daten für Export."); return; }
-  let csv="Kunde;Art;Beschreibung;Dauer (Min);Datum;Zeit\n";
+  if(!filtered.length){
+    alert('Keine Daten für Export.');
+    return;
+  }
+  let csv = "Kunde;Art;Beschreibung;Dauer (Min);Datum;Zeit\n";
   filtered.forEach(e=>{
     const line = [
       e.kunde,
       e.art,
-      (e.desc||"").replace(/\r?\n/g," "),
+      (e.desc || '').replace(/\r?\n/g,' '),
       e.duration,
       formatDateEU(e.datum),
       e.zeit
-    ].join(";");
-    csv+=line+"\n";
+    ].join(';');
+    csv += line + "\n";
   });
-  const blob=new Blob([csv],{type:"text/csv;charset=utf-8;"});
-  const url=URL.createObjectURL(blob);
-  const a=document.createElement('a');
-  a.href=url;
-  a.download="zeiten.csv";
+  const blob = new Blob([csv],{type:"text/csv;charset=utf-8;"});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = "zeiten.csv";
   a.click();
 }
 
 function generateStatusPDF(){
-  const k=document.getElementById("pdf-kunde").value;
-  const d=document.getElementById("pdf-datum").value;
-  if(!k||!d) return alert("Bitte Kunde & Datum auswählen!");
+  const k = document.getElementById('pdf-kunde').value;
+  const d = document.getElementById('pdf-datum').value;
+  if(!k || !d) return alert('Bitte Kunde und Datum auswählen!');
   window.open("export_status_pdf.php?kunde="+encodeURIComponent(k)+"&datum="+encodeURIComponent(d));
 }
 
 function generateInvoicePDF(){
-  const k=document.getElementById("inv-kunde").value;
-  const von=document.getElementById("inv-von").value;
-  const bis=document.getElementById("inv-bis").value;
-  const rate=document.getElementById("inv-rate").value;
-  if(!k||!von||!bis) return alert("Bitte Kunde und Zeitraum (von/bis) auswählen!");
-  const url="export_invoice_pdf.php?kunde="+encodeURIComponent(k)+
-            "&von="+encodeURIComponent(von)+
-            "&bis="+encodeURIComponent(bis)+
-            (rate?("&rate="+encodeURIComponent(rate)):"");
+  const k = document.getElementById('inv-kunde').value;
+  const von = document.getElementById('inv-von').value;
+  const bis = document.getElementById('inv-bis').value;
+  const rate = document.getElementById('inv-rate').value;
+  if(!k || !von || !bis) return alert('Bitte Kunde und Zeitraum (von/bis) auswählen!');
+  let url = "export_invoice_pdf.php?kunde="+encodeURIComponent(k)+"&von="+encodeURIComponent(von)+"&bis="+encodeURIComponent(bis);
+  if(rate) url += "&rate="+encodeURIComponent(rate);
   window.open(url);
 }
 
-document.addEventListener('DOMContentLoaded',()=>{
+document.addEventListener('DOMContentLoaded', ()=>{
   loadCustomers();
   loadEntriesFromServer();
 });
