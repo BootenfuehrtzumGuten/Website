@@ -1,10 +1,106 @@
 [
     {
         "kunde": "Asskea GmbH",
-        "art": "Administration",
-        "desc": "feee",
-        "duration": "40",
+        "art": "Support",
+        "desc": "Tisch Kühling Blech wieder Instandsetzen wegen Verkabelung",
+        "duration": 30,
         "datum": "2025-11-12",
-        "zeit": "14:45:33"
+        "zeit": "15:23"
+    },
+    {
+        "kunde": "Asskea GmbH",
+        "art": "Support",
+        "desc": "Fischer Azpro installieren",
+        "duration": 45,
+        "datum": "2025-11-12",
+        "zeit": "15:24"
+    },
+    {
+        "kunde": "Asskea GmbH",
+        "art": "Support",
+        "desc": "Dittrich->Rechte für Fischer,Teams Autostart",
+        "duration": 30,
+        "datum": "2025-11-12",
+        "zeit": "15:29"
+    },
+    {
+        "kunde": "Asskea GmbH",
+        "art": "Support",
+        "desc": "Probleme SQL-Datenbank Nadja",
+        "duration": 30,
+        "datum": "2025-11-12",
+        "zeit": "15:30"
+    },
+    {
+        "kunde": "Asskea GmbH",
+        "art": "Support",
+        "desc": "Bericht Nutzer ausfüllen",
+        "duration": 15,
+        "datum": "2025-11-12",
+        "zeit": "15:30"
+    },
+    {
+        "kunde": "Asskea GmbH",
+        "art": "Absprache",
+        "desc": "Sieland Absprache Mebedo",
+        "duration": 15,
+        "datum": "2025-11-12",
+        "zeit": "15:31"
+    },
+    {
+        "kunde": "Asskea GmbH",
+        "art": "Absprache",
+        "desc": "Absprache mit Mebedo",
+        "duration": 15,
+        "datum": "2025-11-12",
+        "zeit": "15:31"
+    },
+    {
+        "kunde": "Asskea GmbH",
+        "art": "Administration",
+        "desc": "Update Server RDS03",
+        "duration": 60,
+        "datum": "2025-11-12",
+        "zeit": "22:59"
+    },
+    {
+        "kunde": "Asskea GmbH",
+        "art": "Administration",
+        "desc": "Installation Laptop Elektro Manager auf alten Laptop Kühling",
+        "duration": 120,
+        "datum": "2025-11-12",
+        "zeit": "15:32"
+    },
+    {
+        "kunde": "Asskea GmbH",
+        "art": "Administration",
+        "desc": "Backup Mebedo Win11",
+        "duration": 15,
+        "datum": "2025-11-12",
+        "zeit": "22:59"
+    },
+    {
+        "kunde": "Asskea GmbH",
+        "art": "Administration",
+        "desc": "Update Mebedo Win11 Server",
+        "duration": 60,
+        "datum": "2025-11-12",
+        "zeit": "23:00"
+    },
+    {
+        "kunde": "Asskea GmbH",
+        "art": "Administration",
+        "desc": "Finale Einrichtung Laptop Sokolova",
+        "duration": 45,
+        "datum": "2025-11-12",
+        "zeit": "23:02"
+    },
+    {
+        "kunde": "Asskea GmbH",
+        "art": "Administration",
+        "desc": "Erstellung Statusbericht 12.11.2025",
+        "duration": 15,
+        "datum": "2025-11-14",
+        "zeit": "23:04"
     }
 ]
