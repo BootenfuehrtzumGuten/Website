@@ -102,5 +102,21 @@
         "duration": 15,
         "datum": "2025-11-14",
         "zeit": "23:04"
+    },
+    {
+        "kunde": "Asskea GmbH",
+        "art": "Administration",
+        "desc": "Einspielen der Lizenz",
+        "duration": 15,
+        "datum": "2025-11-18",
+        "zeit": "10:33"
+    },
+    {
+        "kunde": "Asskea GmbH",
+        "art": "Administration",
+        "desc": "Probleme Mebedo Schnittstelle Handhelds",
+        "duration": 30,
+        "datum": "2025-11-18",
+        "zeit": "10:34"
     }
 ]
