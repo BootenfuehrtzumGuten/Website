@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <title>Schulungsplanung – Lehrgänge & Träger</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --color-primary:#005BBB;
+      --color-bg:#F7F9FC;
+      --color-dark:#0A1F44;
+    }
+    *{box-sizing:border-box;}
+    body{font-family:Inter,system-ui,sans-serif;background:var(--color-bg);margin:0;}
+    .container{max-width:1100px;margin:20px auto;padding:20px;}
+    .card{
+      background:#fff;padding:20px;border-radius:12px;
+      box-shadow:0 6px 18px rgba(0,0,0,0.08);margin-bottom:20px;
+    }
+    h1{margin:0 0 6px;color:#0A1F44}
+    h2{margin:4px 0 16px;color:#0A1F44}
+    label{font-weight:600;font-size:0.9rem;}
+    input,textarea{
+      width:100%;padding:10px;border:1px solid #ccd7e0;border-radius:8px;
+      font-size:0.9rem;margin-top:6px;margin-bottom:14px;
+    }
+    button{
+      background:var(--color-primary);color:white;padding:10px 18px;border:none;
+      border-radius:8px;font-weight:600;cursor:pointer;
+    }
+    button:hover{background:#006fe5;}
+    #calendar{
+      display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-top:15px;
+    }
+    .day{
+      background:white;padding:8px;border-radius:10px;min-height:100px;
+      box-shadow:0 3px 6px rgba(0,0,0,0.05);
+      font-size:0.8rem;cursor:pointer;
+    }
+    .day.empty{background:#eaeaea;}
+    .event{
+      padding:3px 6px;font-size:0.75rem;margin-top:4px;border-radius:6px;
+      color:white;cursor:grab;
+    }
+    .weekdays{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px;margin-bottom:14px;}
+    .weekdays label{background:#eef3ff;padding:6px 10px;border-radius:8px;cursor:pointer;}
+  </style>
+</head>
+
+<body>
+<div class="container">
+
+  <h1>📅 Schulungsplanung</h1>
+
+  <!-- FORMULAR -->
+  <div class="card">
+    <h2>Neuen Lehrgang anlegen</h2>
+
+    <label>Dozent:</label>
+    <input id="dozent" placeholder="Dein Name">
+
+    <label>Lehrgangstitel:</label>
+    <input id="lehrgang" placeholder="z. B. Grundlagen IT-Basics">
+
+    <label>Träger:</label>
+    <input id="traeger" placeholder="z. B. Jobcenter XY, Träger GmbH">
+
+    <label>Startdatum:</label>
+    <input id="startDatum" type="date">
+
+    <label>Enddatum:</label>
+    <input id="endDatum" type="date">
+
+    <!-- Wochentage neu -->
+    <label>Unterrichtstage:</label>
+    <div class="weekdays">
+      <label><input type="checkbox" class="wd" value="1" checked> Mo</label>
+      <label><input type="checkbox" class="wd" value="2" checked> Di</label>
+      <label><input type="checkbox" class="wd" value="3" checked> Mi</label>
+      <label><input type="checkbox" class="wd" value="4" checked> Do</label>
+      <label><input type="checkbox" class="wd" value="5" checked> Fr</label>
+      <label><input type="checkbox" class="wd" value="6"> Sa</label>
+      <label><input type="checkbox" class="wd" value="0"> So</label>
+    </div>
+
+    <label>Tägliche Startzeit:</label>
+    <input id="von" type="time">
+
+    <label>Tägliche Endzeit:</label>
+    <input id="bis" type="time">
+
+    <label>Ort:</label>
+    <input id="ort" placeholder="z. B. Raum 2.01 oder Online">
+
+    <label>Beschreibung:</label>
+    <textarea id="beschreibung"></textarea>
+
+    <button onclick="saveCourse()">Kurs speichern</button>
+  </div>
+
+  <!-- KALENDER -->
+  <div class="card">
+    <h2>Kalender</h2>
+    <div>
+      <button onclick="prevMonth()">‹</button>
+      <strong id="monthLabel"></strong>
+      <button onclick="nextMonth()">›</button>
+    </div>
+
+    <div id="calendar"></div>
+  </div>
+
+  <!-- DETAILS -->
+  <div class="card">
+    <h2>Details</h2>
+    <div id="details">Tag auswählen…</div>
+  </div>
+
+</div>
+
+<script>
+let events = [];
+let monthOffset = 0;
+
+function formatEU(d){
+  const [y,m,day] = d.split("-");
+  return `${day}.${m}.${y}`;
+}
+
+function getColor(name){
+  let h = 0;
+  for(let i=0;i<name.length;i++){
+    h = name.charCodeAt(i) + ((h<<5)-h);
+  }
+  return `hsl(${Math.abs(h)%360},70%,45%)`;
+}
+
+function calcHours(von,bis){
+  if(!von||!bis)return 0;
+  let [h1,m1]=von.split(":").map(Number);
+  let [h2,m2]=bis.split(":").map(Number);
+  let t1=h1*60+m1, t2=h2*60+m2;
+  if(t2<=t1)t2+=24*60;
+  return ((t2-t1)/60).toFixed(2);
+}
+
+function saveCourse(){
+  const dozent=document.getElementById("dozent").value;
+  const lehrgang=document.getElementById("lehrgang").value;
+  const traeger=document.getElementById("traeger").value;
+  const start=document.getElementById("startDatum").value;
+  const ende=document.getElementById("endDatum").value;
+  const von=document.getElementById("von").value;
+  const bis=document.getElementById("bis").value;
+  const ort=document.getElementById("ort").value;
+  const besch=document.getElementById("beschreibung").value;
+
+  const dauer = parseFloat(calcHours(von,bis));
+
+  const selectedDays = [...document.querySelectorAll(".wd:checked")].map(x=>parseInt(x.value));
+
+  let d=new Date(start);
+  let e=new Date(ende);
+
+  while(d<=e){
+    const w=d.getDay();
+    if(selectedDays.includes(w)){
+      const iso=d.toISOString().slice(0,10);
+      events.push({
+        dozent,lehrgang,traeger,datum:iso,von,bis,ort,beschreibung:besch,dauer
+      });
+    }
+    d.setDate(d.getDate()+1);
+  }
+
+  saveToServer();
+  renderCalendar();
+  alert("Kurs gespeichert.");
+}
+
+function prevMonth(){monthOffset--;renderCalendar();}
+function nextMonth(){monthOffset++;renderCalendar();}
+
+function renderCalendar(){
+  const cal=document.getElementById("calendar");
+  cal.innerHTML="";
+
+  const base=new Date();
+  base.setMonth(base.getMonth()+monthOffset);
+
+  const y=base.getFullYear();
+  const m=base.getMonth();
+
+  const names=["Januar","Februar","März","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember"];
+  document.getElementById("monthLabel").textContent=`${names[m]} ${y}`;
+
+  const first=new Date(y,m,1);
+  let w=first.getDay(); if(w===0)w=7;
+
+  for(let i=1;i<w;i++){
+    const div=document.createElement("div");
+    div.className="day empty";
+    cal.appendChild(div);
+  }
+
+  const last=new Date(y,m+1,0).getDate();
+  for(let d=1;d<=last;d++){
+    const dateStr=`${y}-${String(m+1).padStart(2,"0")}-${String(d).padStart(2,"0")}`;
+    const box=document.createElement("div");
+    box.className="day";
+    box.innerHTML=`<strong>${d}</strong>`;
+
+    const todays=events.filter(ev=>ev.datum===dateStr);
+    todays.forEach(ev=>{
+      const e=document.createElement("div");
+      e.className="event";
+      e.textContent=ev.lehrgang;
+      e.style.background=getColor(ev.lehrgang);
+      box.appendChild(e);
+    });
+
+    box.onclick=()=>showDay(dateStr);
+    cal.appendChild(box);
+  }
+}
+
+function showDay(dateStr){
+  const area=document.getElementById("details");
+  const list=events.filter(ev=>ev.datum===dateStr);
+  if(!list.length){
+    area.innerHTML="Keine Einträge.";
+    return;
+  }
+  area.innerHTML=`<h3>${formatEU(dateStr)}</h3>` + 
+    list.map(ev=>`
+      <div style="padding:6px 0;border-bottom:1px solid #ddd;">
+        <strong>${ev.lehrgang}</strong><br>
+        Träger: ${ev.traeger}<br>
+        ${ev.von}–${ev.bis} Uhr (${ev.dauer} Std)<br>
+        ${ev.ort ? "Ort: "+ev.ort+"<br>" : ""}
+        <small>${ev.beschreibung.replace(/\n/g,"<br>")}</small>
+      </div>`).join("");
+}
+
+function loadFromServer(){
+  fetch("schulungen_load.php")
+  .then(r=>r.json())
+  .then(d=>{events=d;renderCalendar();});
+}
+function saveToServer(){
+  fetch("schulungen_save.php",{
+    method:"POST",
+    headers:{"Content-Type":"application/json"},
+    body:JSON.stringify(events)
+  });
+}
+
+loadFromServer();
+renderCalendar();
+</script>
+</body>
+</html>
