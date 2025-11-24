@@ -28,29 +28,30 @@ foreach ($filtered as $e) {
     $datum = $e['datum'] ?? '';
     $von   = $e['von'] ?? '';
     $bis   = $e['bis'] ?? '';
-    $titel = $e['titel'] ?? ($e['lehrgang'] ?? 'Schulung');
-    $ort   = $e['ort'] ?? '';
-    $besch = $e['beschreibung'] ?? '';
+    $lehrgang = $e['lehrgang'] ?? 'Lehrgang';
+    $thema    = $e['thema'] ?? '';
+    $besch    = $e['beschreibung'] ?? '';
 
     if (!$datum) continue;
+
     $start = $datum . ' ' . ($von ?: '09:00');
     $end   = $datum . ' ' . ($bis ?: '17:00');
 
     $dtStart = date('Ymd\THis', strtotime($start));
     $dtEnd   = date('Ymd\THis', strtotime($end));
-    $uid     = uniqid('schulung-')."@mie.local";
+    $uid     = uniqid('lehrgang-')."@mie.local";
+
+    $summary = $lehrgang . ($thema ? ' – '.$thema : '');
+    $descr   = $besch;
 
     echo "BEGIN:VEVENT\r\n";
     echo "UID:$uid\r\n";
     echo "DTSTAMP:".gmdate('Ymd\THis\Z')."\r\n";
     echo "DTSTART:$dtStart\r\n";
     echo "DTEND:$dtEnd\r\n";
-    echo "SUMMARY:".str_replace("\n","\\n",addslashes($titel))."\r\n";
-    if ($ort) {
-        echo "LOCATION:".str_replace("\n","\\n",addslashes($ort))."\r\n";
-    }
-    if ($besch) {
-        echo "DESCRIPTION:".str_replace("\n","\\n",addslashes($besch))."\r\n";
+    echo "SUMMARY:".str_replace("\n","\\n",addslashes($summary))."\r\n";
+    if ($descr) {
+        echo "DESCRIPTION:".str_replace("\n","\\n",addslashes($descr))."\r\n";
     }
     echo "END:VEVENT\r\n";
 }

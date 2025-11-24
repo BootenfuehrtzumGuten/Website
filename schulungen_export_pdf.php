@@ -76,30 +76,30 @@ if (!empty($by_traeger)) {
 }
 
 $pdf->Ln(6);
-$pdf->SetFont('Arial','B',10);
+$pdf->SetFont('Arial','B',9);
 $pdf->Cell(20,8,utf8_decode('Datum'),1);
-$pdf->Cell(40,8,utf8_decode('Lehrgang'),1);
-$pdf->Cell(35,8,utf8_decode('Träger'),1);
+$pdf->Cell(35,8,utf8_decode('Lehrgang'),1);
+$pdf->Cell(35,8,utf8_decode('Thema'),1);
+$pdf->Cell(30,8,utf8_decode('Träger'),1);
 $pdf->Cell(25,8,utf8_decode('Zeit'),1);
 $pdf->Cell(20,8,utf8_decode('Std'),1);
-$pdf->Cell(40,8,utf8_decode('Ort'),1);
 $pdf->Ln();
 
 $pdf->SetFont('Arial','',8);
 foreach ($filtered as $e) {
     $datum = format_date_eu($e['datum'] ?? '');
     $lehrgang = $e['lehrgang'] ?? '';
+    $thema    = $e['thema'] ?? '';
     $traeger  = $e['traeger'] ?? '';
     $zeit = trim(($e['von'] ?? '').' - '.($e['bis'] ?? ''));
     $dauer = floatval($e['dauer'] ?? 0);
-    $ort = $e['ort'] ?? '';
 
     $pdf->Cell(20,6,$datum,1);
-    $pdf->Cell(40,6,utf8_decode(mb_strimwidth($lehrgang,0,28,'...','UTF-8')),1);
-    $pdf->Cell(35,6,utf8_decode(mb_strimwidth($traeger,0,18,'...','UTF-8')),1);
+    $pdf->Cell(35,6,utf8_decode(mb_strimwidth($lehrgang,0,24,'...','UTF-8')),1);
+    $pdf->Cell(35,6,utf8_decode(mb_strimwidth($thema,0,24,'...','UTF-8')),1);
+    $pdf->Cell(30,6,utf8_decode(mb_strimwidth($traeger,0,20,'...','UTF-8')),1);
     $pdf->Cell(25,6,utf8_decode($zeit),1);
     $pdf->Cell(20,6,number_format($dauer,2,',','.'),1);
-    $pdf->Cell(40,6,utf8_decode(mb_strimwidth($ort,0,24,'...','UTF-8')),1);
     $pdf->Ln();
 }
 

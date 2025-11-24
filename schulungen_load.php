@@ -1,10 +1,17 @@
 <?php
-header("Content-Type: application/json; charset=utf-8");
-$file = __DIR__ . "/data/schulungen.json";
+header('Content-Type: application/json; charset=utf-8');
 
-if(!file_exists($file)){
-    echo "[]";
+$file = __DIR__ . '/data/schulungen.json';
+
+if (!file_exists($file)) {
+    echo '[]';
     exit;
 }
 
-echo file_get_contents($file);
+$content = file_get_contents($file);
+if ($content === false || trim($content) === '') {
+    echo '[]';
+    exit;
+}
+
+echo $content;

@@ -123,6 +123,19 @@ function format_date_eu($d) {
     .topbar a:hover{
       background:#c64541;
     }
+    .pdf-link{
+      display:inline-block;
+      margin-bottom:10px;
+      padding:8px 14px;
+      border-radius:6px;
+      background:#005BBB;
+      color:#fff;
+      font-size:0.9rem;
+      text-decoration:none;
+    }
+    .pdf-link:hover{
+      background:#006fe0;
+    }
   </style>
 </head>
 <body>
@@ -141,18 +154,9 @@ fetch('nav.html').then(r=>r.text()).then(t=>document.getElementById('nav').inner
     <p style="font-size:0.9rem;color:#555;">
       Hier sehen Sie alle geplanten zukünftigen Termine, die Ihrem Träger zugeordnet sind.
     </p>
-<a href="kunden_export_pdf.php" style="
-  display:inline-block;
-  background:#005BBB;
-  padding:8px 14px;
-  color:white;
-  border-radius:6px;
-  text-decoration:none;
-  font-size:0.9rem;
-  margin-bottom:10px;
-">
-📄 Termine als PDF herunterladen
-</a>
+
+    <a href="kunden_export_pdf.php" class="pdf-link">📄 Termine als PDF herunterladen</a>
+
     <?php if (empty($filtered)): ?>
       <p class="empty">Derzeit sind keine zukünftigen Termine für Sie eingetragen.</p>
     <?php else: ?>
@@ -163,7 +167,7 @@ fetch('nav.html').then(r=>r.text()).then(t=>document.getElementById('nav').inner
         $von    = $ev['von'] ?? '';
         $bis    = $ev['bis'] ?? '';
         $lg     = $ev['lehrgang'] ?? '';
-        $ort    = $ev['ort'] ?? '';
+        $thema  = $ev['thema'] ?? '';
         $beschr = $ev['beschreibung'] ?? '';
         $dauer  = $ev['dauer'] ?? '';
         if ($datum !== $currentDate) {
@@ -171,7 +175,7 @@ fetch('nav.html').then(r=>r.text()).then(t=>document.getElementById('nav').inner
                 echo "</tbody></table>";
             }
             echo "<div class='date-head'>".format_date_eu($datum)." <span class='badge'>".htmlspecialchars($lg,ENT_QUOTES,'UTF-8')."</span></div>";
-            echo "<table><thead><tr><th>Zeit</th><th>Ort</th><th>Details</th></tr></thead><tbody>";
+            echo "<table><thead><tr><th>Zeit</th><th>Thema</th><th>Details</th></tr></thead><tbody>";
             $currentDate = $datum;
         }
       ?>
@@ -182,7 +186,7 @@ fetch('nav.html').then(r=>r.text()).then(t=>document.getElementById('nav').inner
               <br><small>(<?php echo htmlspecialchars(number_format((float)$dauer,2,',','.'),ENT_QUOTES,'UTF-8'); ?> Std)</small>
             <?php endif; ?>
           </td>
-          <td><?php echo htmlspecialchars($ort,ENT_QUOTES,'UTF-8'); ?></td>
+          <td><?php echo htmlspecialchars($thema,ENT_QUOTES,'UTF-8'); ?></td>
           <td><?php echo nl2br(htmlspecialchars($beschr,ENT_QUOTES,'UTF-8')); ?></td>
         </tr>
       <?php endforeach;
