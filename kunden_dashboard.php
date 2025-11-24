@@ -141,7 +141,18 @@ fetch('nav.html').then(r=>r.text()).then(t=>document.getElementById('nav').inner
     <p style="font-size:0.9rem;color:#555;">
       Hier sehen Sie alle geplanten zukünftigen Termine, die Ihrem Träger zugeordnet sind.
     </p>
-
+<a href="kunden_export_pdf.php" style="
+  display:inline-block;
+  background:#005BBB;
+  padding:8px 14px;
+  color:white;
+  border-radius:6px;
+  text-decoration:none;
+  font-size:0.9rem;
+  margin-bottom:10px;
+">
+📄 Termine als PDF herunterladen
+</a>
     <?php if (empty($filtered)): ?>
       <p class="empty">Derzeit sind keine zukünftigen Termine für Sie eingetragen.</p>
     <?php else: ?>
