@@ -142,5 +142,21 @@
         "duration": 60,
         "datum": "2025-11-19",
         "zeit": "10:55"
+    },
+    {
+        "kunde": "Asskea GmbH",
+        "art": "Administration",
+        "desc": "Absprache Mebedo",
+        "duration": 30,
+        "datum": "2025-11-24",
+        "zeit": "21:49"
+    },
+    {
+        "kunde": "Asskea GmbH",
+        "art": "Administration",
+        "desc": "Datenbank konsolidieren",
+        "duration": 120,
+        "datum": "2025-11-24",
+        "zeit": "21:49"
     }
 ]

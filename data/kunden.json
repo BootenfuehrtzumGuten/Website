@@ -1,0 +1,14 @@
+[
+  {
+    "kunde": "jobcenter_xyz",
+    "passwort": "geheim123",
+    "name": "Jobcenter XYZ",
+    "traeger_filter": "ZM"
+  },
+  {
+    "kunde": "traeger_abc",
+    "passwort": "abc2025",
+    "name": "Bildungsträger ABC",
+    "traeger_filter": "Träger ABC"
+  }
+]
