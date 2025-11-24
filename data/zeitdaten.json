@@ -118,5 +118,29 @@
         "duration": 30,
         "datum": "2025-11-18",
         "zeit": "10:34"
+    },
+    {
+        "kunde": "Asskea GmbH",
+        "art": "Administration",
+        "desc": "Absprache Meetting",
+        "duration": 90,
+        "datum": "2025-11-19",
+        "zeit": "10:53"
+    },
+    {
+        "kunde": "Asskea GmbH",
+        "art": "Administration",
+        "desc": "PC Qs02 Vorbereiten für Umstellung",
+        "duration": 180,
+        "datum": "2025-11-19",
+        "zeit": "10:54"
+    },
+    {
+        "kunde": "Asskea GmbH",
+        "art": "Administration",
+        "desc": "Vorbereitung E-Manager Laptop",
+        "duration": 60,
+        "datum": "2025-11-19",
+        "zeit": "10:55"
     }
 ]
