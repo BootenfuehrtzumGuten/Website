@@ -3,7 +3,6 @@ session_start();
 
 header('Content-Type: application/pdf; charset=utf-8');
 
-// Zugriff nur für eingeloggte Kunden
 if (!isset($_SESSION['kunde'])) {
     http_response_code(403);
     echo "Zugriff verweigert.";
@@ -15,7 +14,9 @@ $traegerFilter = $_SESSION['traeger_filter'] ?? '';
 
 require('fpdf/fpdf.php');
 
+// ---------------------------
 // Daten laden
+// ---------------------------
 $file = __DIR__ . '/data/schulungen.json';
 $events = [];
 
@@ -27,102 +28,181 @@ if (file_exists($file)) {
 
 $today = date('Y-m-d');
 
-// Filter: nur Termine für diesen Kunden + heute/ Zukunft
+// Filter: nur für Kunde + zukünftig
 $filtered = array_values(array_filter($events, function($e) use ($traegerFilter, $today) {
-    if (!isset($e['traeger']) || $e['traeger'] !== $traegerFilter) return false;
-    if (!isset($e['datum']) || $e['datum'] < $today) return false;
-    return true;
+    return isset($e['traeger'], $e['datum'])
+        && $e['traeger'] === $traegerFilter
+        && $e['datum'] >= $today;
 }));
 
 usort($filtered, function($a,$b){
-    $da = $a['datum'] ?? '';
-    $db = $b['datum'] ?? '';
-    $ta = $a['von'] ?? '';
-    $tb = $b['von'] ?? '';
-    return strcmp($da.$ta, $db.$tb);
+    return strcmp(($a['datum'] ?? '').($a['von'] ?? ''), ($b['datum'] ?? '').($b['von'] ?? ''));
 });
 
 function format_eu($d) {
     if (strpos($d, '-') === false) return $d;
-    list($y,$m,$day) = explode('-', $d);
+    [$y,$m,$day] = explode('-', $d);
     return sprintf('%02d.%02d.%04d', $day, $m, $y);
 }
 
-$total_hours = 0;
-foreach ($filtered as $ev) {
-    $total_hours += floatval($ev['dauer'] ?? 0);
+// Summe Stunden
+$total_hours = array_reduce($filtered, fn($s,$e)=>$s+($e['dauer']??0), 0);
+
+// ---------------------------------------
+// CUSTOM PDF CLASS MIT SCHÖNEREN TABELLEN
+// ---------------------------------------
+class ModernPDF extends FPDF {
+
+    function Header() {
+        $this->SetFont('Arial','B',16);
+        $this->SetTextColor(30,30,30);
+
+        $this->Cell(0,10,utf8_decode("Schulungstermine  ".$GLOBALS['kunde_name']),0,1,'C');
+        $this->Ln(2);
+
+        $this->SetFont('Arial','',11);
+        $this->SetTextColor(100,100,100);
+
+        $this->Cell(
+            0,
+            6,
+            utf8_decode("Zukünftige Termine"),
+            0,
+            1,
+            'C'
+        );
+
+        $this->Ln(4);
+
+        // dünne Linie
+        $this->SetDrawColor(180,180,180);
+        $this->Line(10, $this->GetY(), 200, $this->GetY());
+        $this->Ln(6);
+    }
+
+    function FancyRow($cols) {
+        // $cols = [
+        //   ['w'=>30,'text'=>'...','style'=>'B'],
+        //   ...
+        // ]
+
+        $lineHeight = 6;
+        $maxLines = 1;
+
+        // MultiCell benötigt Anzahl Zeilen → selbst berechnen
+        foreach ($cols as $col) {
+            $this->SetFont('Arial', $col['style'] ?? '', 10);
+            $nb = $this->NbLines($col['w'], utf8_decode($col['text']));
+            if ($nb > $maxLines) $maxLines = $nb;
+        }
+
+        $totalHeight = $lineHeight * $maxLines;
+
+        // Rahmen + Text
+        foreach ($cols as $col) {
+            $x = $this->GetX();
+            $y = $this->GetY();
+
+            $this->Rect($x, $y, $col['w'], $totalHeight);
+
+            $this->MultiCell($col['w'], $lineHeight, utf8_decode($col['text']), 0, $col['align'] ?? 'L');
+            $this->SetXY($x + $col['w'], $y);
+        }
+
+        $this->Ln($totalHeight);
+    }
+
+    // MultiCell Helfer
+    function NbLines($w, $txt) {
+        $cw = &$this->CurrentFont['cw'];
+        if ($w == 0) $w = $this->w - $this->rMargin - $this->x;
+        $wmax = ($w - 2 * $this->cMargin) * 1000 / $this->FontSize;
+
+        $s = str_replace("\r", '', $txt);
+        $nb = strlen($s);
+
+        if ($nb > 0 && $s[$nb - 1] == "\n") $nb--;
+
+        $sep = -1;
+        $i = 0; $j = 0; $l = 0; $nl = 1;
+
+        while ($i < $nb) {
+            $c = $s[$i];
+            if ($c == "\n") {
+                $i++; $sep = -1; $j = $i; $l = 0; $nl++;
+                continue;
+            }
+            if ($c == ' ') $sep = $i;
+            $l += $cw[$c];
+            if ($l > $wmax) {
+                if ($sep == -1) {
+                    if ($i == $j) $i++;
+                } else $i = $sep + 1;
+                $sep = -1; $j = $i; $l = 0; $nl++;
+            } else $i++;
+        }
+        return $nl;
+    }
 }
 
-$pdf = new FPDF();
+$pdf = new ModernPDF();
 $pdf->AddPage();
-$pdf->SetFont('Arial','B',16);
-$pdf->Cell(0,10,utf8_decode("Schulungstermine – $kunde_name"),0,1,'C');
 
-$pdf->Ln(4);
-$pdf->SetFont('Arial','',12);
+$pdf->SetFont('Arial','',11);
+$pdf->SetTextColor(60,60,60);
+
 $pdf->Cell(
     0,
     8,
-    utf8_decode("Gesamtstunden (kommende Termine): " . number_format($total_hours,2,',','.')),
+    utf8_decode("Gesamtstunden: ".number_format($total_hours,2,',','.')." Std"),
     0,
     1
 );
 
 $pdf->Ln(4);
 
-// Tabellenkopf
-$pdf->SetFont('Arial','B',10);
-$pdf->Cell(25,8,utf8_decode('Datum'),1);
-$pdf->Cell(45,8,utf8_decode('Lehrgang'),1);
-$pdf->Cell(25,8,utf8_decode('Zeit'),1);
-$pdf->Cell(20,8,utf8_decode('Std'),1);
-$pdf->Cell(75,8,utf8_decode('Thema / Beschreibung'),1);
-$pdf->Ln();
+// ---------------------------------------
+// TABELLENKOPF – modern, grau hinterlegt
+// ---------------------------------------
+$pdf->SetFont('Arial','B',11);
+$pdf->SetFillColor(245,245,245);
+$pdf->SetDrawColor(200,200,200);
 
-$pdf->SetFont('Arial','',9);
-$lineHeight = 5;
+$pdf->Cell(28,8,"Datum",1,0,'L',true);
+$pdf->Cell(55,8,"Lehrgang",1,0,'L',true);
+$pdf->Cell(28,8,"Zeit",1,0,'L',true);
+$pdf->Cell(20,8,"Std",1,0,'R',true);
+$pdf->Cell(59,8,utf8_decode("Thema / Beschreibung"),1,1,'L',true);
 
+$pdf->SetFont('Arial','',10);
+
+// ---------------------------------------
+// INHALT
+// ---------------------------------------
 foreach ($filtered as $ev) {
 
-    $datum = format_eu($ev['datum'] ?? '');
+    $datum = format_eu($ev['datum']);
     $lehrgang = $ev['lehrgang'] ?? '';
-    $thema    = $ev['thema'] ?? '';
-    $zeit = ($ev['von'] ?? '') . ' - ' . ($ev['bis'] ?? '');
+    $thema = $ev['thema'] ?? '';
+    $zeit = ($ev['von'] ?? '')." - ".($ev['bis'] ?? '');
     $dauer = number_format(floatval($ev['dauer'] ?? 0),2,',','.');
-    $besch = $ev['beschreibung'] ?? '';
+    $beschreibung = $ev['beschreibung'] ?? '';
 
-    $lehrgang_text = utf8_decode($lehrgang);
-    $details_text  = utf8_decode(($thema ? "Thema: ".$thema."\n" : "").$besch);
+    // Schönes kombiniertes Feld
+    $details = "";
+    if ($thema) $details .= "Thema: ".$thema."\n";
+    if ($beschreibung) $details .= $beschreibung;
 
-    $x = $pdf->GetX();
-    $y = $pdf->GetY();
-
-    // Datum
-    $pdf->MultiCell(25, $lineHeight, utf8_decode($datum), 1);
-    $y_after_datum = $pdf->GetY();
-
-    // Lehrgang
-    $pdf->SetXY($x + 25, $y);
-    $pdf->MultiCell(45, $lineHeight, $lehrgang_text, 1);
-    $y_after_lehrgang = $pdf->GetY();
-
-    // Zeit
-    $pdf->SetXY($x + 25 + 45, $y);
-    $pdf->MultiCell(25, $lineHeight, utf8_decode($zeit), 1);
-    $y_after_zeit = $pdf->GetY();
-
-    // Std
-    $pdf->SetXY($x + 25 + 45 + 25, $y);
-    $pdf->MultiCell(20, $lineHeight, utf8_decode($dauer), 1);
-    $y_after_dauer = $pdf->GetY();
-
-    // Thema + Beschreibung
-    $pdf->SetXY($x + 25 + 45 + 25 + 20, $y);
-    $pdf->MultiCell(75, $lineHeight, $details_text, 1);
-    $y_after_details = $pdf->GetY();
-
-    $pdf->SetY(max($y_after_datum, $y_after_lehrgang, $y_after_zeit, $y_after_dauer, $y_after_details));
+    $pdf->FancyRow([
+        ['w'=>28, 'text'=>$datum, 'style'=>'', 'align'=>'L'],
+        ['w'=>55, 'text'=>$lehrgang, 'style'=>'B', 'align'=>'L'],
+        ['w'=>28, 'text'=>$zeit, 'style'=>'', 'align'=>'L'],
+        ['w'=>20, 'text'=>$dauer, 'style'=>'', 'align'=>'R'],
+        ['w'=>59, 'text'=>$details, 'style'=>'', 'align'=>'L'],
+    ]);
 }
+
+// ---------------------------------------
 
 $pdf->Output("I", "Termine_$kunde_name.pdf");
 exit;

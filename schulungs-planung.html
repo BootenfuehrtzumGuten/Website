@@ -5,7 +5,6 @@
   <title>Schulungsplanung – Lehrgänge & Träger</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-
   <style>
     :root {
       --color-primary:#005BBB;
@@ -179,10 +178,9 @@ fetch('nav.html').then(r=>r.text()).then(t=>document.getElementById('nav').inner
 <div class="container">
   <h1>📅 Schulungsplanung</h1>
   <p style="margin-top:0;color:#555;">
-    Plane als Dozent mehrere Lehrgänge für unterschiedliche Träger – mit mehrtägigen Kursen, Wochentagsauswahl, Auswertung und Export.
+    Plane als Dozent mehrere Lehrgänge für unterschiedliche Träger – mit mehrtägigen Kursen, Wochentagsauswahl, Bearbeitung & Export.
   </p>
 
-  <!-- FORMULAR -->
   <div class="card">
     <h2>Neuen Lehrgang anlegen</h2>
 
@@ -237,7 +235,6 @@ fetch('nav.html').then(r=>r.text()).then(t=>document.getElementById('nav').inner
     <button onclick="saveCourse()">➕ Lehrgang anlegen (für alle Tage im Zeitraum)</button>
   </div>
 
-  <!-- KALENDER -->
   <div class="card">
     <h2>Kalenderübersicht</h2>
     <div class="month-nav">
@@ -261,7 +258,6 @@ fetch('nav.html').then(r=>r.text()).then(t=>document.getElementById('nav').inner
     <div id="details" style="margin-top:16px;"></div>
   </div>
 
-  <!-- AUSWERTUNG -->
   <div class="card">
     <h2>Auswertung</h2>
     <div id="stats"></div>
@@ -273,10 +269,56 @@ fetch('nav.html').then(r=>r.text()).then(t=>document.getElementById('nav').inner
 fetch('footer.html').then(r=>r.text()).then(t=>document.getElementById('footer').innerHTML=t).catch(()=>{});
 </script>
 
+<!-- EDIT MODAL -->
+<div id="editModal" style="
+  position: fixed; top:0; left:0; right:0; bottom:0;
+  background: rgba(0,0,0,0.45);
+  display:none; align-items:center; justify-content:center;
+  z-index: 9999;
+">
+  <div style="
+    background:white; padding:20px; border-radius:12px;
+    width:90%; max-width:450px; box-shadow:0 8px 20px rgba(0,0,0,0.25);
+  ">
+    <h3 style="margin-top:0;">Eintrag bearbeiten</h3>
+
+    <label>Lehrgang:</label>
+    <input id="edit_lehrgang">
+
+    <label>Thema:</label>
+    <input id="edit_thema">
+
+    <label>Träger:</label>
+    <input id="edit_traeger">
+
+    <div style="display:flex; gap:10px;">
+      <div style="flex:1;">
+        <label>Von:</label>
+        <input type="time" id="edit_von">
+      </div>
+      <div style="flex:1;">
+        <label>Bis:</label>
+        <input type="time" id="edit_bis">
+      </div>
+    </div>
+
+    <label>Beschreibung:</label>
+    <textarea id="edit_beschreibung" style="min-height:70px;"></textarea>
+
+    <div style="margin-top:14px; display:flex; gap:10px; justify-content:flex-end;">
+      <button onclick="closeEditModal()" style="background:#ccc;">Abbrechen</button>
+      <button onclick="saveEdit()" style="background:#005BBB; color:white;">Speichern</button>
+    </div>
+
+    <input type="hidden" id="edit_index">
+  </div>
+</div>
+
 <script>
 let events = [];
 let monthOffset = 0;
 let dragIndex = null;
+let lastOpenedDate = null;
 
 function formatDateEU(d){
   if(!d) return "";
@@ -448,6 +490,7 @@ function renderCalendar(){
 }
 
 function showDay(dateStr){
+  lastOpenedDate = dateStr;
   const area = document.getElementById("details");
   const list = events.map((ev, idx)=>({ev, idx})).filter(o=>o.ev.datum===dateStr);
   if(!list.length){
@@ -467,7 +510,7 @@ function showDay(dateStr){
         ${ev.von || ""}–${ev.bis || ""} Uhr (${(ev.dauer||0).toFixed(2)} Std)<br>
         <small>${(ev.beschreibung||"").replace(/\n/g,"<br>")}</small>
         <div class="entry-buttons">
-          <button class="btn-small" onclick="editEvent(${o.idx}, '${dateStr}')">✏️ Bearbeiten</button>
+          <button class="btn-small" onclick="openEditModal(${o.idx}, '${dateStr}')">✏️ Bearbeiten</button>
           <button class="btn-small btn-delete" onclick="deleteEvent(${o.idx}, '${dateStr}')">❌ Löschen</button>
         </div>
       </div>`;
@@ -565,20 +608,35 @@ function deleteEvent(index, dateStr){
   });
 }
 
-function editEvent(index, dateStr){
+function openEditModal(index, dateStr){
   const ev = events[index];
-  const lehrgang = prompt("Lehrgangstitel:", ev.lehrgang);
-  if(lehrgang === null) return;
-  const thema = prompt("Thema:", ev.thema || "");
-  if(thema === null) return;
-  const traeger = prompt("Träger:", ev.traeger || "");
-  if(traeger === null) return;
-  const von = prompt("Startzeit (HH:MM):", ev.von || "");
-  if(von === null) return;
-  const bis = prompt("Endzeit (HH:MM):", ev.bis || "");
-  if(bis === null) return;
-  const beschreibung = prompt("Beschreibung:", ev.beschreibung || "");
-  if(beschreibung === null) return;
+
+  document.getElementById("edit_index").value = index;
+  document.getElementById("edit_lehrgang").value = ev.lehrgang;
+  document.getElementById("edit_thema").value = ev.thema || "";
+  document.getElementById("edit_traeger").value = ev.traeger || "";
+  document.getElementById("edit_von").value = ev.von || "";
+  document.getElementById("edit_bis").value = ev.bis || "";
+  document.getElementById("edit_beschreibung").value = ev.beschreibung || "";
+  lastOpenedDate = dateStr;
+
+  document.getElementById("editModal").style.display = "flex";
+}
+
+function closeEditModal(){
+  document.getElementById("editModal").style.display = "none";
+}
+
+function saveEdit(){
+  const index = parseInt(document.getElementById("edit_index").value);
+  const ev = events[index];
+
+  const lehrgang = document.getElementById("edit_lehrgang").value.trim();
+  const thema = document.getElementById("edit_thema").value.trim();
+  const traeger = document.getElementById("edit_traeger").value.trim();
+  const von = document.getElementById("edit_von").value.trim();
+  const bis = document.getElementById("edit_bis").value.trim();
+  const beschreibung = document.getElementById("edit_beschreibung").value.trim();
 
   const dauer = calcDurationHours(von, bis);
 
@@ -594,9 +652,12 @@ function editEvent(index, dateStr){
   };
 
   saveEventsToServer().then(()=>{
+    closeEditModal();
     renderCalendar();
     renderStats();
-    showDay(dateStr);
+    if(lastOpenedDate){
+      showDay(lastOpenedDate);
+    }
   });
 }
 

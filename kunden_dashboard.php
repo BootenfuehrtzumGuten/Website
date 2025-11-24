@@ -2,7 +2,6 @@
 session_start();
 header('Content-Type: text/html; charset=utf-8');
 
-// Zugangsschutz
 if (!isset($_SESSION['kunde'])) {
     header('Location: kunden_login.php');
     exit;
@@ -12,7 +11,6 @@ $kunde_id      = $_SESSION['kunde'];
 $kunde_name    = $_SESSION['kunde_name'] ?? $kunde_id;
 $traegerFilter = $_SESSION['traeger_filter'] ?? '';
 
-// Schulungsdaten laden
 $events = [];
 $file = __DIR__ . '/data/schulungen.json';
 if (file_exists($file)) {
@@ -25,7 +23,6 @@ if (file_exists($file)) {
 
 $nowDate = date('Y-m-d');
 
-// Nach Träger + Zukunft filtern
 $filtered = array_values(array_filter($events, function($e) use ($traegerFilter, $nowDate) {
     $traeger = $e['traeger'] ?? '';
     $datum   = $e['datum'] ?? '';

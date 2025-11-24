@@ -22,7 +22,7 @@ header('Content-Disposition: attachment; filename="schulungen_'.$year.'_'.$month
 
 echo "BEGIN:VCALENDAR\r\n";
 echo "VERSION:2.0\r\n";
-echo "PRODID:-//MIE//Schulungsplanung//DE\r\n";
+echo "PRODID:-//DozentenPortal//Schulungsplanung//DE\r\n";
 
 foreach ($filtered as $e) {
     $datum = $e['datum'] ?? '';
@@ -39,7 +39,7 @@ foreach ($filtered as $e) {
 
     $dtStart = date('Ymd\THis', strtotime($start));
     $dtEnd   = date('Ymd\THis', strtotime($end));
-    $uid     = uniqid('lehrgang-')."@mie.local";
+    $uid     = uniqid('lehrgang-')."@dozentenportal.local";
 
     $summary = $lehrgang . ($thema ? ' – '.$thema : '');
     $descr   = $besch;

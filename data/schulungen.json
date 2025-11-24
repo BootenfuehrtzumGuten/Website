@@ -110,17 +110,6 @@
         "dozent": "rene",
         "lehrgang": "w1",
         "traeger": "ibb",
-        "datum": "2025-11-24",
-        "von": "17:41",
-        "bis": "18:41",
-        "ort": "",
-        "beschreibung": "",
-        "dauer": 1
-    },
-    {
-        "dozent": "rene",
-        "lehrgang": "w1",
-        "traeger": "ibb",
         "datum": "2025-11-25",
         "von": "17:41",
         "bis": "18:41",
@@ -143,39 +132,6 @@
         "dozent": "rene",
         "lehrgang": "w1",
         "traeger": "ibb",
-        "datum": "2025-11-27",
-        "von": "17:41",
-        "bis": "18:41",
-        "ort": "",
-        "beschreibung": "",
-        "dauer": 1
-    },
-    {
-        "dozent": "rene",
-        "lehrgang": "w1",
-        "traeger": "ibb",
-        "datum": "2025-11-28",
-        "von": "17:41",
-        "bis": "18:41",
-        "ort": "",
-        "beschreibung": "",
-        "dauer": 1
-    },
-    {
-        "dozent": "rene",
-        "lehrgang": "w1",
-        "traeger": "ibb",
-        "datum": "2025-11-29",
-        "von": "17:41",
-        "bis": "18:41",
-        "ort": "",
-        "beschreibung": "",
-        "dauer": 1
-    },
-    {
-        "dozent": "rene",
-        "lehrgang": "w1",
-        "traeger": "ibb",
         "datum": "2025-12-01",
         "von": "17:41",
         "bis": "18:41",
@@ -185,79 +141,86 @@
     },
     {
         "dozent": "Rene",
-        "lehrgang": "IT-Systemelektroniker Frühjahr\/Sommer 2026 Termin1",
+        "lehrgang": "IT-Systemelektroniker Frühjahr\/Sommer 2026",
         "traeger": "azubi academy",
         "datum": "2026-02-02",
         "von": "18:00",
         "bis": "20:00",
         "ort": "",
-        "beschreibung": "Termin1",
-        "dauer": 2
+        "beschreibung": "",
+        "dauer": 2,
+        "thema": "Termin1"
     },
     {
         "dozent": "Rene",
-        "lehrgang": "IT-Systemelektroniker Frühjahr\/Sommer 2026 Termin2",
+        "lehrgang": "IT-Systemelektroniker Frühjahr\/Sommer 2026",
         "traeger": "azubi academy",
         "datum": "2026-02-17",
         "von": "18:00",
         "bis": "20:00",
         "ort": "",
-        "beschreibung": "Termin2",
-        "dauer": 2
+        "beschreibung": "",
+        "dauer": 2,
+        "thema": "Termin2"
     },
     {
         "dozent": "Rene",
-        "lehrgang": "IT-Systemelektroniker Frühjahr\/Sommer 2026 Termin3",
+        "lehrgang": "IT-Systemelektroniker Frühjahr\/Sommer 2026",
         "traeger": "azubi academy",
         "datum": "2026-03-02",
         "von": "18:00",
         "bis": "20:00",
         "ort": "",
-        "beschreibung": "Termin3",
-        "dauer": 2
+        "beschreibung": "",
+        "dauer": 2,
+        "thema": "Termin3"
     },
     {
         "dozent": "Rene",
-        "lehrgang": "IT-Systemelektroniker Frühjahr\/Sommer 2026 Termin4",
+        "lehrgang": "IT-Systemelektroniker Frühjahr\/Sommer 2026",
         "traeger": "azubi academy",
         "datum": "2026-03-05",
         "von": "18:00",
         "bis": "20:00",
         "ort": "",
-        "beschreibung": "Termin4",
-        "dauer": 2
+        "beschreibung": "",
+        "dauer": 2,
+        "thema": "Termin4"
     },
     {
         "dozent": "Rene",
-        "lehrgang": "IT-Systemelektroniker Frühjahr\/Sommer 2026 Termin5",
+        "lehrgang": "IT-Systemelektroniker Frühjahr\/Sommer 2026",
         "traeger": "azubi academy",
         "datum": "2026-03-16",
         "von": "18:00",
         "bis": "20:00",
         "ort": "",
-        "beschreibung": "Termin5",
-        "dauer": 2
+        "beschreibung": "",
+        "dauer": 2,
+        "thema": "Termin5"
     },
     {
         "dozent": "Rene",
-        "lehrgang": "IT-Systemelektroniker Frühjahr\/Sommer 2026 Termin6",
+        "lehrgang": "IT-Systemelektroniker Frühjahr\/Sommer 2026",
         "traeger": "azubi academy",
         "datum": "2026-03-19",
         "von": "18:00",
         "bis": "20:00",
         "ort": "",
-        "beschreibung": "Termin6",
-        "dauer": 2
+        "beschreibung": "",
+        "dauer": 2,
+        "thema": "Termin6"
     },
     {
         "dozent": "Rene",
-        "lehrgang": "IT-Systemelektroniker Frühjahr\/Sommer 2026 Termin7",
+        "lehrgang": "IT-Systemelektroniker Frühjahr\/Sommer 2026",
         "traeger": "azubi academy",
         "datum": "2026-03-30",
         "von": "18:00",
         "bis": "20:00",
         "ort": "",
-        "beschreibung": "Termin7",
-        "dauer": 2
+        "beschreibung": "",
+        "dauer": 2,
+        "thema": "Termin7"
     }
 ]
