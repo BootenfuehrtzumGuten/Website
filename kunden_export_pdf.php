@@ -34,6 +34,7 @@ $filtered = array_values(array_filter($events, function($e) use ($traegerFilter,
     return true;
 }));
 
+// Sortieren nach Datum + Zeit
 usort($filtered, function($a,$b){
     $da = $a['datum'] ?? '';
     $db = $b['datum'] ?? '';
@@ -49,21 +50,29 @@ function format_eu($d) {
     return sprintf('%02d.%02d.%04d', $day, $m, $y);
 }
 
-// Stunden berechnen
+// Gesamtstunden berechnen
 $total_hours = 0;
 foreach ($filtered as $ev) {
     $total_hours += floatval($ev['dauer'] ?? 0);
 }
 
-// PDF erstellen
+// -----------------------------------------
+// PDF START
+// -----------------------------------------
 $pdf = new FPDF();
 $pdf->AddPage();
 $pdf->SetFont('Arial','B',16);
-$pdf->Cell(0,10,utf8_decode("Schulungstermine für $kunde_name"),0,1,'C');
+$pdf->Cell(0,10,utf8_decode("Schulungstermine – $kunde_name"),0,1,'C');
 
 $pdf->Ln(4);
 $pdf->SetFont('Arial','',12);
-$pdf->Cell(0,8,utf8_decode("Gesamtstunden (kommende Termine): " . number_format($total_hours,2,',','.')),0,1);
+$pdf->Cell(
+    0,
+    8,
+    utf8_decode("Gesamtstunden (kommende Termine): " . number_format($total_hours,2,',','.')),
+    0,
+    1
+);
 
 $pdf->Ln(4);
 
@@ -78,6 +87,11 @@ $pdf->Ln();
 
 $pdf->SetFont('Arial','',9);
 
+$lineHeight = 5;
+
+// -----------------------------------------
+// TABELLENINHALT
+// -----------------------------------------
 foreach ($filtered as $ev) {
 
     $datum = format_eu($ev['datum']);
@@ -87,13 +101,50 @@ foreach ($filtered as $ev) {
     $ort = $ev['ort'] ?? '';
     $besch = $ev['beschreibung'] ?? '';
 
-    // Zeile
-    $pdf->Cell(25,6,utf8_decode($datum),1);
-    $pdf->Cell(50,6,utf8_decode($lehrgang),1);
-    $pdf->Cell(30,6,utf8_decode($zeit),1);
-    $pdf->Cell(20,6,utf8_decode($dauer),1);
-    $pdf->Cell(65,6,utf8_decode($ort . " / " . $besch),1);
-    $pdf->Ln();
+    $lehrgang_text = utf8_decode($lehrgang);
+    $details_text  = utf8_decode($ort . " / " . $besch);
+
+    // Startkoordinaten sichern
+    $x = $pdf->GetX();
+    $y = $pdf->GetY();
+
+    // Spalte "Datum"
+    $pdf->MultiCell(25, $lineHeight, utf8_decode($datum), 1);
+    $y_after_datum = $pdf->GetY();
+
+    // Zurück nach rechts
+    $pdf->SetXY($x + 25, $y);
+
+    // Spalte "Lehrgang" (mehrzeilig!)
+    $pdf->MultiCell(50, $lineHeight, $lehrgang_text, 1);
+    $y_after_lehrgang = $pdf->GetY();
+
+    // Spalte "Zeit"
+    $pdf->SetXY($x + 25 + 50, $y);
+    $pdf->MultiCell(30, $lineHeight, utf8_decode($zeit), 1);
+    $y_after_zeit = $pdf->GetY();
+
+    // Spalte "Std"
+    $pdf->SetXY($x + 25 + 50 + 30, $y);
+    $pdf->MultiCell(20, $lineHeight, utf8_decode($dauer), 1);
+    $y_after_dauer = $pdf->GetY();
+
+    // Spalte "Ort / Beschreibung" (mehrzeilig!)
+    $pdf->SetXY($x + 25 + 50 + 30 + 20, $y);
+    $pdf->MultiCell(65, $lineHeight, $details_text, 1);
+    $y_after_details = $pdf->GetY();
+
+    // Nächste Zeile setzen (höchste Zelle bestimmen)
+    $pdf->SetY(
+        max(
+            $y_after_datum,
+            $y_after_lehrgang,
+            $y_after_zeit,
+            $y_after_dauer,
+            $y_after_details
+        )
+    );
 }
 
 $pdf->Output("I", "Termine_$kunde_name.pdf");
+exit;

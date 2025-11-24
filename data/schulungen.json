@@ -182,5 +182,82 @@
         "ort": "",
         "beschreibung": "",
         "dauer": 1
+    },
+    {
+        "dozent": "Rene",
+        "lehrgang": "IT-Systemelektroniker Frühjahr\/Sommer 2026 Termin1",
+        "traeger": "azubi academy",
+        "datum": "2026-02-02",
+        "von": "18:00",
+        "bis": "20:00",
+        "ort": "",
+        "beschreibung": "Termin1",
+        "dauer": 2
+    },
+    {
+        "dozent": "Rene",
+        "lehrgang": "IT-Systemelektroniker Frühjahr\/Sommer 2026 Termin2",
+        "traeger": "azubi academy",
+        "datum": "2026-02-17",
+        "von": "18:00",
+        "bis": "20:00",
+        "ort": "",
+        "beschreibung": "Termin2",
+        "dauer": 2
+    },
+    {
+        "dozent": "Rene",
+        "lehrgang": "IT-Systemelektroniker Frühjahr\/Sommer 2026 Termin3",
+        "traeger": "azubi academy",
+        "datum": "2026-03-02",
+        "von": "18:00",
+        "bis": "20:00",
+        "ort": "",
+        "beschreibung": "Termin3",
+        "dauer": 2
+    },
+    {
+        "dozent": "Rene",
+        "lehrgang": "IT-Systemelektroniker Frühjahr\/Sommer 2026 Termin4",
+        "traeger": "azubi academy",
+        "datum": "2026-03-05",
+        "von": "18:00",
+        "bis": "20:00",
+        "ort": "",
+        "beschreibung": "Termin4",
+        "dauer": 2
+    },
+    {
+        "dozent": "Rene",
+        "lehrgang": "IT-Systemelektroniker Frühjahr\/Sommer 2026 Termin5",
+        "traeger": "azubi academy",
+        "datum": "2026-03-16",
+        "von": "18:00",
+        "bis": "20:00",
+        "ort": "",
+        "beschreibung": "Termin5",
+        "dauer": 2
+    },
+    {
+        "dozent": "Rene",
+        "lehrgang": "IT-Systemelektroniker Frühjahr\/Sommer 2026 Termin6",
+        "traeger": "azubi academy",
+        "datum": "2026-03-19",
+        "von": "18:00",
+        "bis": "20:00",
+        "ort": "",
+        "beschreibung": "Termin6",
+        "dauer": 2
+    },
+    {
+        "dozent": "Rene",
+        "lehrgang": "IT-Systemelektroniker Frühjahr\/Sommer 2026 Termin7",
+        "traeger": "azubi academy",
+        "datum": "2026-03-30",
+        "von": "18:00",
+        "bis": "20:00",
+        "ort": "",
+        "beschreibung": "Termin7",
+        "dauer": 2
     }
 ]

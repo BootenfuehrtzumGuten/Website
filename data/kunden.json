@@ -6,9 +6,9 @@
     "traeger_filter": "ZM"
   },
   {
-    "kunde": "traeger_abc",
+    "kunde": "azubi academy",
     "passwort": "abc2025",
-    "name": "Bildungsträger ABC",
-    "traeger_filter": "Träger ABC"
+    "name": "azubi academy",
+    "traeger_filter": "azubi academy"
   }
 ]
