@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Kalender – Schulungsplanung</title>
+
+<link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js"></script>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f4f6fa;
+        margin: 0;
+        padding: 20px;
+    }
+    #calendar {
+        max-width: 1000px;
+        margin: 25px auto;
+        padding: 20px;
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 3px 12px rgba(0,0,0,0.12);
+    }
+    /* Modal */
+    #modal {
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,.6);
+        display: none;
+        justify-content: center;
+        align-items: center;
+    }
+    #modalBox {
+        width: 420px;
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+    }
+    #modalBox input, #modalBox textarea {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+    }
+    .btn {
+        background: #0077ff;
+        color: white;
+        padding: 8px 12px;
+        border-radius: 6px;
+        border: none;
+        cursor: pointer;
+    }
+    .btn.red { background: #d9534f; }
+</style>
+</head>
+
+<body>
+
+<h2 style="text-align:center;">📅 Schulungsplanung – Kalenderansicht</h2>
+
+<div id="calendar"></div>
+
+<!-- Modal -->
+<div id="modal">
+  <div id="modalBox">
+    <h3>Termin hinzufügen</h3>
+
+    <form id="eventForm">
+      <input type="hidden" id="eventId">
+      <label>Datum:</label>
+      <input type="text" id="eventDate" readonly>
+
+      <label>Lehrgang:</label>
+      <input type="text" id="eventTitle" required>
+
+      <label>Thema:</label>
+      <input type="text" id="eventThema">
+
+      <label>Beschreibung:</label>
+      <textarea id="eventDesc" rows="3"></textarea>
+
+      <button class="btn" type="submit">Speichern</button>
+      <button class="btn red" type="button" onclick="closeModal()">Abbrechen</button>
+    </form>
+  </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    let calendar = new FullCalendar.Calendar(document.getElementById("calendar"), {
+        initialView: "dayGridMonth",
+        selectable: true,
+        editable: true,
+        eventDisplay: 'block',
+
+        events: "schulungen_load.php",
+
+        dateClick: function(info) {
+            openModal(info.dateStr);
+        },
+
+        eventClick: function(info) {
+            openModal(info.event.startStr, info.event);
+        },
+
+        eventDrop: function(info) {
+            updateEvent(info.event);
+        }
+    });
+
+    calendar.render();
+
+    function openModal(date, event = null) {
+        document.getElementById("modal").style.display = "flex";
+        document.getElementById("eventDate").value = date;
+
+        if (event) {
+            document.getElementById("eventId").value = event.id;
+            document.getElementById("eventTitle").value = event.title;
+            document.getElementById("eventThema").value = event.extendedProps.thema;
+            document.getElementById("eventDesc").value = event.extendedProps.beschreibung;
+        } else {
+            document.getElementById("eventId").value = "";
+            document.getElementById("eventTitle").value = "";
+            document.getElementById("eventThema").value = "";
+            document.getElementById("eventDesc").value = "";
+        }
+    }
+
+    window.closeModal = function() {
+        document.getElementById("modal").style.display = "none";
+    };
+
+    document.getElementById("eventForm").addEventListener("submit", function(e) {
+        e.preventDefault();
+
+        const payload = {
+            id: document.getElementById("eventId").value,
+            datum: document.getElementById("eventDate").value,
+            lehrgang: document.getElementById("eventTitle").value,
+            thema: document.getElementById("eventThema").value,
+            beschreibung: document.getElementById("eventDesc").value
+        };
+
+        fetch("schulungen_save.php", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(payload)
+        })
+        .then(r => r.text())
+        .then(() => {
+            closeModal();
+            calendar.refetchEvents();
+        });
+    });
+
+    function updateEvent(event) {
+        fetch("schulungen_save.php", {
+            method: "POST",
+            headers: {"Content-Type":"application/json"},
+            body: JSON.stringify({
+                id: event.id,
+                datum: event.startStr,
+                lehrgang: event.title,
+                thema: event.extendedProps.thema,
+                beschreibung: event.extendedProps.beschreibung
+            })
+        })
+        .then(() => calendar.refetchEvents());
+    }
+
+});
+</script>
+
+</body>
+</html>

@@ -1,17 +1,17 @@
 <?php
-header('Content-Type: application/json; charset=utf-8');
+header("Content-Type: application/json; charset=utf-8");
 
-$file = __DIR__ . '/data/schulungen.json';
+$file = __DIR__ . "/data/schulungen.json";
 
 if (!file_exists($file)) {
-    echo '[]';
+    echo json_encode([]);
     exit;
 }
 
-$content = file_get_contents($file);
-if ($content === false || trim($content) === '') {
-    echo '[]';
-    exit;
+$data = json_decode(file_get_contents($file), true);
+
+if (!is_array($data)) {
+    $data = [];
 }
 
-echo $content;
+echo json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);

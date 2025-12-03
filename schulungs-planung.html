@@ -2,623 +2,325 @@
 <html lang="de">
 <head>
   <meta charset="utf-8">
-  <title>Schulungsplanung – Lehrgänge & Träger</title>
+  <title>Schulungsplanung – Kalender</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- FullCalendar -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/main.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js"></script>
+
   <style>
-    :root {
-      --color-primary:#005BBB;
-      --color-bg:#F7F9FC;
-      --color-dark:#0A1F44;
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f5fa;
+      margin: 0;
+      padding: 0;
     }
-    *{box-sizing:border-box;}
-    body{
-      font-family:Inter,system-ui,sans-serif;
-      background:var(--color-bg);
-      margin:0;
+
+    .container {
+      max-width: 1450px;
+      margin: 20px auto;
+      padding: 20px;
     }
-    .container{
-      max-width:1100px;
-      margin:30px auto;
-      padding:20px;
+
+    h1 {
+      text-align: center;
+      margin-bottom: 10px;
     }
-    .card{
-      background:#fff;
+
+    /* PDF Export Bar */
+    .export-bar {
+      text-align:right;
+      margin-bottom:15px;
+    }
+
+    .export-bar select {
+      padding:6px 10px;
+      font-size:0.95rem;
+      border-radius:6px;
+    }
+
+    .btn-primary {
+      background:#0066ff;
+      color:white;
+      padding:7px 14px;
+      border-radius:6px;
+      border:none;
+      cursor:pointer;
+    }
+
+    .layout {
+      display:grid;
+      grid-template-columns:2fr 1fr;
+      gap:20px;
+    }
+
+    #calendar {
+      background:white;
       padding:20px;
       border-radius:12px;
-      box-shadow:0 6px 18px rgba(0,0,0,0.08);
-      margin-bottom:20px;
-    }
-    h1,h2{color:var(--color-dark);margin-top:0;}
-    label{font-weight:600;font-size:0.9rem;}
-    input,textarea{
-      width:100%;
-      padding:10px;
-      margin-top:6px;
-      margin-bottom:14px;
-      border-radius:8px;
-      border:1px solid #ccd7e0;
-      font-size:0.95rem;
-    }
-    textarea{min-height:80px;resize:vertical;}
-    button{
-      padding:10px 18px;
-      background:var(--color-primary);
-      color:#fff;
-      border:none;
-      border-radius:8px;
-      font-weight:600;
-      cursor:pointer;
-      font-size:0.95rem;
-    }
-    button:hover{background:#006fe0;}
-    .btn-ghost{
-      background:#eef3ff;
-      color:var(--color-dark);
-    }
-    .btn-ghost:hover{background:#dde7ff;}
-    .flex-row{
-      display:flex;
-      gap:16px;
-      flex-wrap:wrap;
-    }
-    .flex-row > div{
-      flex:1 1 220px;
-    }
-    .weekdays{
-      display:flex;
-      flex-wrap:wrap;
-      gap:8px;
-      margin-bottom:14px;
-    }
-    .weekdays label{
-      background:#eef3ff;
-      padding:6px 10px;
-      border-radius:8px;
-      cursor:pointer;
-      font-size:0.85rem;
+      box-shadow:0 4px 12px rgba(0,0,0,0.15);
+      min-height:900px;
     }
 
-    #calendar{
-      display:grid;
-      grid-template-columns:repeat(7,1fr);
-      gap:6px;
-      margin-top:16px;
+    .fc-daygrid-day-frame {
+      min-height:130px !important;
     }
-    .day{
-      background:#fff;
+
+    /* Mehrzeiliger Event-Text */
+    .fc-event-main {
+      white-space:normal !important;
+      padding:4px;
+      overflow-wrap:break-word;
+      word-break:break-word;
+      max-height:85px;
+      overflow:hidden;
+      font-size:0.78rem;
+      line-height:1.25;
+    }
+
+    .details-box {
+      background:white;
+      padding:20px;
+      border-radius:12px;
+      box-shadow:0 4px 12px rgba(0,0,0,0.15);
+      min-height:900px;
+    }
+
+    .entry {
+      border-bottom:1px solid #ddd;
+      padding:10px 0;
+    }
+
+    .entry-title {font-weight:bold;}
+    .entry-meta {font-size:0.8rem; color:#555;}
+    .entry-text {margin-top:5px;}
+
+    /* MODAL */
+    #editModal {
+      position:fixed;
+      inset:0;
+      display:none;
+      background:rgba(0,0,0,0.55);
+      justify-content:center;
+      align-items:center;
+      z-index:9999;
+    }
+
+    .modal-content {
+      background:white;
+      padding:20px;
+      border-radius:12px;
+      width:470px;
+    }
+
+    label {
+      font-weight:bold;
+      font-size:0.9rem;
+    }
+
+    input, textarea {
+      width:100%;
       padding:8px;
-      min-height:100px;
-      border-radius:10px;
-      box-shadow:0 3px 6px rgba(0,0,0,0.06);
-      font-size:0.8rem;
+      margin:5px 0 12px;
+      border-radius:6px;
+      border:1px solid #ccc;
+      font-size:0.95rem;
+    }
+
+    .btn-danger {
+      background:#cc0000;
+      color:white;
+      padding:7px 14px;
+      border-radius:6px;
+      border:none;
       cursor:pointer;
     }
-    .day.empty{
-      background:#e3e6ee;
-      cursor:default;
-      box-shadow:none;
-    }
-    .day strong{
-      display:block;
-      margin-bottom:4px;
-    }
-    .event{
-      margin-top:4px;
-      padding:3px 6px;
+
+    .btn-ghost {
+      padding:7px 14px;
+      background:#eee;
       border-radius:6px;
-      font-size:0.75rem;
-      color:#fff;
-      cursor:grab;
+      cursor:pointer;
     }
-    .month-nav{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
-      flex-wrap:wrap;
-      margin-bottom:8px;
-    }
-    .badge{
-      display:inline-block;
-      padding:2px 6px;
-      font-size:0.75rem;
-      border-radius:999px;
-      background:#eef3ff;
-      color:var(--color-dark);
-      margin-left:6px;
-    }
-    table{
-      width:100%;
-      border-collapse:collapse;
-      font-size:0.85rem;
-    }
-    th,td{
-      padding:6px 8px;
-      vertical-align:top;
-    }
-    th{
-      border-bottom:1px solid #dde3ec;
-      text-align:left;
-      color:#334;
-    }
-    tr:nth-child(even){
-      background:#f8f9fd;
-    }
-    td.num{text-align:right;}
-    .entry-buttons{
-      margin-top:6px;
-      display:flex;
-      gap:6px;
-      flex-wrap:wrap;
-    }
-    .btn-small{
-      padding:4px 8px;
-      font-size:0.8rem;
-    }
-    .btn-delete{
-      background:#d9534f;
-    }
-    .btn-delete:hover{
-      background:#c64541;
-    }
-    @media(max-width:768px){
-      .container{margin:16px auto;}
-      #calendar{grid-template-columns:repeat(2,1fr);}
-    }
+
   </style>
 </head>
+
 <body>
 
-<header id="nav"></header>
-<script>
-fetch('nav.html').then(r=>r.text()).then(t=>document.getElementById('nav').innerHTML=t).catch(()=>{});
-</script>
-
 <div class="container">
+
   <h1>📅 Schulungsplanung</h1>
-  <p style="margin-top:0;color:#555;">
-    Plane als Dozent mehrere Lehrgänge für unterschiedliche Träger – mit mehrtägigen Kursen, Wochentagsauswahl, Bearbeitung & Export.
-  </p>
 
-  <div class="card">
-    <h2>Neuen Lehrgang anlegen</h2>
-
-    <label>Dozent:</label>
-    <input id="dozent" placeholder="Dein Name">
-
-    <label>Lehrgangstitel:</label>
-    <input id="lehrgang" placeholder="z. B. IT-Basics für Anwender">
-
-    <label>Thema:</label>
-    <input id="thema" placeholder="z. B. Netzwerke, Office, Hardware">
-
-    <label>Träger:</label>
-    <input id="traeger" placeholder="z. B. Jobcenter XY, Träger GmbH">
-
-    <div class="flex-row">
-      <div>
-        <label>Startdatum:</label>
-        <input id="startDatum" type="date">
-      </div>
-      <div>
-        <label>Enddatum:</label>
-        <input id="endDatum" type="date">
-      </div>
-    </div>
-
-    <label>Unterrichtstage:</label>
-    <div class="weekdays">
-      <label><input type="checkbox" class="wd" value="1" checked> Mo</label>
-      <label><input type="checkbox" class="wd" value="2" checked> Di</label>
-      <label><input type="checkbox" class="wd" value="3" checked> Mi</label>
-      <label><input type="checkbox" class="wd" value="4" checked> Do</label>
-      <label><input type="checkbox" class="wd" value="5" checked> Fr</label>
-      <label><input type="checkbox" class="wd" value="6"> Sa</label>
-      <label><input type="checkbox" class="wd" value="0"> So</label>
-    </div>
-
-    <div class="flex-row">
-      <div>
-        <label>Tägliche Startzeit:</label>
-        <input id="von" type="time">
-      </div>
-      <div>
-        <label>Tägliche Endzeit:</label>
-        <input id="bis" type="time">
-      </div>
-    </div>
-
-    <label>Beschreibung:</label>
-    <textarea id="beschreibung" placeholder="Kurzbeschreibung / Inhalte des Lehrgangs"></textarea>
-
-    <button onclick="saveCourse()">➕ Lehrgang anlegen (für alle Tage im Zeitraum)</button>
+  <!-- PDF EXPORT + TRÄGERAUSWAHL -->
+  <div class="export-bar">
+      <select id="traegerSelect">
+        <option value="">-- Träger auswählen --</option>
+      </select>
+      <button onclick="exportTraegerPdf()" class="btn-primary">📄 PDF exportieren</button>
   </div>
 
-  <div class="card">
-    <h2>Kalenderübersicht</h2>
-    <div class="month-nav">
-      <button class="btn-ghost" onclick="changeMonth(-1)">‹ Vorheriger Monat</button>
-      <div>
-        <strong id="monthLabel"></strong><br>
-        <small id="kwLabel" style="color:#555;"></small>
-      </div>
-      <button class="btn-ghost" onclick="changeMonth(1)">Nächster Monat ›</button>
-    </div>
+  <div class="layout">
 
     <div id="calendar"></div>
 
-    <div style="margin-top:10px;display:flex;gap:10px;flex-wrap:wrap;">
-      <button class="btn-ghost" onclick="showCurrentWeek()">Wochenansicht (aktuelle KW)</button>
-      <button class="btn-ghost" onclick="exportMonthPDF()">Monatsübersicht als PDF</button>
-      <button class="btn-ghost" onclick="exportMonthICS()">iCal-Export (Monat)</button>
+    <div class="details-box">
+      <h2 id="detailDate">Wähle einen Tag</h2>
+      <div id="dayDetails">Noch kein Tag ausgewählt.</div>
     </div>
 
-    <div id="weekView" style="margin-top:16px;"></div>
-    <div id="details" style="margin-top:16px;"></div>
-  </div>
-
-  <div class="card">
-    <h2>Auswertung</h2>
-    <div id="stats"></div>
   </div>
 </div>
 
-<footer id="footer"></footer>
-<script>
-fetch('footer.html').then(r=>r.text()).then(t=>document.getElementById('footer').innerHTML=t).catch(()=>{});
-</script>
 
-<!-- EDIT MODAL -->
-<div id="editModal" style="
-  position: fixed; top:0; left:0; right:0; bottom:0;
-  background: rgba(0,0,0,0.45);
-  display:none; align-items:center; justify-content:center;
-  z-index: 9999;
-">
-  <div style="
-    background:white; padding:20px; border-radius:12px;
-    width:90%; max-width:450px; box-shadow:0 8px 20px rgba(0,0,0,0.25);
-  ">
-    <h3 style="margin-top:0;">Eintrag bearbeiten</h3>
 
-    <label>Lehrgang:</label>
-    <input id="edit_lehrgang">
+<!-- MODAL -->
+<div id="editModal">
+  <div class="modal-content">
 
-    <label>Thema:</label>
-    <input id="edit_thema">
+    <h2 id="modalTitle">Termin</h2>
 
-    <label>Träger:</label>
-    <input id="edit_traeger">
+    <form id="editForm">
 
-    <div style="display:flex; gap:10px;">
-      <div style="flex:1;">
-        <label>Von:</label>
-        <input type="time" id="edit_von">
-      </div>
-      <div style="flex:1;">
-        <label>Bis:</label>
-        <input type="time" id="edit_bis">
-      </div>
-    </div>
+      <input type="hidden" id="edit_id">
+      <input type="hidden" id="edit_datum">
 
-    <label>Beschreibung:</label>
-    <textarea id="edit_beschreibung" style="min-height:70px;"></textarea>
+      <label>Träger</label>
+      <input id="edit_traeger">
 
-    <div style="margin-top:14px; display:flex; gap:10px; justify-content:flex-end;">
-      <button onclick="closeEditModal()" style="background:#ccc;">Abbrechen</button>
-      <button onclick="saveEdit()" style="background:#005BBB; color:white;">Speichern</button>
-    </div>
+      <label>Lehrgang</label>
+      <input id="edit_lehrgang">
 
-    <input type="hidden" id="edit_index">
-  </div>
-</div>
+      <label>Thema</label>
+      <input id="edit_thema">
 
-<script>
-let events = [];
-let monthOffset = 0;
-let dragIndex = null;
-let lastOpenedDate = null;
-
-function formatDateEU(d){
-  if(!d) return "";
-  const p = d.split("-");
-  if(p.length !== 3) return d;
-  return p[2]+"."+p[1]+"."+p[0];
-}
-
-function getCourseColor(lehrgang){
-  if(!lehrgang) return "#005BBB";
-  let hash = 0;
-  for(let i=0;i<lehrgang.length;i++){
-    hash = lehrgang.charCodeAt(i) + ((hash<<5) - hash);
-  }
-  const hue = Math.abs(hash) % 360;
-  return `hsl(${hue},70%,45%)`;
-}
-
-function getISOWeek(date){
-  const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
-  const dayNum = d.getUTCDay() || 7;
-  d.setUTCDate(d.getUTCDate() + 4 - dayNum);
-  const yearStart = new Date(Date.UTC(d.getUTCFullYear(),0,1));
-  return Math.ceil((((d - yearStart) / 86400000) + 1)/7);
-}
-
-function calcDurationHours(von, bis){
-  if(!von || !bis) return 0;
-  const [vh, vm] = von.split(":").map(Number);
-  const [bh, bm] = bis.split(":").map(Number);
-  if(isNaN(vh) || isNaN(vm) || isNaN(bh) || isNaN(bm)) return 0;
-  let start = vh*60+vm;
-  let end = bh*60+bm;
-  if(end <= start) end += 24*60;
-  const diffMin = end - start;
-  return +(diffMin/60).toFixed(2);
-}
-
-function saveCourse(){
-  const dozent = document.getElementById("dozent").value.trim();
-  const lehrgang = document.getElementById("lehrgang").value.trim();
-  const thema = document.getElementById("thema").value.trim();
-  const traeger = document.getElementById("traeger").value.trim();
-  const startDatum = document.getElementById("startDatum").value;
-  const endDatum = document.getElementById("endDatum").value;
-  const von = document.getElementById("von").value;
-  const bis = document.getElementById("bis").value;
-  const beschreibung = document.getElementById("beschreibung").value.trim();
-
-  if(!dozent || !lehrgang || !startDatum || !endDatum){
-    alert("Bitte mindestens Dozent, Lehrgang, Start- und Enddatum angeben.");
-    return;
-  }
-
-  const start = new Date(startDatum);
-  const end = new Date(endDatum);
-  if(isNaN(start) || isNaN(end) || end < start){
-    alert("Bitte gültigen Zeitraum wählen (Enddatum ≥ Startdatum).");
-    return;
-  }
-
-  const selectedDays = Array.from(document.querySelectorAll(".wd:checked"))
-                            .map(cb => parseInt(cb.value));
-  if(!selectedDays.length){
-    alert("Bitte mindestens einen Unterrichtstag auswählen.");
-    return;
-  }
-
-  const dauerProTag = calcDurationHours(von, bis);
-
-  for(let d = new Date(start); d <= end; d.setDate(d.getDate()+1)){
-    const weekday = d.getDay(); // 0=So ... 6=Sa
-    if(!selectedDays.includes(weekday)) continue;
-
-    const isoDate = d.toISOString().slice(0,10);
-    events.push({
-      dozent,
-      lehrgang,
-      thema,
-      traeger,
-      datum: isoDate,
-      von,
-      bis,
-      beschreibung,
-      dauer: dauerProTag
-    });
-  }
-
-  saveEventsToServer().then(()=>{
-    renderCalendar();
-    renderStats();
-    alert("Lehrgang gespeichert.");
-  });
-}
-
-function changeMonth(delta){
-  monthOffset += delta;
-  renderCalendar();
-}
-
-function renderCalendar(){
-  const cal = document.getElementById("calendar");
-  const label = document.getElementById("monthLabel");
-  const kwLabel = document.getElementById("kwLabel");
-  cal.innerHTML = "";
-  document.getElementById("details").innerHTML = "";
-  document.getElementById("weekView").innerHTML = "";
-
-  const base = new Date();
-  base.setMonth(base.getMonth() + monthOffset);
-  const year = base.getFullYear();
-  const month = base.getMonth();
-
-  const names = ["Januar","Februar","März","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember"];
-  label.textContent = names[month] + " " + year;
-
-  const today = new Date();
-  kwLabel.textContent = "Aktuelle KW: " + getISOWeek(today) + " / " + today.getFullYear();
-
-  const first = new Date(year, month, 1);
-  let weekday = first.getDay(); if(weekday === 0) weekday = 7;
-
-  for(let i=1;i<weekday;i++){
-    const div = document.createElement("div");
-    div.className = "day empty";
-    cal.appendChild(div);
-  }
-
-  const lastDay = new Date(year, month+1, 0).getDate();
-  for(let d=1; d<=lastDay; d++){
-    const dateStr = `${year}-${String(month+1).padStart(2,"0")}-${String(d).padStart(2,"0")}`;
-    const box = document.createElement("div");
-    box.className = "day";
-    box.innerHTML = `<strong>${d}</strong>`;
-
-    const todays = events
-      .map((ev, idx)=>({ev, idx}))
-      .filter(o=>o.ev.datum === dateStr);
-
-    todays.forEach(o=>{
-      const eDiv = document.createElement("div");
-      eDiv.className = "event";
-      eDiv.textContent = o.ev.lehrgang;
-      eDiv.style.background = getCourseColor(o.ev.lehrgang);
-      eDiv.draggable = true;
-      eDiv.ondragstart = ev => { dragIndex = o.idx; };
-      box.appendChild(eDiv);
-    });
-
-    box.ondragover = ev => ev.preventDefault();
-    box.ondrop = ev => {
-      ev.preventDefault();
-      if(dragIndex === null) return;
-      events[dragIndex].datum = dateStr;
-      saveEventsToServer().then(()=>{
-        renderCalendar();
-        renderStats();
-      });
-      dragIndex = null;
-    };
-
-    box.onclick = (ev)=>{
-      if(ev.target.classList.contains("event")) return;
-      showDay(dateStr);
-    };
-
-    cal.appendChild(box);
-  }
-}
-
-function showDay(dateStr){
-  lastOpenedDate = dateStr;
-  const area = document.getElementById("details");
-  const list = events.map((ev, idx)=>({ev, idx})).filter(o=>o.ev.datum===dateStr);
-  if(!list.length){
-    area.innerHTML = "<p>Keine Einträge an diesem Tag.</p>";
-    return;
-  }
-
-  let total = list.reduce((s,o)=>s+(o.ev.dauer||0),0);
-  area.innerHTML = `<h3>${formatDateEU(dateStr)} <span class="badge">${total.toFixed(2)} Std</span></h3>` +
-    list.map(o=>{
-      const ev = o.ev;
-      return `
-      <div style="padding:8px 0;border-bottom:1px solid #dde3ec;">
-        <strong>${ev.lehrgang}</strong>${ev.thema ? " – "+ev.thema : ""}<br>
-        Träger: ${ev.traeger || "-"}<br>
-        Dozent: ${ev.dozent || "-"}<br>
-        ${ev.von || ""}–${ev.bis || ""} Uhr (${(ev.dauer||0).toFixed(2)} Std)<br>
-        <small>${(ev.beschreibung||"").replace(/\n/g,"<br>")}</small>
-        <div class="entry-buttons">
-          <button class="btn-small" onclick="openEditModal(${o.idx}, '${dateStr}')">✏️ Bearbeiten</button>
-          <button class="btn-small btn-delete" onclick="deleteEvent(${o.idx}, '${dateStr}')">❌ Löschen</button>
+      <div style="display:flex; gap:10px;">
+        <div style="flex:1;">
+          <label>Von</label>
+          <input type="time" id="edit_von">
         </div>
-      </div>`;
-    }).join("");
+        <div style="flex:1;">
+          <label>Bis</label>
+          <input type="time" id="edit_bis">
+        </div>
+      </div>
+
+      <label>Beschreibung</label>
+      <textarea id="edit_beschreibung" rows="4"></textarea>
+
+      <div style="margin-top:10px; display:flex; justify-content:space-between; align-items:center;">
+
+        <button type="button" id="duplicateButton" class="btn-primary">📄 Duplizieren</button>
+        <button type="button" id="deleteButton" class="btn-danger" style="display:none;">🗑 Löschen</button>
+
+        <div>
+          <button type="button" class="btn-ghost" onclick="closeEditModal()">Abbrechen</button>
+          <button type="submit" class="btn-primary">Speichern</button>
+        </div>
+
+      </div>
+
+    </form>
+
+  </div>
+</div>
+
+
+
+
+<script>
+let calendar;
+let allEvents = [];
+let selectedDate = null;
+
+/* --- Farben pro Lehrgang --- */
+const colorMap = {};
+const colorPalette = [
+  "#4CAF50","#2196F3","#FF9800","#9C27B0",
+  "#E91E63","#795548","#3F51B5","#00BCD4",
+  "#673AB7","#009688","#FF5722","#607D8B"
+];
+
+function getColorForCourse(course) {
+  if (!colorMap[course]) {
+    colorMap[course] =
+      colorPalette[Object.keys(colorMap).length % colorPalette.length];
+  }
+  return colorMap[course];
 }
 
-function showCurrentWeek(){
-  const wv = document.getElementById("weekView");
-  const today = new Date();
-  const targetKW = getISOWeek(today);
-  const year = today.getFullYear();
+function formatEU(d){
+  const p = d.split("-");
+  return p[2] + "." + p[1] + "." + p[0];
+}
 
-  const weekEvents = events.filter(e=>{
-    if(!e.datum) return false;
-    const d = new Date(e.datum);
-    return d.getFullYear() === year && getISOWeek(d) === targetKW;
-  });
 
-  if(!weekEvents.length){
-    wv.innerHTML = "<p>Keine Schulungen in der aktuellen Kalenderwoche.</p>";
-    return;
-  }
+/* --- Trägerliste laden --- */
+function loadTraegerList() {
+  fetch("schulungen_load.php")
+    .then(r => r.json())
+    .then(data => {
+      const sel = document.getElementById("traegerSelect");
+      let set = new Set();
 
-  const days = ["So","Mo","Di","Mi","Do","Fr","Sa"];
-  const grouped = {};
-  weekEvents.forEach(e=>{
-    const d = new Date(e.datum);
-    const idx = d.getDay();
-    const key = days[idx]+" "+formatDateEU(e.datum);
-    grouped[key] = grouped[key] || [];
-    grouped[key].push(e);
-  });
+      data.forEach(ev => {
+        if (ev.traeger && ev.traeger.trim() !== "") {
+          set.add(ev.traeger.trim());
+        }
+      });
 
-  let html = `<h3>Wochenansicht – KW ${targetKW}/${year}</h3>`;
-  html += "<table><thead><tr><th>Tag</th><th>Lehrgang</th><th>Thema</th><th>Träger</th><th>Zeit</th><th class='num'>Std</th></tr></thead><tbody>";
-  Object.keys(grouped).sort().forEach(dayKey=>{
-    grouped[dayKey].forEach((e, i)=>{
-      html += `<tr>
-        <td>${i===0 ? dayKey : ""}</td>
-        <td>${e.lehrgang}</td>
-        <td>${e.thema || ""}</td>
-        <td>${e.traeger || ""}</td>
-        <td>${e.von || ""}–${e.bis || ""}</td>
-        <td class="num">${(e.dauer||0).toFixed(2)}</td>
-      </tr>`;
+      sel.innerHTML = '<option value="">-- Träger auswählen --</option>';
+
+      [...set].sort().forEach(t => {
+        sel.innerHTML += `<option value="${t}">${t}</option>`;
+      });
     });
-  });
-  html += "</tbody></table>";
-  wv.innerHTML = html;
 }
 
-function renderStats(){
-  const s = document.getElementById("stats");
-  if(!events.length){
-    s.innerHTML = "<p>Noch keine Lehrgänge erfasst.</p>";
+
+/* --- PDF Export --- */
+function exportTraegerPdf() {
+  const t = document.getElementById("traegerSelect").value;
+  if (!t) {
+    alert("Bitte erst einen Träger auswählen.");
     return;
   }
-  let total = 0;
-  const byLehrgang = {};
-  const byTraeger = {};
-  events.forEach(e=>{
-    const d = e.dauer || 0;
-    total += d;
-    const k = e.lehrgang || "(ohne Lehrgang)";
-    byLehrgang[k] = (byLehrgang[k] || 0) + d;
-    const t = e.traeger || "(ohne Träger)";
-    byTraeger[t] = (byTraeger[t] || 0) + d;
-  });
-
-  let html = `<p><b>Gesamtstunden:</b> ${total.toFixed(2)} Std</p>`;
-  html += "<h4>Stunden pro Lehrgang</h4>";
-  html += "<table><thead><tr><th>Lehrgang</th><th class='num'>Stunden</th></tr></thead><tbody>";
-  Object.keys(byLehrgang).sort().forEach(k=>{
-    html += `<tr><td>${k}</td><td class="num">${byLehrgang[k].toFixed(2)}</td></tr>`;
-  });
-  html += "</tbody></table>";
-
-  html += "<h4>Stunden pro Träger</h4>";
-  html += "<table><thead><tr><th>Träger</th><th class='num'>Stunden</th></tr></thead><tbody>";
-  Object.keys(byTraeger).sort().forEach(k=>{
-    html += `<tr><td>${k}</td><td class="num">${byTraeger[k].toFixed(2)}</td></tr>`;
-  });
-  html += "</tbody></table>";
-
-  s.innerHTML = html;
+  window.open(
+    "schulungen_export_pdf.php?traeger=" + encodeURIComponent(t),
+    "_blank"
+  );
 }
 
-function deleteEvent(index, dateStr){
-  if(!confirm("Diesen Eintrag wirklich löschen?")) return;
-  events.splice(index, 1);
-  saveEventsToServer().then(()=>{
-    renderCalendar();
-    renderStats();
-    showDay(dateStr);
-  });
-}
 
-function openEditModal(index, dateStr){
-  const ev = events[index];
+/* --- Modal öffnen --- */
+function openEditModal(data){
+  document.getElementById("edit_id").value = data.id || "";
+  document.getElementById("edit_datum").value = data.datum || "";
+  document.getElementById("edit_traeger").value = data.traeger || "";
+  document.getElementById("edit_lehrgang").value = data.lehrgang || "";
+  document.getElementById("edit_thema").value = data.thema || "";
+  document.getElementById("edit_von").value = data.von || "";
+  document.getElementById("edit_bis").value = data.bis || "";
+  document.getElementById("edit_beschreibung").value = data.beschreibung || "";
 
-  document.getElementById("edit_index").value = index;
-  document.getElementById("edit_lehrgang").value = ev.lehrgang;
-  document.getElementById("edit_thema").value = ev.thema || "";
-  document.getElementById("edit_traeger").value = ev.traeger || "";
-  document.getElementById("edit_von").value = ev.von || "";
-  document.getElementById("edit_bis").value = ev.bis || "";
-  document.getElementById("edit_beschreibung").value = ev.beschreibung || "";
-  lastOpenedDate = dateStr;
+  document.getElementById("modalTitle").textContent =
+    (data.id ? "Termin bearbeiten – " : "Neuer Termin – ") + formatEU(data.datum);
+
+  const delBtn = document.getElementById("deleteButton");
+  const dupBtn = document.getElementById("duplicateButton");
+
+  if (data.id) {
+    delBtn.style.display = "inline-block";
+    delBtn.onclick = () => deleteEntry(data.id);
+
+    dupBtn.style.display = "inline-block";
+    dupBtn.onclick = () => duplicateEntry(data);
+
+  } else {
+    delBtn.style.display = "none";
+    dupBtn.style.display = "none";
+  }
 
   document.getElementById("editModal").style.display = "flex";
 }
@@ -627,83 +329,171 @@ function closeEditModal(){
   document.getElementById("editModal").style.display = "none";
 }
 
-function saveEdit(){
-  const index = parseInt(document.getElementById("edit_index").value);
-  const ev = events[index];
-
-  const lehrgang = document.getElementById("edit_lehrgang").value.trim();
-  const thema = document.getElementById("edit_thema").value.trim();
-  const traeger = document.getElementById("edit_traeger").value.trim();
-  const von = document.getElementById("edit_von").value.trim();
-  const bis = document.getElementById("edit_bis").value.trim();
-  const beschreibung = document.getElementById("edit_beschreibung").value.trim();
-
-  const dauer = calcDurationHours(von, bis);
-
-  events[index] = {
-    ...ev,
-    lehrgang,
-    thema,
-    traeger,
-    von,
-    bis,
-    beschreibung,
-    dauer
+function duplicateEntry(ev){
+  const payload = {
+    id: "",
+    datum: ev.datum,
+    traeger: ev.traeger,
+    lehrgang: ev.lehrgang,
+    thema: ev.thema,
+    von: ev.von,
+    bis: ev.bis,
+    beschreibung: ev.beschreibung
   };
+  saveEntry(payload,true);
+}
 
-  saveEventsToServer().then(()=>{
-    closeEditModal();
-    renderCalendar();
-    renderStats();
-    if(lastOpenedDate){
-      showDay(lastOpenedDate);
-    }
+
+/* --- Speichern & Löschen --- */
+function saveEntry(payload, close=true){
+  fetch("schulungen_save.php",{
+    method:"POST",
+    headers:{"Content-Type":"application/json"},
+    body:JSON.stringify(payload)
+  })
+  .then(r=>r.json())
+  .then(()=>{
+    if (close) closeEditModal();
+    calendar.refetchEvents();
+    loadDayDetails(payload.datum);
+    loadTraegerList();
   });
 }
 
-function exportMonthPDF(){
-  const base = new Date();
-  base.setMonth(base.getMonth() + monthOffset);
-  const year = base.getFullYear();
-  const month = base.getMonth()+1;
-  window.open("schulungen_export_pdf.php?year="+year+"&month="+month);
-}
+function deleteEntry(id){
+  if (!confirm("Termin wirklich löschen?")) return;
 
-function exportMonthICS(){
-  const base = new Date();
-  base.setMonth(base.getMonth() + monthOffset);
-  const year = base.getFullYear();
-  const month = base.getMonth()+1;
-  window.open("schulungen_export_ics.php?year="+year+"&month="+month);
-}
-
-function loadEventsFromServer(){
-  fetch("schulungen_load.php")
-    .then(r=>r.json())
-    .then(data=>{
-      events = Array.isArray(data) ? data : [];
-      renderCalendar();
-      renderStats();
-    })
-    .catch(()=>{
-      events = [];
-      renderCalendar();
-      renderStats();
-    });
-}
-
-function saveEventsToServer(){
-  return fetch("schulungen_save.php",{
+  fetch("schulungen_save.php",{
     method:"POST",
     headers:{"Content-Type":"application/json"},
-    body:JSON.stringify(events)
-  }).then(r=>r.json()).then(data=>{
-    if(Array.isArray(data)) events = data;
-  }).catch(()=>{});
+    body:JSON.stringify({delete:true,id})
+  })
+  .then(r=>r.json())
+  .then(()=>{
+    closeEditModal();
+    calendar.refetchEvents();
+    loadDayDetails(selectedDate);
+    loadTraegerList();
+  });
 }
 
-document.addEventListener("DOMContentLoaded", ()=>{
-  loadEventsFromServer();
+
+/* --- Tagesdetails --- */
+function loadDayDetails(date){
+  selectedDate = date;
+  document.getElementById("detailDate").textContent = "Termine am " + formatEU(date);
+
+  const box = document.getElementById("dayDetails");
+  const list = allEvents.filter(ev => ev.datum === date);
+
+  if (!list.length){
+    box.innerHTML = "<p>Keine Termine.</p>";
+    return;
+  }
+
+  let html = "";
+  list.forEach(ev => {
+    html += `
+      <div class="entry">
+        <div class="entry-title">${ev.lehrgang}</div>
+        <div class="entry-meta">${ev.von} – ${ev.bis}</div>
+        <div class="entry-text">${(ev.beschreibung||"").replace(/\n/g,"<br>")}</div>
+        <button class="btn-danger" onclick="deleteEntry('${ev.id}')">Löschen</button>
+      </div>
+    `;
+  });
+
+  box.innerHTML = html;
+}
+
+
+
+/* --- Kalender Initialisieren --- */
+document.addEventListener("DOMContentLoaded", function () {
+
+  loadTraegerList();
+
+  calendar = new FullCalendar.Calendar(document.getElementById("calendar"),{
+    initialView:"dayGridMonth",
+    locale:"de",
+    firstDay:1,
+    selectable:true,
+    editable:true,
+
+    eventContent(info){
+      let ev = info.event.extendedProps;
+
+      return {
+        html: `
+          <div><strong>${ev.lehrgang}</strong></div>
+          <div style="font-size:0.75rem; opacity:0.9;">${ev.thema || ""}</div>
+        `
+      };
+    },
+
+    events: function(fetchInfo, success){
+      fetch("schulungen_load.php")
+        .then(r=>r.json())
+        .then(data=>{
+          allEvents = data;
+          success(data.map(ev => ({
+            id: ev.id,
+            title: ev.lehrgang,
+            start: ev.von ? ev.datum+"T"+ev.von : ev.datum,
+            backgroundColor: getColorForCourse(ev.lehrgang),
+            borderColor: getColorForCourse(ev.lehrgang),
+            textColor: "white",
+            extendedProps: ev
+          })));
+        });
+    },
+
+    dateClick(info){
+      selectedDate = info.dateStr;
+      loadDayDetails(selectedDate);
+      openEditModal({datum:selectedDate});
+    },
+
+    eventClick(info){
+      selectedDate = info.event.extendedProps.datum;
+      loadDayDetails(selectedDate);
+      openEditModal(info.event.extendedProps);
+    },
+
+    eventDrop(info){
+      let ev = info.event.extendedProps;
+
+      saveEntry({
+        id: ev.id,
+        datum: info.event.startStr.split("T")[0],
+        traeger: ev.traeger,
+        lehrgang: ev.lehrgang,
+        thema: ev.thema,
+        von: ev.von,
+        bis: ev.bis,
+        beschreibung: ev.beschreibung
+      }, false);
+    }
+  });
+
+  calendar.render();
+
+  document.getElementById("editForm").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    let payload = {
+      id: document.getElementById("edit_id").value,
+      datum: document.getElementById("edit_datum").value,
+      traeger: document.getElementById("edit_traeger").value,
+      lehrgang: document.getElementById("edit_lehrgang").value,
+      thema: document.getElementById("edit_thema").value,
+      von: document.getElementById("edit_von").value,
+      bis: document.getElementById("edit_bis").value,
+      beschreibung: document.getElementById("edit_beschreibung").value
+    };
+
+    saveEntry(payload);
+  });
 });
 </script>
 

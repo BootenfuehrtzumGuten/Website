@@ -8,7 +8,8 @@
         "bis": "",
         "ort": "",
         "beschreibung": "",
-        "dauer": 0
+        "dauer": 0,
+        "id": "TERM_69302653d33de"
     },
     {
         "dozent": "Rene",
@@ -20,7 +21,8 @@
         "bis": "15:00",
         "ort": "teams",
         "beschreibung": "wllasd",
-        "dauer": 6
+        "dauer": 6,
+        "id": "TERM_69302653d33e3"
     },
     {
         "dozent": "Rene",
@@ -32,7 +34,8 @@
         "bis": "15:00",
         "ort": "teams",
         "beschreibung": "wllasd",
-        "dauer": 6
+        "dauer": 6,
+        "id": "TERM_69302653d33e4"
     },
     {
         "dozent": "Rene",
@@ -44,7 +47,8 @@
         "bis": "15:00",
         "ort": "teams",
         "beschreibung": "wllasd",
-        "dauer": 6
+        "dauer": 6,
+        "id": "TERM_69302653d33e5"
     },
     {
         "dozent": "Rene",
@@ -56,7 +60,8 @@
         "bis": "15:00",
         "ort": "teams",
         "beschreibung": "wllasd",
-        "dauer": 6
+        "dauer": 6,
+        "id": "TERM_69302653d33e6"
     },
     {
         "dozent": "Rene",
@@ -68,7 +73,8 @@
         "bis": "15:00",
         "ort": "teams",
         "beschreibung": "wllasd",
-        "dauer": 6
+        "dauer": 6,
+        "id": "TERM_69302653d33e7"
     },
     {
         "dozent": "Rene",
@@ -80,7 +86,8 @@
         "bis": "15:00",
         "ort": "teams",
         "beschreibung": "wllasd",
-        "dauer": 6
+        "dauer": 6,
+        "id": "TERM_69302653d33e8"
     },
     {
         "dozent": "Rene",
@@ -92,7 +99,8 @@
         "bis": "15:00",
         "ort": "teams",
         "beschreibung": "wllasd",
-        "dauer": 6
+        "dauer": 6,
+        "id": "TERM_69302653d33e9"
     },
     {
         "dozent": "Rene",
@@ -104,7 +112,8 @@
         "bis": "15:00",
         "ort": "teams",
         "beschreibung": "wllasd",
-        "dauer": 6
+        "dauer": 6,
+        "id": "TERM_69302653d33ea"
     },
     {
         "dozent": "rene",
@@ -115,7 +124,8 @@
         "bis": "18:41",
         "ort": "",
         "beschreibung": "",
-        "dauer": 1
+        "dauer": 1,
+        "id": "TERM_69302653d33eb"
     },
     {
         "dozent": "rene",
@@ -126,67 +136,58 @@
         "bis": "18:41",
         "ort": "",
         "beschreibung": "",
-        "dauer": 1
+        "dauer": 1,
+        "id": "TERM_69302653d33ec"
     },
     {
-        "dozent": "Rene",
-        "lehrgang": "IT-Systemelektroniker Frühjahr\/Sommer 2026",
-        "traeger": "azubi academy",
+        "id": "TERM_69302653d33ed",
         "datum": "2026-02-02",
+        "traeger": "azubi academy",
+        "lehrgang": "IT-Sys",
+        "thema": "Termin1",
         "von": "18:00",
         "bis": "20:00",
-        "ort": "",
-        "beschreibung": "",
-        "dauer": 2,
-        "thema": "Termin1"
+        "beschreibung": "Frühjahr\/Sommer 2026"
     },
     {
-        "dozent": "Rene",
-        "lehrgang": "IT-Systemelektroniker Frühjahr\/Sommer 2026",
-        "traeger": "azubi academy",
+        "id": "TERM_69302653d33ee",
         "datum": "2026-02-17",
+        "traeger": "azubi academy",
+        "lehrgang": "IT-Sy",
+        "thema": "Termin2",
         "von": "18:00",
         "bis": "20:00",
-        "ort": "",
-        "beschreibung": "",
-        "dauer": 2,
-        "thema": "Termin2"
+        "beschreibung": "stemelektroniker Frühjahr\/Sommer 2026"
     },
     {
-        "dozent": "Rene",
-        "lehrgang": "IT-Systemelektroniker Frühjahr\/Sommer 2026",
-        "traeger": "azubi academy",
+        "id": "TERM_69302653d33ef",
         "datum": "2026-03-02",
+        "traeger": "azubi academy",
+        "lehrgang": "IT-Sy",
+        "thema": "Termin3",
         "von": "18:00",
         "bis": "20:00",
-        "ort": "",
-        "beschreibung": "",
-        "dauer": 2,
-        "thema": "Termin3"
+        "beschreibung": "stemelektroniker Frühjahr\/Sommer 2026"
     },
     {
-        "dozent": "Rene",
-        "lehrgang": "IT-Systemelektroniker Frühjahr\/Sommer 2026",
-        "traeger": "azubi academy",
+        "id": "TERM_69302653d33f0",
         "datum": "2026-03-05",
+        "traeger": "azubi academy",
+        "lehrgang": "IT-Sy",
+        "thema": "Termin4",
         "von": "18:00",
         "bis": "20:00",
-        "ort": "",
-        "beschreibung": "",
-        "dauer": 2,
-        "thema": "Termin4"
+        "beschreibung": "stemelektroniker Frühjahr\/Sommer 2026"
     },
     {
-        "dozent": "Rene",
-        "lehrgang": "IT-Systemelektroniker Frühjahr\/Sommer 2026",
-        "traeger": "azubi academy",
+        "id": "TERM_69302653d33f1",
         "datum": "2026-03-16",
+        "traeger": "azubi academy",
+        "lehrgang": "IT-Sy",
+        "thema": "Termin5",
         "von": "18:00",
         "bis": "20:00",
-        "ort": "",
-        "beschreibung": "",
-        "dauer": 2,
-        "thema": "Termin5"
+        "beschreibung": "stemelektroniker Frühjahr\/Sommer 2026"
     },
     {
         "dozent": "Rene",
@@ -198,7 +199,8 @@
         "ort": "",
         "beschreibung": "",
         "dauer": 2,
-        "thema": "Termin6"
+        "thema": "Termin6",
+        "id": "TERM_69302653d33f2"
     },
     {
         "dozent": "Rene",
@@ -210,7 +212,8 @@
         "ort": "",
         "beschreibung": "",
         "dauer": 2,
-        "thema": "Termin7"
+        "thema": "Termin7",
+        "id": "TERM_69302653d33f3"
     },
     {
         "dozent": "Rene",
@@ -221,51 +224,48 @@
         "von": "09:22",
         "bis": "11:22",
         "beschreibung": "",
-        "dauer": 2
+        "dauer": 2,
+        "id": "TERM_69302653d33f4"
     },
     {
-        "dozent": "Rene",
-        "lehrgang": "FISI-Frühjar\/Sommer2026",
-        "thema": "Termin1",
-        "traeger": "zubi academy",
+        "id": "TERM_69302653d33f5",
         "datum": "2026-02-04",
+        "traeger": "zubi academy",
+        "lehrgang": "FISI-",
+        "thema": "Termin1",
         "von": "18:00",
         "bis": "20:00",
-        "beschreibung": "",
-        "dauer": 2
+        "beschreibung": "Frühjar\/Sommer2026"
     },
     {
-        "dozent": "Rene",
-        "lehrgang": "FISI-Frühjar\/Sommer2026",
-        "thema": "Termin2",
-        "traeger": "zubi academy",
+        "id": "TERM_69302653d33f6",
         "datum": "2026-02-18",
-        "von": "18:00",
-        "bis": "20:00",
-        "beschreibung": "",
-        "dauer": 2
-    },
-    {
-        "dozent": "Rene",
-        "lehrgang": "FISI-Frühjar\/Sommer2026",
-        "thema": "Termin3",
         "traeger": "zubi academy",
-        "datum": "2026-03-03",
+        "lehrgang": "FIS",
+        "thema": "Termin2",
         "von": "18:00",
         "bis": "20:00",
-        "beschreibung": "",
-        "dauer": 2
+        "beschreibung": "I-Frühjar\/Sommer2026"
     },
     {
-        "dozent": "Rene",
+        "id": "TERM_69302653d33f7",
+        "datum": "2026-03-03",
+        "traeger": "zubi academy",
+        "lehrgang": "FISI",
+        "thema": "Termin3",
+        "von": "18:00",
+        "bis": "20:00",
+        "beschreibung": "-Frühjar\/Sommer2026"
+    },
+    {
+        "id": "TERM_69302653d33f8",
+        "datum": "2026-01-12",
+        "traeger": "Kinder",
         "lehrgang": "Kinder bei Rene",
         "thema": "",
-        "traeger": "Kinder",
-        "datum": "2026-01-12",
         "von": "00:00",
         "bis": "23:59",
-        "beschreibung": "",
-        "dauer": 23.98
+        "beschreibung": ""
     },
     {
         "dozent": "Rene",
@@ -276,7 +276,8 @@
         "von": "00:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 23.98
+        "dauer": 23.98,
+        "id": "TERM_69302653d33f9"
     },
     {
         "dozent": "Rene",
@@ -287,7 +288,8 @@
         "von": "00:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 23.98
+        "dauer": 23.98,
+        "id": "TERM_69302653d33fa"
     },
     {
         "dozent": "Rene",
@@ -298,7 +300,8 @@
         "von": "00:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 23.98
+        "dauer": 23.98,
+        "id": "TERM_69302653d33fb"
     },
     {
         "dozent": "Rene",
@@ -309,7 +312,8 @@
         "von": "00:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 23.98
+        "dauer": 23.98,
+        "id": "TERM_69302653d33fc"
     },
     {
         "dozent": "Rene",
@@ -320,7 +324,8 @@
         "von": "00:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 23.98
+        "dauer": 23.98,
+        "id": "TERM_69302653d33fd"
     },
     {
         "dozent": "Rene",
@@ -331,7 +336,8 @@
         "von": "00:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 23.98
+        "dauer": 23.98,
+        "id": "TERM_69302653d33fe"
     },
     {
         "dozent": "Rene",
@@ -342,7 +348,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d33ff"
     },
     {
         "dozent": "Rene",
@@ -353,7 +360,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3400"
     },
     {
         "dozent": "Rene",
@@ -364,7 +372,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3401"
     },
     {
         "dozent": "Rene",
@@ -375,7 +384,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3402"
     },
     {
         "dozent": "Rene",
@@ -386,7 +396,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3403"
     },
     {
         "dozent": "Rene",
@@ -397,7 +408,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3404"
     },
     {
         "dozent": "Rene",
@@ -408,7 +420,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3405"
     },
     {
         "dozent": "Rene",
@@ -419,7 +432,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3406"
     },
     {
         "dozent": "Rene",
@@ -430,7 +444,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3407"
     },
     {
         "dozent": "Rene",
@@ -441,7 +456,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3408"
     },
     {
         "dozent": "Rene",
@@ -452,7 +468,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3409"
     },
     {
         "dozent": "Rene",
@@ -463,7 +480,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d340a"
     },
     {
         "dozent": "Rene",
@@ -474,7 +492,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d340b"
     },
     {
         "dozent": "Rene",
@@ -485,7 +504,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d340c"
     },
     {
         "dozent": "Rene",
@@ -496,7 +516,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d340d"
     },
     {
         "dozent": "Rene",
@@ -507,7 +528,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d340e"
     },
     {
         "dozent": "Rene",
@@ -518,7 +540,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d340f"
     },
     {
         "dozent": "Rene",
@@ -529,7 +552,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3410"
     },
     {
         "dozent": "Rene",
@@ -540,7 +564,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3411"
     },
     {
         "dozent": "Rene",
@@ -551,7 +576,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3412"
     },
     {
         "dozent": "Rene",
@@ -562,7 +588,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3413"
     },
     {
         "dozent": "Rene",
@@ -573,7 +600,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3414"
     },
     {
         "dozent": "Rene",
@@ -584,7 +612,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3415"
     },
     {
         "dozent": "Rene",
@@ -595,7 +624,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3416"
     },
     {
         "dozent": "Rene",
@@ -606,7 +636,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3417"
     },
     {
         "dozent": "Rene",
@@ -617,7 +648,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3418"
     },
     {
         "dozent": "Rene",
@@ -628,7 +660,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3419"
     },
     {
         "dozent": "Rene",
@@ -639,7 +672,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d341a"
     },
     {
         "dozent": "Rene",
@@ -650,7 +684,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d341b"
     },
     {
         "dozent": "Rene",
@@ -661,7 +696,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d341c"
     },
     {
         "dozent": "Rene",
@@ -672,7 +708,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d341d"
     },
     {
         "dozent": "Rene",
@@ -683,7 +720,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d341e"
     },
     {
         "dozent": "Rene",
@@ -694,7 +732,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d341f"
     },
     {
         "dozent": "Rene",
@@ -705,7 +744,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3420"
     },
     {
         "dozent": "Rene",
@@ -716,7 +756,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3421"
     },
     {
         "dozent": "Rene",
@@ -727,7 +768,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3422"
     },
     {
         "dozent": "Rene",
@@ -738,7 +780,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3423"
     },
     {
         "dozent": "Rene",
@@ -749,7 +792,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3424"
     },
     {
         "dozent": "Rene",
@@ -760,7 +804,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3425"
     },
     {
         "dozent": "Rene",
@@ -771,7 +816,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3426"
     },
     {
         "dozent": "Rene",
@@ -782,7 +828,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3427"
     },
     {
         "dozent": "Rene",
@@ -793,7 +840,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3428"
     },
     {
         "dozent": "Rene",
@@ -804,7 +852,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3429"
     },
     {
         "dozent": "Rene",
@@ -815,7 +864,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d342a"
     },
     {
         "dozent": "Rene",
@@ -826,7 +876,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d342b"
     },
     {
         "dozent": "Rene",
@@ -837,7 +888,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d342c"
     },
     {
         "dozent": "Rene",
@@ -848,7 +900,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d342d"
     },
     {
         "dozent": "Rene",
@@ -859,7 +912,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d342e"
     },
     {
         "dozent": "Rene",
@@ -870,7 +924,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d342f"
     },
     {
         "dozent": "Rene",
@@ -881,7 +936,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3430"
     },
     {
         "dozent": "Rene",
@@ -892,7 +948,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3431"
     },
     {
         "dozent": "Rene",
@@ -903,7 +960,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3432"
     },
     {
         "dozent": "Rene",
@@ -914,7 +972,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3433"
     },
     {
         "dozent": "Rene",
@@ -925,7 +984,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3434"
     },
     {
         "dozent": "Rene",
@@ -936,7 +996,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3435"
     },
     {
         "dozent": "Rene",
@@ -947,7 +1008,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3436"
     },
     {
         "dozent": "Rene",
@@ -958,7 +1020,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3437"
     },
     {
         "dozent": "Rene",
@@ -969,7 +1032,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3438"
     },
     {
         "dozent": "Rene",
@@ -980,7 +1044,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3439"
     },
     {
         "dozent": "Rene",
@@ -991,7 +1056,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d343a"
     },
     {
         "dozent": "Rene",
@@ -1002,7 +1068,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d343b"
     },
     {
         "dozent": "Rene",
@@ -1013,7 +1080,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d343c"
     },
     {
         "dozent": "Rene",
@@ -1024,7 +1092,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d343d"
     },
     {
         "dozent": "Rene",
@@ -1035,7 +1104,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d343e"
     },
     {
         "dozent": "Rene",
@@ -1046,7 +1116,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d343f"
     },
     {
         "dozent": "Rene",
@@ -1057,7 +1128,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3440"
     },
     {
         "dozent": "Rene",
@@ -1068,7 +1140,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3441"
     },
     {
         "dozent": "Rene",
@@ -1079,7 +1152,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3442"
     },
     {
         "dozent": "Rene",
@@ -1090,7 +1164,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3443"
     },
     {
         "dozent": "Rene",
@@ -1101,7 +1176,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3444"
     },
     {
         "dozent": "Rene",
@@ -1112,7 +1188,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3445"
     },
     {
         "dozent": "Rene",
@@ -1123,7 +1200,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3446"
     },
     {
         "dozent": "Rene",
@@ -1134,7 +1212,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3447"
     },
     {
         "dozent": "Rene",
@@ -1145,7 +1224,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3448"
     },
     {
         "dozent": "Rene",
@@ -1156,7 +1236,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3449"
     },
     {
         "dozent": "Rene",
@@ -1167,7 +1248,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d344a"
     },
     {
         "dozent": "Rene",
@@ -1178,7 +1260,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d344b"
     },
     {
         "dozent": "Rene",
@@ -1189,7 +1272,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d344c"
     },
     {
         "dozent": "Rene",
@@ -1200,7 +1284,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d344d"
     },
     {
         "dozent": "Rene",
@@ -1211,7 +1296,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d344e"
     },
     {
         "dozent": "Rene",
@@ -1222,7 +1308,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d344f"
     },
     {
         "dozent": "Rene",
@@ -1233,7 +1320,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3450"
     },
     {
         "dozent": "Rene",
@@ -1244,7 +1332,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3451"
     },
     {
         "dozent": "Rene",
@@ -1255,7 +1344,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3452"
     },
     {
         "dozent": "Rene",
@@ -1266,7 +1356,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3453"
     },
     {
         "dozent": "Rene",
@@ -1277,7 +1368,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3454"
     },
     {
         "dozent": "Rene",
@@ -1288,7 +1380,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3455"
     },
     {
         "dozent": "Rene",
@@ -1299,7 +1392,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3456"
     },
     {
         "dozent": "Rene",
@@ -1310,7 +1404,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3457"
     },
     {
         "dozent": "Rene",
@@ -1321,7 +1416,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3458"
     },
     {
         "dozent": "Rene",
@@ -1332,7 +1428,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3459"
     },
     {
         "dozent": "Rene",
@@ -1343,7 +1440,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d345a"
     },
     {
         "dozent": "Rene",
@@ -1354,7 +1452,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d345b"
     },
     {
         "dozent": "Rene",
@@ -1365,7 +1464,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d345c"
     },
     {
         "dozent": "Rene",
@@ -1376,7 +1476,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d345d"
     },
     {
         "dozent": "Rene",
@@ -1387,7 +1488,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d345e"
     },
     {
         "dozent": "Rene",
@@ -1398,18 +1500,18 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d345f"
     },
     {
-        "dozent": "Rene",
+        "id": "TERM_69302653d3460",
+        "datum": "2026-08-02",
+        "traeger": "Kinder",
         "lehrgang": "Kinder bei Rene",
         "thema": "",
-        "traeger": "Kinder",
-        "datum": "2026-08-02",
         "von": "15:00",
         "bis": "23:59",
-        "beschreibung": "",
-        "dauer": 8.98
+        "beschreibung": ""
     },
     {
         "dozent": "Rene",
@@ -1420,7 +1522,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3461"
     },
     {
         "dozent": "Rene",
@@ -1431,7 +1534,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3462"
     },
     {
         "dozent": "Rene",
@@ -1442,7 +1546,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3463"
     },
     {
         "dozent": "Rene",
@@ -1453,7 +1558,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3464"
     },
     {
         "dozent": "Rene",
@@ -1464,7 +1570,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3465"
     },
     {
         "dozent": "Rene",
@@ -1475,7 +1582,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3466"
     },
     {
         "dozent": "Rene",
@@ -1486,7 +1594,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3467"
     },
     {
         "dozent": "Rene",
@@ -1497,7 +1606,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3468"
     },
     {
         "dozent": "Rene",
@@ -1508,7 +1618,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3469"
     },
     {
         "dozent": "Rene",
@@ -1519,7 +1630,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d346a"
     },
     {
         "dozent": "Rene",
@@ -1530,7 +1642,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d346b"
     },
     {
         "dozent": "Rene",
@@ -1541,7 +1654,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d346c"
     },
     {
         "dozent": "Rene",
@@ -1552,7 +1666,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d346d"
     },
     {
         "dozent": "Rene",
@@ -1563,7 +1678,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d346e"
     },
     {
         "dozent": "Rene",
@@ -1574,7 +1690,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d346f"
     },
     {
         "dozent": "Rene",
@@ -1585,7 +1702,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3470"
     },
     {
         "dozent": "Rene",
@@ -1596,7 +1714,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3471"
     },
     {
         "dozent": "Rene",
@@ -1607,7 +1726,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3472"
     },
     {
         "dozent": "Rene",
@@ -1618,7 +1738,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3473"
     },
     {
         "dozent": "Rene",
@@ -1629,7 +1750,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3474"
     },
     {
         "dozent": "Rene",
@@ -1640,7 +1762,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3475"
     },
     {
         "dozent": "Rene",
@@ -1651,7 +1774,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3476"
     },
     {
         "dozent": "Rene",
@@ -1662,7 +1786,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3477"
     },
     {
         "dozent": "Rene",
@@ -1673,7 +1798,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3478"
     },
     {
         "dozent": "Rene",
@@ -1684,7 +1810,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d3479"
     },
     {
         "dozent": "Rene",
@@ -1695,7 +1822,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d347a"
     },
     {
         "dozent": "Rene",
@@ -1706,7 +1834,8 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d347b"
     },
     {
         "dozent": "Rene",
@@ -1717,6 +1846,597 @@
         "von": "15:00",
         "bis": "23:59",
         "beschreibung": "",
-        "dauer": 8.98
+        "dauer": 8.98,
+        "id": "TERM_69302653d347c"
+    },
+    {
+        "id": "TERM_6930189e6a6a7",
+        "datum": "2025-12-04",
+        "traeger": "azubi academy",
+        "lehrgang": "FISI-Frühjar\/Sommer2026",
+        "thema": "Termin3",
+        "von": "",
+        "bis": "",
+        "beschreibung": ""
+    },
+    {
+        "id": "TERM_1db34c52c5",
+        "datum": "2025-12-05",
+        "traeger": "azubi academy",
+        "lehrgang": "FISI-Frühjar\/Sommer2026",
+        "thema": "Termin3",
+        "von": "",
+        "bis": "",
+        "beschreibung": ""
+    },
+    {
+        "id": "TERM_b22654d12609",
+        "datum": "2025-12-06",
+        "traeger": "bbb",
+        "lehrgang": "Kiwewe",
+        "thema": "",
+        "von": "",
+        "bis": "",
+        "beschreibung": ""
+    },
+    {
+        "id": "TERM_f886a2b4bc41",
+        "datum": "2026-03-04",
+        "traeger": "zubi academy",
+        "lehrgang": "FISI",
+        "thema": "Termin4",
+        "von": "18:00",
+        "bis": "20:00",
+        "beschreibung": "-Frühjar\/Sommer2026"
+    },
+    {
+        "id": "TERM_549faa04cbcd",
+        "datum": "2026-01-09",
+        "traeger": "IHK Würzburg",
+        "lehrgang": "BSP-2026-BL",
+        "thema": "",
+        "von": "14:00",
+        "bis": "19:00",
+        "beschreibung": "Geprüfte\/r Berufsspezialist\/in für Systemintegration "
+    },
+    {
+        "id": "TERM_c0866fa1f0d5",
+        "datum": "2026-01-10",
+        "traeger": "IHK Würzburg",
+        "lehrgang": "BSP-2026-BL",
+        "thema": "",
+        "von": "08:00",
+        "bis": "15:30",
+        "beschreibung": "Geprüfte\/r Berufsspezialist\/in für Systemintegration "
+    },
+    {
+        "id": "TERM_fa78cbe7be0b",
+        "datum": "2026-01-16",
+        "traeger": "IHK Würzburg",
+        "lehrgang": "BSP-2026-BL",
+        "thema": "",
+        "von": "14:00",
+        "bis": "19:00",
+        "beschreibung": "Geprüfte\/r Berufsspezialist\/in für Systemintegration "
+    },
+    {
+        "id": "TERM_8d7cb584894c",
+        "datum": "2026-01-24",
+        "traeger": "IHK Würzburg",
+        "lehrgang": "BSP-2026-BL",
+        "thema": "",
+        "von": "08:00",
+        "bis": "15:30",
+        "beschreibung": "Geprüfte\/r Berufsspezialist\/in für Systemintegration "
+    },
+    {
+        "id": "TERM_05b64a8f4e0c",
+        "datum": "2026-01-23",
+        "traeger": "IHK Würzburg",
+        "lehrgang": "BSP-2026-BL",
+        "thema": "",
+        "von": "14:00",
+        "bis": "19:00",
+        "beschreibung": "Geprüfte\/r Berufsspezialist\/in für Systemintegration "
+    },
+    {
+        "id": "TERM_456fa3088fe7",
+        "datum": "2026-02-06",
+        "traeger": "IHK Würzburg",
+        "lehrgang": "BSP-2026-BL",
+        "thema": "",
+        "von": "14:00",
+        "bis": "19:00",
+        "beschreibung": "Geprüfte\/r Berufsspezialist\/in für Systemintegration "
+    },
+    {
+        "id": "TERM_42975658e186",
+        "datum": "2026-02-07",
+        "traeger": "IHK Würzburg",
+        "lehrgang": "BSP-2026-BL",
+        "thema": "",
+        "von": "08:00",
+        "bis": "15:30",
+        "beschreibung": "Geprüfte\/r Berufsspezialist\/in für Systemintegration "
+    },
+    {
+        "id": "TERM_9cb275c97ace",
+        "datum": "2026-01-30",
+        "traeger": "IHK Würzburg",
+        "lehrgang": "BSP-2026-BL",
+        "thema": "",
+        "von": "14:00",
+        "bis": "19:00",
+        "beschreibung": "Geprüfte\/r Berufsspezialist\/in für Systemintegration "
+    },
+    {
+        "id": "TERM_34b86c964ea6",
+        "datum": "2026-02-13",
+        "traeger": "IHK Würzburg",
+        "lehrgang": "BSP-2026-BL",
+        "thema": "",
+        "von": "14:00",
+        "bis": "19:00",
+        "beschreibung": "Geprüfte\/r Berufsspezialist\/in für Systemintegration "
+    },
+    {
+        "id": "TERM_e1ba32e7f069",
+        "datum": "2026-02-20",
+        "traeger": "IHK Würzburg",
+        "lehrgang": "BSP-2026-BL",
+        "thema": "",
+        "von": "14:00",
+        "bis": "19:00",
+        "beschreibung": "Geprüfte\/r Berufsspezialist\/in für Systemintegration "
+    },
+    {
+        "id": "TERM_13b65ea15638",
+        "datum": "2026-02-21",
+        "traeger": "IHK Würzburg",
+        "lehrgang": "BSP-2026-BL",
+        "thema": "",
+        "von": "08:00",
+        "bis": "15:30",
+        "beschreibung": "Geprüfte\/r Berufsspezialist\/in für Systemintegration "
+    },
+    {
+        "id": "TERM_b86bf1444e09",
+        "datum": "2026-02-27",
+        "traeger": "IHK Würzburg",
+        "lehrgang": "BSP-2026-BL",
+        "thema": "",
+        "von": "14:00",
+        "bis": "19:00",
+        "beschreibung": "Geprüfte\/r Berufsspezialist\/in für Systemintegration "
+    },
+    {
+        "id": "TERM_e9c3a3e8b51a",
+        "datum": "2026-03-07",
+        "traeger": "IHK Würzburg",
+        "lehrgang": "BSP-2026-BL",
+        "thema": "",
+        "von": "08:00",
+        "bis": "15:30",
+        "beschreibung": "Geprüfte\/r Berufsspezialist\/in für Systemintegration "
+    },
+    {
+        "id": "TERM_2d1c1816b2ea",
+        "datum": "2026-03-06",
+        "traeger": "IHK Würzburg",
+        "lehrgang": "BSP-2026-BL",
+        "thema": "",
+        "von": "14:00",
+        "bis": "19:00",
+        "beschreibung": "Geprüfte\/r Berufsspezialist\/in für Systemintegration "
+    },
+    {
+        "id": "TERM_71a82224f603",
+        "datum": "2026-03-14",
+        "traeger": "IHK Würzburg",
+        "lehrgang": "BSP-2026-BL",
+        "thema": "",
+        "von": "14:00",
+        "bis": "19:00",
+        "beschreibung": "Geprüfte\/r Berufsspezialist\/in für Systemintegration "
+    },
+    {
+        "id": "TERM_0cf0961afe10",
+        "datum": "2026-03-20",
+        "traeger": "IHK Würzburg",
+        "lehrgang": "BSP-2026-BL",
+        "thema": "",
+        "von": "14:00",
+        "bis": "19:00",
+        "beschreibung": "Geprüfte\/r Berufsspezialist\/in für Systemintegration "
+    },
+    {
+        "id": "TERM_49c2399aac1a",
+        "datum": "2026-03-27",
+        "traeger": "IHK Würzburg",
+        "lehrgang": "BSP-2026-BL",
+        "thema": "",
+        "von": "14:00",
+        "bis": "19:00",
+        "beschreibung": "Geprüfte\/r Berufsspezialist\/in für Systemintegration "
+    },
+    {
+        "id": "TERM_c02104d3ceb6",
+        "datum": "2026-03-21",
+        "traeger": "IHK Würzburg",
+        "lehrgang": "BSP-2026-BL",
+        "thema": "",
+        "von": "08:00",
+        "bis": "15:30",
+        "beschreibung": "Geprüfte\/r Berufsspezialist\/in für Systemintegration "
+    },
+    {
+        "id": "TERM_cab6191dfd9b",
+        "datum": "2026-04-04",
+        "traeger": "IHK Würzburg",
+        "lehrgang": "BSP-2026-BL",
+        "thema": "",
+        "von": "08:00",
+        "bis": "15:30",
+        "beschreibung": "Geprüfte\/r Berufsspezialist\/in für Systemintegration "
+    },
+    {
+        "id": "TERM_caf5187b3757",
+        "datum": "2026-04-03",
+        "traeger": "IHK Würzburg",
+        "lehrgang": "BSP-2026-BL",
+        "thema": "",
+        "von": "14:00",
+        "bis": "19:00",
+        "beschreibung": "Geprüfte\/r Berufsspezialist\/in für Systemintegration "
+    },
+    {
+        "id": "TERM_7f32ceb26efd",
+        "datum": "2026-04-17",
+        "traeger": "IHK Würzburg",
+        "lehrgang": "BSP-2026-BL",
+        "thema": "",
+        "von": "14:00",
+        "bis": "19:00",
+        "beschreibung": "Geprüfte\/r Berufsspezialist\/in für Systemintegration "
+    },
+    {
+        "id": "TERM_6459a532da88",
+        "datum": "2026-04-18",
+        "traeger": "IHK Würzburg",
+        "lehrgang": "BSP-2026-BL",
+        "thema": "",
+        "von": "08:00",
+        "bis": "15:30",
+        "beschreibung": "Geprüfte\/r Berufsspezialist\/in für Systemintegration "
+    },
+    {
+        "id": "TERM_ba59158d5738",
+        "datum": "2026-04-24",
+        "traeger": "IHK Würzburg",
+        "lehrgang": "BSP-2026-BL",
+        "thema": "",
+        "von": "14:00",
+        "bis": "19:00",
+        "beschreibung": "Geprüfte\/r Berufsspezialist\/in für Systemintegration "
+    },
+    {
+        "id": "TERM_02348eaf781f",
+        "datum": "2026-05-02",
+        "traeger": "IHK Würzburg",
+        "lehrgang": "BSP-2026-BL",
+        "thema": "",
+        "von": "08:00",
+        "bis": "15:30",
+        "beschreibung": "Geprüfte\/r Berufsspezialist\/in für Systemintegration "
+    },
+    {
+        "id": "TERM_525f961a8d57",
+        "datum": "2026-05-01",
+        "traeger": "IHK Würzburg",
+        "lehrgang": "BSP-2026-BL",
+        "thema": "",
+        "von": "14:00",
+        "bis": "19:00",
+        "beschreibung": "Geprüfte\/r Berufsspezialist\/in für Systemintegration "
+    },
+    {
+        "id": "TERM_cc76c6dcfced",
+        "datum": "2026-05-08",
+        "traeger": "IHK Würzburg",
+        "lehrgang": "BSP-2026-BL",
+        "thema": "",
+        "von": "14:00",
+        "bis": "19:00",
+        "beschreibung": "Geprüfte\/r Berufsspezialist\/in für Systemintegration "
+    },
+    {
+        "id": "TERM_4916c1562504",
+        "datum": "2026-05-16",
+        "traeger": "IHK Würzburg",
+        "lehrgang": "BSP-2026-BL",
+        "thema": "",
+        "von": "08:00",
+        "bis": "15:30",
+        "beschreibung": "Geprüfte\/r Berufsspezialist\/in für Systemintegration "
+    },
+    {
+        "id": "TERM_b540300418fd",
+        "datum": "2026-05-15",
+        "traeger": "IHK Würzburg",
+        "lehrgang": "BSP-2026-BL",
+        "thema": "",
+        "von": "14:00",
+        "bis": "19:00",
+        "beschreibung": "Geprüfte\/r Berufsspezialist\/in für Systemintegration "
+    },
+    {
+        "id": "TERM_b762127ba512",
+        "datum": "2026-05-29",
+        "traeger": "IHK Würzburg",
+        "lehrgang": "BSP-2026-BL",
+        "thema": "",
+        "von": "14:00",
+        "bis": "19:00",
+        "beschreibung": "Geprüfte\/r Berufsspezialist\/in für Systemintegration "
+    },
+    {
+        "id": "TERM_5659ae18b94f",
+        "datum": "2026-05-30",
+        "traeger": "IHK Würzburg",
+        "lehrgang": "BSP-2026-BL",
+        "thema": "",
+        "von": "08:00",
+        "bis": "15:30",
+        "beschreibung": "Geprüfte\/r Berufsspezialist\/in für Systemintegration "
+    },
+    {
+        "id": "TERM_4f180d89f36b",
+        "datum": "2026-05-22",
+        "traeger": "IHK Würzburg",
+        "lehrgang": "BSP-2026-BL",
+        "thema": "",
+        "von": "14:00",
+        "bis": "19:00",
+        "beschreibung": "Geprüfte\/r Berufsspezialist\/in für Systemintegration "
+    },
+    {
+        "id": "TERM_ccfb8b71e319",
+        "datum": "2026-06-05",
+        "traeger": "IHK Würzburg",
+        "lehrgang": "BSP-2026-BL",
+        "thema": "",
+        "von": "14:00",
+        "bis": "19:00",
+        "beschreibung": "Geprüfte\/r Berufsspezialist\/in für Systemintegration "
+    },
+    {
+        "id": "TERM_17a2a3dd2c20",
+        "datum": "2026-06-12",
+        "traeger": "IHK Würzburg",
+        "lehrgang": "BSP-2026-BL",
+        "thema": "",
+        "von": "14:00",
+        "bis": "19:00",
+        "beschreibung": "Geprüfte\/r Berufsspezialist\/in für Systemintegration "
+    },
+    {
+        "id": "TERM_29c4a5507ecc",
+        "datum": "2026-06-13",
+        "traeger": "IHK Würzburg",
+        "lehrgang": "BSP-2026-BL",
+        "thema": "",
+        "von": "08:00",
+        "bis": "15:30",
+        "beschreibung": "Geprüfte\/r Berufsspezialist\/in für Systemintegration "
+    },
+    {
+        "id": "TERM_882d34e0cf61",
+        "datum": "2026-06-19",
+        "traeger": "IHK Würzburg",
+        "lehrgang": "BSP-2026-BL",
+        "thema": "",
+        "von": "14:00",
+        "bis": "19:00",
+        "beschreibung": "Geprüfte\/r Berufsspezialist\/in für Systemintegration "
+    },
+    {
+        "id": "TERM_1fbe91b9374e",
+        "datum": "2026-06-27",
+        "traeger": "IHK Würzburg",
+        "lehrgang": "BSP-2026-BL",
+        "thema": "",
+        "von": "08:00",
+        "bis": "15:30",
+        "beschreibung": "Geprüfte\/r Berufsspezialist\/in für Systemintegration "
+    },
+    {
+        "id": "TERM_7ff0c6e54b16",
+        "datum": "2026-06-26",
+        "traeger": "IHK Würzburg",
+        "lehrgang": "BSP-2026-BL",
+        "thema": "",
+        "von": "14:00",
+        "bis": "19:00",
+        "beschreibung": "Geprüfte\/r Berufsspezialist\/in für Systemintegration "
+    },
+    {
+        "id": "TERM_b20c73a385d0",
+        "datum": "2026-07-03",
+        "traeger": "IHK Würzburg",
+        "lehrgang": "BSP-2026-BL",
+        "thema": "",
+        "von": "14:00",
+        "bis": "19:00",
+        "beschreibung": "Geprüfte\/r Berufsspezialist\/in für Systemintegration "
+    },
+    {
+        "id": "TERM_e0bcf30796dd",
+        "datum": "2026-07-11",
+        "traeger": "IHK Würzburg",
+        "lehrgang": "BSP-2026-BL",
+        "thema": "",
+        "von": "08:00",
+        "bis": "15:30",
+        "beschreibung": "Geprüfte\/r Berufsspezialist\/in für Systemintegration "
+    },
+    {
+        "id": "TERM_e766bffff9c7",
+        "datum": "2026-07-10",
+        "traeger": "IHK Würzburg",
+        "lehrgang": "BSP-2026-BL",
+        "thema": "",
+        "von": "14:00",
+        "bis": "19:00",
+        "beschreibung": "Geprüfte\/r Berufsspezialist\/in für Systemintegration "
+    },
+    {
+        "id": "TERM_70e870eb7c58",
+        "datum": "2026-07-17",
+        "traeger": "IHK Würzburg",
+        "lehrgang": "BSP-2026-BL",
+        "thema": "",
+        "von": "14:00",
+        "bis": "19:00",
+        "beschreibung": "Geprüfte\/r Berufsspezialist\/in für Systemintegration "
+    },
+    {
+        "id": "TERM_d092c053e435",
+        "datum": "2026-07-25",
+        "traeger": "IHK Würzburg",
+        "lehrgang": "BSP-2026-BL",
+        "thema": "",
+        "von": "08:00",
+        "bis": "15:30",
+        "beschreibung": "Geprüfte\/r Berufsspezialist\/in für Systemintegration "
+    },
+    {
+        "id": "TERM_c1e91f4197ce",
+        "datum": "2026-07-24",
+        "traeger": "IHK Würzburg",
+        "lehrgang": "BSP-2026-BL",
+        "thema": "",
+        "von": "14:00",
+        "bis": "19:00",
+        "beschreibung": "Geprüfte\/r Berufsspezialist\/in für Systemintegration "
+    },
+    {
+        "id": "TERM_0271ce88b4dd",
+        "datum": "2026-07-31",
+        "traeger": "IHK Würzburg",
+        "lehrgang": "BSP-2026-BL",
+        "thema": "",
+        "von": "14:00",
+        "bis": "19:00",
+        "beschreibung": "Geprüfte\/r Berufsspezialist\/in für Systemintegration "
+    },
+    {
+        "id": "TERM_32f52c54391c",
+        "datum": "2026-08-08",
+        "traeger": "IHK Würzburg",
+        "lehrgang": "BSP-2026-BL",
+        "thema": "",
+        "von": "08:00",
+        "bis": "15:30",
+        "beschreibung": "Geprüfte\/r Berufsspezialist\/in für Systemintegration "
+    },
+    {
+        "id": "TERM_aad196c4282a",
+        "datum": "2026-08-07",
+        "traeger": "IHK Würzburg",
+        "lehrgang": "BSP-2026-BL",
+        "thema": "",
+        "von": "14:00",
+        "bis": "19:00",
+        "beschreibung": "Geprüfte\/r Berufsspezialist\/in für Systemintegration "
+    },
+    {
+        "id": "TERM_3af868128ea3",
+        "datum": "2026-08-14",
+        "traeger": "IHK Würzburg",
+        "lehrgang": "BSP-2026-BL",
+        "thema": "",
+        "von": "14:00",
+        "bis": "19:00",
+        "beschreibung": "Geprüfte\/r Berufsspezialist\/in für Systemintegration "
+    },
+    {
+        "id": "TERM_b5c42ef90faf",
+        "datum": "2026-08-22",
+        "traeger": "IHK Würzburg",
+        "lehrgang": "BSP-2026-BL",
+        "thema": "",
+        "von": "08:00",
+        "bis": "15:30",
+        "beschreibung": "Geprüfte\/r Berufsspezialist\/in für Systemintegration "
+    },
+    {
+        "id": "TERM_37e6e35798e3",
+        "datum": "2026-08-21",
+        "traeger": "IHK Würzburg",
+        "lehrgang": "BSP-2026-BL",
+        "thema": "",
+        "von": "14:00",
+        "bis": "19:00",
+        "beschreibung": "Geprüfte\/r Berufsspezialist\/in für Systemintegration "
+    },
+    {
+        "id": "TERM_4d276468fb09",
+        "datum": "2026-08-28",
+        "traeger": "IHK Würzburg",
+        "lehrgang": "BSP-2026-BL",
+        "thema": "",
+        "von": "14:00",
+        "bis": "19:00",
+        "beschreibung": "Geprüfte\/r Berufsspezialist\/in für Systemintegration "
+    },
+    {
+        "id": "TERM_ab598f17a9de",
+        "datum": "2026-08-31",
+        "traeger": "IHK Würzburg",
+        "lehrgang": "BSP-2026-BL",
+        "thema": "",
+        "von": "08:00",
+        "bis": "15:30",
+        "beschreibung": "Geprüfte\/r Berufsspezialist\/in für Systemintegration "
+    },
+    {
+        "id": "TERM_9966b47db51e",
+        "datum": "2026-09-01",
+        "traeger": "IHK Würzburg",
+        "lehrgang": "BSP-2026-BL",
+        "thema": "",
+        "von": "08:00",
+        "bis": "15:30",
+        "beschreibung": "Geprüfte\/r Berufsspezialist\/in für Systemintegration "
+    },
+    {
+        "id": "TERM_345971e3fb08",
+        "datum": "2026-09-02",
+        "traeger": "IHK Würzburg",
+        "lehrgang": "BSP-2026-BL",
+        "thema": "",
+        "von": "08:00",
+        "bis": "15:30",
+        "beschreibung": "Geprüfte\/r Berufsspezialist\/in für Systemintegration "
+    },
+    {
+        "id": "TERM_c821f9310483",
+        "datum": "2026-09-03",
+        "traeger": "IHK Würzburg",
+        "lehrgang": "BSP-2026-BL",
+        "thema": "",
+        "von": "08:00",
+        "bis": "15:30",
+        "beschreibung": "Geprüfte\/r Berufsspezialist\/in für Systemintegration "
+    },
+    {
+        "id": "TERM_7c3f91ee32db",
+        "datum": "2026-09-04",
+        "traeger": "IHK Würzburg",
+        "lehrgang": "BSP-2026-BL",
+        "thema": "",
+        "von": "08:00",
+        "bis": "15:30",
+        "beschreibung": "Geprüfte\/r Berufsspezialist\/in für Systemintegration "
     }
 ]
