@@ -129,17 +129,6 @@
         "dauer": 1
     },
     {
-        "dozent": "rene",
-        "lehrgang": "w1",
-        "traeger": "ibb",
-        "datum": "2025-12-01",
-        "von": "17:41",
-        "bis": "18:41",
-        "ort": "",
-        "beschreibung": "",
-        "dauer": 1
-    },
-    {
         "dozent": "Rene",
         "lehrgang": "IT-Systemelektroniker Frühjahr\/Sommer 2026",
         "traeger": "azubi academy",
@@ -222,5 +211,16 @@
         "beschreibung": "",
         "dauer": 2,
         "thema": "Termin7"
+    },
+    {
+        "dozent": "Rene",
+        "lehrgang": "Netzwerk und BinäreZahlen",
+        "thema": "Netzwerk und BinäreZahlen",
+        "traeger": "IBB",
+        "datum": "2025-12-02",
+        "von": "09:22",
+        "bis": "11:22",
+        "beschreibung": "",
+        "dauer": 2
     }
 ]

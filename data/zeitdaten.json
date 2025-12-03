@@ -158,5 +158,77 @@
         "duration": 120,
         "datum": "2025-11-24",
         "zeit": "21:49"
+    },
+    {
+        "kunde": "Asskea GmbH",
+        "art": "Administration",
+        "desc": "ebedo Umstellung, Carolin anmeldung",
+        "duration": 480,
+        "datum": "2025-11-26",
+        "zeit": "15:33"
+    },
+    {
+        "kunde": "Asskea GmbH",
+        "art": "Administration",
+        "desc": "Vorbereitung Mebedo Umstellung",
+        "duration": 300,
+        "datum": "2025-11-25",
+        "zeit": "15:45"
+    },
+    {
+        "kunde": "Asskea GmbH",
+        "art": "Administration",
+        "desc": "Mebedo Import aus Handehelds abstimmen",
+        "duration": 260,
+        "datum": "2025-11-27",
+        "zeit": "12:57"
+    },
+    {
+        "kunde": "Asskea GmbH",
+        "art": "Administration",
+        "desc": "Überprüfung Backup mebedo",
+        "duration": 30,
+        "datum": "2025-11-28",
+        "zeit": "12:29"
+    },
+    {
+        "kunde": "Asskea GmbH",
+        "art": "Administration",
+        "desc": "Update Server",
+        "duration": 180,
+        "datum": "2025-11-29",
+        "zeit": "12:29"
+    },
+    {
+        "kunde": "Asskea GmbH",
+        "art": "Administration",
+        "desc": "Umstellung Laptop Nadija",
+        "duration": 130,
+        "datum": "2025-11-19",
+        "zeit": "12:32"
+    },
+    {
+        "kunde": "Asskea GmbH",
+        "art": "Administration",
+        "desc": "Umstellung Laptop Fischer und finale Einrichtung",
+        "duration": 180,
+        "datum": "2025-11-05",
+        "zeit": "12:33"
+    },
+    {
+        "kunde": "Asskea GmbH",
+        "art": "Administration",
+        "desc": "Löschen und neu installieren alter Laptops",
+        "duration": 180,
+        "datum": "2025-11-05",
+        "zeit": "12:34"
+    },
+    {
+        "kunde": "Asskea GmbH",
+        "art": "Administration",
+        "desc": "Problem Plugin aligned",
+        "duration": 120,
+        "datum": "2025-11-05",
+        "zeit": "12:39"
     }
 ]

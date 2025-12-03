@@ -31,65 +31,80 @@ $today = date('Y-m-d');
 // Filter: nur für Kunde + zukünftig
 $filtered = array_values(array_filter($events, function($e) use ($traegerFilter, $today) {
     return isset($e['traeger'], $e['datum'])
-        && $e['traeger'] === $traegerFilter
+        && trim($e['traeger']) === trim($traegerFilter)
         && $e['datum'] >= $today;
 }));
 
-usort($filtered, function($a,$b){
-    return strcmp(($a['datum'] ?? '').($a['von'] ?? ''), ($b['datum'] ?? '').($b['von'] ?? ''));
+// ---------------------------
+// Sortierung (Datum → Zeit → Lehrgang)
+// ---------------------------
+usort($filtered, function($a, $b) {
+
+    // Datum
+    if ($a['datum'] !== $b['datum']) {
+        return strcmp($a['datum'], $b['datum']);
+    }
+
+    // Zeit: "von"
+    $vonA = $a['von'] ?? '';
+    $vonB = $b['von'] ?? '';
+
+    if ($vonA !== $vonB) {
+        return strcmp($vonA, $vonB);
+    }
+
+    // Alphabetisch nach Lehrgang
+    return strcmp($a['lehrgang'], $b['lehrgang']);
 });
 
+// ---------------------------
+// Hilfsfunktionen
+// ---------------------------
 function format_eu($d) {
-    if (strpos($d, '-') === false) return $d;
+    if (!str_contains($d, "-")) return $d;
     [$y,$m,$day] = explode('-', $d);
     return sprintf('%02d.%02d.%04d', $day, $m, $y);
 }
 
-// Summe Stunden
+function cleanText($t) {
+    if (!$t) return "";
+    // Windows → Unix
+    $t = str_replace(["\r\n", "\r"], "\n", $t);
+    // HTML Breaks → Zeilen
+    $t = str_replace(["<br>", "<br/>", "<br />"], "\n", $t);
+    // Mehrfache Leerzeilen vermeiden
+    $t = preg_replace("/\n{2,}/", "\n", $t);
+    return trim($t);
+}
+
 $total_hours = array_reduce($filtered, fn($s,$e)=>$s+($e['dauer']??0), 0);
 
 // ---------------------------------------
-// CUSTOM PDF CLASS MIT SCHÖNEREN TABELLEN
+// PDF-Klasse
 // ---------------------------------------
 class ModernPDF extends FPDF {
 
     function Header() {
         $this->SetFont('Arial','B',16);
         $this->SetTextColor(30,30,30);
-
-        $this->Cell(0,10,utf8_decode("Schulungstermine  ".$GLOBALS['kunde_name']),0,1,'C');
+        $this->Cell(0,10,utf8_decode("Schulungstermine – ".$GLOBALS['kunde_name']),0,1,'C');
         $this->Ln(2);
 
         $this->SetFont('Arial','',11);
         $this->SetTextColor(100,100,100);
-
-        $this->Cell(
-            0,
-            6,
-            utf8_decode("Zukünftige Termine"),
-            0,
-            1,
-            'C'
-        );
-
+        $this->Cell(0,6,utf8_decode("Zukünftige Termine (automatisch gefiltert nach Träger)"),0,1,'C');
         $this->Ln(4);
 
-        // dünne Linie
+        // Linie
         $this->SetDrawColor(180,180,180);
         $this->Line(10, $this->GetY(), 200, $this->GetY());
         $this->Ln(6);
     }
 
     function FancyRow($cols) {
-        // $cols = [
-        //   ['w'=>30,'text'=>'...','style'=>'B'],
-        //   ...
-        // ]
-
         $lineHeight = 6;
         $maxLines = 1;
 
-        // MultiCell benötigt Anzahl Zeilen → selbst berechnen
         foreach ($cols as $col) {
             $this->SetFont('Arial', $col['style'] ?? '', 10);
             $nb = $this->NbLines($col['w'], utf8_decode($col['text']));
@@ -98,7 +113,6 @@ class ModernPDF extends FPDF {
 
         $totalHeight = $lineHeight * $maxLines;
 
-        // Rahmen + Text
         foreach ($cols as $col) {
             $x = $this->GetX();
             $y = $this->GetY();
@@ -106,25 +120,28 @@ class ModernPDF extends FPDF {
             $this->Rect($x, $y, $col['w'], $totalHeight);
 
             $this->MultiCell($col['w'], $lineHeight, utf8_decode($col['text']), 0, $col['align'] ?? 'L');
+
             $this->SetXY($x + $col['w'], $y);
         }
 
         $this->Ln($totalHeight);
     }
 
-    // MultiCell Helfer
     function NbLines($w, $txt) {
         $cw = &$this->CurrentFont['cw'];
         if ($w == 0) $w = $this->w - $this->rMargin - $this->x;
-        $wmax = ($w - 2 * $this->cMargin) * 1000 / $this->FontSize;
+        $wmax = ($w - 2*$this->cMargin) * 1000 / $this->FontSize;
 
         $s = str_replace("\r", '', $txt);
         $nb = strlen($s);
 
-        if ($nb > 0 && $s[$nb - 1] == "\n") $nb--;
+        if ($nb > 0 && $s[$nb-1] == "\n") $nb--;
 
         $sep = -1;
-        $i = 0; $j = 0; $l = 0; $nl = 1;
+        $i = 0; 
+        $j = 0; 
+        $l = 0; 
+        $nl = 1;
 
         while ($i < $nb) {
             $c = $s[$i];
@@ -133,14 +150,25 @@ class ModernPDF extends FPDF {
                 continue;
             }
             if ($c == ' ') $sep = $i;
+
             $l += $cw[$c];
+
             if ($l > $wmax) {
                 if ($sep == -1) {
                     if ($i == $j) $i++;
-                } else $i = $sep + 1;
-                $sep = -1; $j = $i; $l = 0; $nl++;
-            } else $i++;
+                } else {
+                    $i = $sep + 1;
+                }
+
+                $sep = -1;
+                $j = $i;
+                $l = 0;
+                $nl++;
+            } else {
+                $i++;
+            }
         }
+
         return $nl;
     }
 }
@@ -161,9 +189,9 @@ $pdf->Cell(
 
 $pdf->Ln(4);
 
-// ---------------------------------------
-// TABELLENKOPF – modern, grau hinterlegt
-// ---------------------------------------
+// ---------------------------
+// Tabellenkopf
+// ---------------------------
 $pdf->SetFont('Arial','B',11);
 $pdf->SetFillColor(245,245,245);
 $pdf->SetDrawColor(200,200,200);
@@ -176,22 +204,30 @@ $pdf->Cell(59,8,utf8_decode("Thema / Beschreibung"),1,1,'L',true);
 
 $pdf->SetFont('Arial','',10);
 
-// ---------------------------------------
-// INHALT
-// ---------------------------------------
+// ---------------------------
+// Inhalt
+// ---------------------------
 foreach ($filtered as $ev) {
 
-    $datum = format_eu($ev['datum']);
-    $lehrgang = $ev['lehrgang'] ?? '';
-    $thema = $ev['thema'] ?? '';
-    $zeit = ($ev['von'] ?? '')." - ".($ev['bis'] ?? '');
-    $dauer = number_format(floatval($ev['dauer'] ?? 0),2,',','.');
-    $beschreibung = $ev['beschreibung'] ?? '';
+    $datum        = format_eu($ev['datum']);
+    $lehrgang     = $ev['lehrgang'] ?? '';
+    $zeit         = ($ev['von'] ?? '') . " - " . ($ev['bis'] ?? '');
+    $dauer        = number_format(floatval($ev['dauer'] ?? 0),2,',','.');
+    $thema        = cleanText($ev['thema'] ?? '');
+    $beschreibung = cleanText($ev['beschreibung'] ?? '');
 
-    // Schönes kombiniertes Feld
+    // Details zusammensetzen – mit sauberem Zeilenumbruch
     $details = "";
-    if ($thema) $details .= "Thema: ".$thema."\n";
-    if ($beschreibung) $details .= $beschreibung;
+
+    if ($thema !== "") {
+        $details .= "Thema: " . $thema . "\n";
+    }
+
+    if ($beschreibung !== "") {
+        $details .= $beschreibung;
+    }
+
+    $details = trim($details);
 
     $pdf->FancyRow([
         ['w'=>28, 'text'=>$datum, 'style'=>'', 'align'=>'L'],
@@ -201,8 +237,6 @@ foreach ($filtered as $ev) {
         ['w'=>59, 'text'=>$details, 'style'=>'', 'align'=>'L'],
     ]);
 }
-
-// ---------------------------------------
 
 $pdf->Output("I", "Termine_$kunde_name.pdf");
 exit;
